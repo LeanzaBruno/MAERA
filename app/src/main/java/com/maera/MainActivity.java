@@ -11,7 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,57 +37,51 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setUpEvents(){
-
         _searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new PageDownloader().execute(_codeEditText.getText().toString());
+                parseHTML();
             }
         });
+    }
 
-
+    private void parseHTML()
+    {
+        new PageDownloader().execute();
     }
 
 
 
-    private class PageDownloader extends AsyncTask<String, Integer, Boolean>
+    private class PageDownloader extends AsyncTask<Void, Void, Void>
     {
-        private final String METAR_PAGE_PREFIX = "https://ssl.smn.gob.ar/mensajes/index.php?observacion=metar&operacion=consultar&tipoEstacion=OACI&CODIGO_FIR=-1&CODIGO=";
 
+        private final String METAR_PAGE_PREFIX = "https://ssl.smn.gob.ar/mensajes/index.php?observacion=metar&operacion=consultar&tipoEstacion=OACI&CODIGO_FIR=-1&CODIGO=SAAV+SAAP+SACO";
         private ProgressDialog _progressDialog;
-
-        private void doTask(){
-            try {
-                Thread.sleep(1000);
-            }catch (Exception e){ e.printStackTrace(); }
-        }
-
+        StringBuilder result = new StringBuilder();
 
         @Override
         protected void onPreExecute(){
-            _progressDialog = new ProgressDialog(MainActivity.this);
-            _progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            _progressDialog.setCancelable(false);
-            _progressDialog.show();
         }
 
         @Override
-        protected Boolean doInBackground(String... codes) {
+        protected Void doInBackground(Void... codes) {
 
-            for( int i = 1; i <= 10 ; ++i )
-            {
-                doTask();
-                publishProgress(i*10);
+            try {
+                Document page = Jsoup.connect(METAR_PAGE_PREFIX).get();
+                Elements elements = page.select("input[type=hidden]");
 
-                if( isCancelled() ) return false;
+                for( Element element : elements )
+                    result.append("Text: ").append(element.text()).append(element.attr("value")).append("\n\n");
             }
-            return true;
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return null;
         }
 
         @Override
-        protected void onProgressUpdate(Integer... values)
+        protected void onProgressUpdate(Void... values)
         {
-            _progressDialog.setProgress(values[0]);
         }
 
 
@@ -95,12 +92,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Boolean result)
+        protected void onPostExecute(Void aVoid)
         {
-            if( result )
-                Toast.makeText(MainActivity.this, "Task is done!", Toast.LENGTH_SHORT).show();
-
-            _progressDialog.dismiss();
+            _resultTextView.setText(result);
         }
 
     }
