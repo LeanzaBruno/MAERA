@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">MAERA</string>
+
+    <string name="METAR">METAR</string>
+    <string name="TAF">TAF</string>
+    <string name="PRONAREA">PRONAREA</string>
+    <string name="sabe">SABE</string>
+    <string name="saav">SAAV</string>
+    <string name="saap">SAAP</string>
+    <string name="sare">SARE</string>
+    <string name="satr">SATR</string>
+    <string name="saco">SACO</string>
+    <string name="sadf">SADF</string>
+    <string name="sadm">SADM</string>
+    <string name="saar">SAAR</string>
+    <string name="sazt">SAZT</string>
+    <string name="saac">SAAC</string>
+    <string name="saag">SAAG</string>
+    <string name="sadp">SADP</string>
+    <string name="sazb">SAZB</string>
+    <string name="sazs">SAZS</string>
+    <string name="sazg">SAZG</string>
+    <string name="saaj">SAAJ</string>
 </resources>

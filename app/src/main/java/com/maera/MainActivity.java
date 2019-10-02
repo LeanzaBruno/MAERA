@@ -1,25 +1,24 @@
 package com.maera;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText _codeEditText;
-    private Button _searchButton;
+    private RadioButton _metarBtn, _tafBtn, _pronareaBtn;
+    private Button _getBtn;
+    private ArrayList<CheckBox> _checkBoxes;
     private TextView _resultTextView;
 
 
@@ -28,50 +27,123 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       _codeEditText = findViewById(R.id.code);
-       _searchButton = findViewById(R.id.search);
-       _resultTextView = findViewById(R.id.result);
+       setUpViews();
+       setUpEvents();
+    }
 
-        setUpEvents();
+    private void setUpViews()
+    {
+        _metarBtn = findViewById(R.id.metar);
+        _tafBtn = findViewById(R.id.taf);
+        _pronareaBtn = findViewById(R.id.pronarea);
+        _getBtn = findViewById(R.id.get);
+
+        _resultTextView = findViewById(R.id.result);
+
+        _checkBoxes = new ArrayList<>();
+        _checkBoxes.add((CheckBox)findViewById(R.id.sabe));
+        _checkBoxes.add((CheckBox)findViewById(R.id.saav));
+        _checkBoxes.add((CheckBox)findViewById(R.id.saar));
+        _checkBoxes.add((CheckBox)findViewById(R.id.satr));
+        _checkBoxes.add((CheckBox)findViewById(R.id.sadf));
     }
 
 
     private void setUpEvents(){
-        _searchButton.setOnClickListener(new View.OnClickListener() {
+        _metarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                parseHTML();
+                setMetarFragment();
+            }
+        });
+
+        _tafBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getTafFragment();
+            }
+        });
+
+        _pronareaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setPronareaFragment();
+            }
+        });
+
+        _getBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getMessage();
             }
         });
     }
 
-    private void parseHTML()
+    @org.jetbrains.annotations.NotNull
+    private String getCodes()
     {
-        new PageDownloader().execute();
+        StringBuilder builder = new StringBuilder();
+        for( CheckBox checkBox : _checkBoxes )
+            if( checkBox.isChecked() )
+                builder.append(checkBox.getText()).append("+");
+        return builder.toString();
+    }
+
+    private void getMessage()
+    {
+        if( _metarBtn.isChecked() )
+            new MessageDownloader( getCodes(), Message.METAR ).execute();
+        else if( _tafBtn.isChecked() )
+            new MessageDownloader( getCodes(), Message.TAF ).execute();
+        else
+            new MessageDownloader( getCodes(), Message.PRONAREA ).execute();
+    }
+
+    private void setMetarFragment()
+    {
+
+    }
+
+    private void getTafFragment()
+    {
+
+    }
+
+    private void setPronareaFragment()
+    {
+
     }
 
 
 
-    private class PageDownloader extends AsyncTask<Void, Void, Void>
+    final private class MessageDownloader extends AsyncTask<Void, Void, String>
     {
+        private StringBuilder _finalURL = new StringBuilder(Message.commonURL);
 
-        private final String METAR_PAGE_PREFIX = "https://ssl.smn.gob.ar/mensajes/index.php?observacion=metar&operacion=consultar&tipoEstacion=OACI&CODIGO_FIR=-1&CODIGO=SAAV+SAAP+SACO";
-        private ProgressDialog _progressDialog;
-        StringBuilder result = new StringBuilder();
+        MessageDownloader(String codes, Message message)
+        {
+            _finalURL.append( message.getUrl() ).append(codes);
+        }
+
 
         @Override
         protected void onPreExecute(){
+
         }
 
         @Override
-        protected Void doInBackground(Void... codes) {
-
+        protected String doInBackground(Void... codes) {
             try {
-                Document page = Jsoup.connect(METAR_PAGE_PREFIX).get();
-                Elements elements = page.select("input[type=hidden]");
+                Document page = Jsoup.connect(_finalURL.toString()).get();
+//                Elements elements = page.select("input[type=hidden]");
+                Elements elements = page.select("td[width=\"100%\"]");
+
+                StringBuilder result = new StringBuilder();
 
                 for( Element element : elements )
-                    result.append("Text: ").append(element.text()).append(element.attr("value")).append("\n\n");
+                    result.append(element.text()).append("\n\n");
+
+                return result.toString();
             }
             catch(Exception e){
                 e.printStackTrace();
@@ -88,14 +160,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onCancelled()
         {
-            Toast.makeText(MainActivity.this, "Task was cancelled!", Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        protected void onPostExecute(Void aVoid)
+        protected void onPostExecute(String result)
         {
             _resultTextView.setText(result);
         }
-
     }
 }
