@@ -1,24 +1,52 @@
 <resources>
     <string name="app_name">MAERA</string>
 
+    <string name="get">Get</string>
+
     <string name="METAR">METAR</string>
     <string name="TAF">TAF</string>
     <string name="PRONAREA">PRONAREA</string>
+
     <string name="sabe">SABE</string>
+    <string name="sabe_long">Aeroparque Jorge Newbery</string>
+
     <string name="saav">SAAV</string>
+    <string name="saav_long">Sauce Viejo</string>
+
     <string name="saap">SAAP</string>
+    <string name="saap_long">José Urquiza</string>
+
     <string name="sare">SARE</string>
+
     <string name="satr">SATR</string>
+
     <string name="saco">SACO</string>
+
     <string name="sadf">SADF</string>
+    <string name="saez">SAEZ</string>
     <string name="sadm">SADM</string>
+
     <string name="saar">SAAR</string>
     <string name="sazt">SAZT</string>
     <string name="saac">SAAC</string>
     <string name="saag">SAAG</string>
     <string name="sadp">SADP</string>
+
     <string name="sazb">SAZB</string>
+    <string name="sazb_long">Bahía Blanca</string>
+
     <string name="sazs">SAZS</string>
     <string name="sazg">SAZG</string>
     <string name="saaj">SAAJ</string>
+
+    <string name="sazr">SAZR</string>
+
+    <string name="sazm">SAZM</string>
+
+    <string name="sazn">SAZN</string>
+
+
+    <string name="sazy">SAZY</string>
+    <string name="sazy_long">Chapelco</string>
+
 </resources>
