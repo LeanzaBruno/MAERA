@@ -19,7 +19,6 @@ abstract class BaseFragment extends Fragment {
     abstract protected void setUpEvents();
 
     void getMessage( Message message ) {
-        new MessageDownloader(getCodes(), message, this).execute();
     }
 
     String getCodes()

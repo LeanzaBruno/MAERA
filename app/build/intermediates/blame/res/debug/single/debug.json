@@ -2060,6 +2060,10 @@
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/37ec02f661e3547c5499ecdfd9f3cd1f/appcompat-1.1.0/res/anim/abc_popup_enter.xml"
     },
     {
+        "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/layout_fragment_eze.xml.flat",
+        "source": "/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/res/layout/fragment_eze.xml"
+    },
+    {
         "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/drawable_abc_edit_text_material.xml.flat",
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/37ec02f661e3547c5499ecdfd9f3cd1f/appcompat-1.1.0/res/drawable/abc_edit_text_material.xml"
     },

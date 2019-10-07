@@ -1,4 +1,4 @@
-#Fri Oct 04 21:28:11 ART 2019
+#Mon Oct 07 11:02:13 ART 2019
 base.0=/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

@@ -2,6 +2,7 @@ package com.maera;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -15,22 +16,26 @@ import org.jsoup.select.Elements;
 
 import java.lang.ref.WeakReference;
 
+
+/**
+ * Se encarga de descargar el mensaje sea cual sea, METAR, TAF o PRONAREA
+ *
+ */
+
 class MessageDownloader extends AsyncTask<Void, Void, String>
 {
-    private Fragment            _fragment;
-    private WeakReference<Activity> _currentActivity;
+    private Context _context;
     private StringBuilder _finalURL = new StringBuilder(Message.commonURL);
 
-    MessageDownloader(String codes, Message message, Fragment baseFragment) {
+    MessageDownloader(Context context, String codes, Message message) {
+        _context = context;
         _finalURL.append( message.getUrl() ).append(codes);
-        _fragment = baseFragment;
-        _currentActivity = new WeakReference<>((Activity)_fragment.getActivity());
     }
 
 
     @Override
     protected void onPreExecute(){
-        Toast.makeText(_currentActivity.get(), "Cargando...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(_context, "Cargando...", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -66,8 +71,8 @@ class MessageDownloader extends AsyncTask<Void, Void, String>
     @Override
     protected void onPostExecute(String result)
     {
-        Intent intent = new Intent(_currentActivity.get(), ResultActivity.class);
+        Intent intent = new Intent(_context, ResultActivity.class);
         intent.putExtra("RESULT", result);
-        _currentActivity.get().startActivity(intent);
+        _context.startActivity(intent);
     }
 }

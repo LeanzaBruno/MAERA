@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                                         getResources().getString(R.string.TAF),
                                         getResources().getString(R.string.PRONAREA)
         };
-        _viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), titles));
+        _viewPager.setAdapter(new ViewPagerAdapter(getApplicationContext(), getSupportFragmentManager(), titles));
     }
 
     private void setUpTabLayout() {

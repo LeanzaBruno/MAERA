@@ -655,6 +655,7 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color gray
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color material_blue_grey_800
@@ -719,6 +720,7 @@ color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
 color tooltip_background_dark
 color tooltip_background_light
+color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -866,6 +868,8 @@ dimen hint_pressed_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
+dimen list_icao_item
+dimen list_icao_name
 dimen mtrl_bottomappbar_fabOffsetEndMode
 dimen mtrl_bottomappbar_fab_cradle_margin
 dimen mtrl_bottomappbar_fab_cradle_rounded_corner_radius
@@ -1136,7 +1140,6 @@ id center_vertical
 id chains
 id checkbox
 id checked
-id child
 id chronometer
 id clip_horizontal
 id clip_vertical
@@ -1172,6 +1175,7 @@ id filled
 id fir_eze
 id fixed
 id forever
+id get
 id ghost_view
 id gone
 id group_divider
@@ -1397,6 +1401,7 @@ layout design_text_input_password_icon
 layout expandable_list_item
 layout expandable_list_title
 layout fragment_base
+layout fragment_eze
 layout fragment_metar
 layout fragment_pronarea
 layout fragment_taf

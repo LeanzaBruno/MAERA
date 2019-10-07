@@ -10,7 +10,7 @@ public final class AirportsDataBase {
 
     private AirportsDataBase(){
         //Fir EZE
-        _airports.add( new Airport("Aeroparque Jorge Newbery", "SABE", FIR.EZE, true, true));
+        _airports.add( new Airport("Aeroparque", "SABE", FIR.EZE, true, true));
         _airports.add( new Airport( "Bahía Blanca", "SAZB", FIR.EZE, true, true));
         _airports.add( new Airport( "Bariloche", "SAZS", FIR.EZE, true, true));
         _airports.add( new Airport( "Chapelco", "SAZY", FIR.EZE, true, true));
@@ -72,10 +72,10 @@ public final class AirportsDataBase {
     /**
      *
      * @param fir La FIR asosiada con los aeropuertos
-     * @return retorna una lista de aeropuertos que poseen METAR dentro de la FIR fir
+     * @return retorna una lista de aeropuertos que se encuentran de la FIR fir
      */
-    ArrayList<Airport> getAirportsByMetar(FIR fir){
-        ArrayList<Airport> list = new ArrayList<>();
+    List<Airport> getAirportsByFir(FIR fir){
+        List<Airport> list = new ArrayList<>();
         for( Airport airport : _airports )
             if( airport.getFIR() == fir && airport.hasMetar() ) list.add(airport);
         return list;
