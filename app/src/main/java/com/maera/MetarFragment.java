@@ -1,28 +1,26 @@
 package com.maera;
 
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Message;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class MetarFragment extends Fragment {
     private Context _context;
-    private EditText _icaoCode;
+    private EditText _searchText;
     private Button _getBtn;
     private ExpandableListView _firList;
     private AirportsListAdapter _adapter;
@@ -31,7 +29,7 @@ public final class MetarFragment extends Fragment {
 
     private void setUpViewsReferences(@NonNull View view)
     {
-        _icaoCode = view.findViewById(R.id.search);
+        _searchText = view.findViewById(R.id.search);
         _getBtn = view.findViewById(R.id.get);
         _firList = view.findViewById(R.id.list);
     }
@@ -47,27 +45,32 @@ public final class MetarFragment extends Fragment {
     }
 
     private void setUpEvents() {
+        _firList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int i) {
+                _searchText.setEnabled(false);
+            }
+        });
+
         _getBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                if(_icaoCode.getText().length() < 4 ){
-                    Toast.makeText(_context, "Debes ingresar un código OACI", Toast.LENGTH_SHORT).show();
-                    return;
+                List<Airport> airports;
+                if( _searchText.isEnabled() ){
+                    if(_searchText.getText().length() < 4 ){
+                        Toast.makeText(_context, "Debes ingresar un código OACI", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    airports = new ArrayList<>();
+                    airports.add(AirportsDataBase.getAirport(_searchText.getText().toString()));
                 }
-                Airport airport = AirportsDataBase.getAirport(_icaoCode.getText().toString().toUpperCase());
-                if( airport != null )
-                    new WeatherReportDownloader(_context,airport, WeatherReport.TYPE.METAR).execute();
                 else
-                    Toast.makeText(_context, "El código OACI ingresado es incorrecto", Toast.LENGTH_SHORT).show();
-                 */
+                    airports = _adapter.getRequestedAirports();
 
-                new WeatherReportDownloader( _context, _adapter.getRequestedAirports(), WeatherReport.TYPE.METAR ).execute();
+                new WeatherReportDownloader( _context, airports, WeatherReport.TYPE.METAR ).execute();
             }
         });
     }
-
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
