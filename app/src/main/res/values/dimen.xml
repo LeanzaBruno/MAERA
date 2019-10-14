@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="list_icao_item">20sp</dimen>
-    <dimen name="list_icao_name">18sp</dimen>
+    <dimen name="checkbox_icao">18sp</dimen>
 </resources>

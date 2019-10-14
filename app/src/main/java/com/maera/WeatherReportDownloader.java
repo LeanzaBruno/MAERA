@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import org.jsoup.Jsoup;
@@ -15,6 +16,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 
 /**
@@ -22,20 +25,24 @@ import java.lang.ref.WeakReference;
  *
  */
 
-class MessageDownloader extends AsyncTask<Void, Void, String>
+class WeatherReportDownloader extends AsyncTask<Void, Void, String>
 {
     private Context _context;
-    private StringBuilder _finalURL = new StringBuilder(Message.commonURL);
+    private StringBuilder _finalURL = new StringBuilder();
 
-    MessageDownloader(Context context, String codes, Message message) {
+    WeatherReportDownloader(@NonNull Context context,
+                            @NonNull List<Airport> airports,
+                            @NonNull WeatherReport.TYPE type){
         _context = context;
-        _finalURL.append( message.getUrl() ).append(codes);
+        _finalURL.append(type.getURL());
+        for( Airport airport : airports )
+            _finalURL.append( airport.getIcaoCode() ).append("+");
     }
 
 
     @Override
     protected void onPreExecute(){
-        Toast.makeText(_context, "Cargando...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(_context, "Descargando mensaje(s)...", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -72,7 +79,8 @@ class MessageDownloader extends AsyncTask<Void, Void, String>
     protected void onPostExecute(String result)
     {
         Intent intent = new Intent(_context, ResultActivity.class);
-        intent.putExtra("RESULT", result);
+        WeatherReport report = new WeatherReport(result);
+        intent.putExtra("RESULT", report);
         _context.startActivity(intent);
     }
 }

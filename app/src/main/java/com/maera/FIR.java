@@ -1,27 +1,40 @@
 package com.maera;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public enum FIR {
-    EZE("FIR EZE"),
-    CBA("FIR CBA"),
-    DOZ("FIR DOZ"),
-    CRV("FIR CRV"),
-    SIS("FIR SIS");
+/**
+ * Esta clase representa una fir
+ */
 
-    private String _name;
+class FIR {
+    enum DESIGNATOR{EZE,CBA,SIS,DOZ,CRV,ANTARTIDA}
+    private String            _designator;
+    private String            _name;
+    private List<Airport> _airports = null;
 
-    FIR(String name){ _name = name; }
 
-    public String getFirName(){ return _name; }
-
-    static public ArrayList<FIR> getFirList(){
-        ArrayList<FIR> list = new ArrayList<>();
-        list.add(FIR.EZE);
-        list.add(FIR.CBA);
-        list.add(FIR.CRV);
-        list.add(FIR.DOZ);
-        list.add(FIR.SIS);
-        return list;
+    FIR(String designator, String name){
+        _designator = designator;
+        _name = name;
     }
+
+
+    FIR(String designator, String name, List<Airport> airports){
+        _designator = designator;
+        _name = name;
+        _airports = airports;
+    }
+
+    String getFirCode(){ return _designator; }
+
+    String getName(){ return _name; }
+
+    void setAirportList(ArrayList<Airport> airportList){ _airports = airportList; }
+
+    Airport getAirport(int position){
+        return _airports.get(position);
+    }
+
+    List<Airport> getAirports(){ return _airports; }
 }

@@ -1,97 +1,124 @@
 package com.maera;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
-public final class AirportsDataBase {
-    private static AirportsDataBase _INSTANCE = null;
-    private static ArrayList<Airport> _airports = new ArrayList<>();
+final class AirportsDataBase {
 
+    static final private Airport SABE = new Airport("Aeroparque",      "SABE",true);
+    static final private Airport SAAG = new Airport("Gualeguaychú",    "SAAG", false);
+    static final private Airport SAZB = new Airport("Bahía Blanca",    "SAZB",true);
+    static final private Airport SAZS = new Airport("Bariloche",       "SAZS",true);
+    static final private Airport SAZY = new Airport("Chapelco",        "SAZY",true);
+    static final private Airport SADP = new Airport("El Palomar",      "SADP",true);
+    static final private Airport SAEZ = new Airport("Ezeiza",          "SAEZ",true);
+    static final private Airport SAZM = new Airport("Mar del Plata",   "SAZM",true);
+    static final private Airport SAZN = new Airport("Neuquén",         "SAZN",true);
+    static final private Airport SAAP = new Airport("Paraná",          "SAAP",true);
+    static final private Airport SAAR = new Airport("Rosario",         "SAAR",true);
+    static final private Airport SADF = new Airport("San Fernando",    "SADF",true);
+    static final private Airport SAZR = new Airport("Santa Rosa",      "SAZR",true);
+    static final private Airport SAAV = new Airport("Sauce Viejo",     "SAAV",true);
 
-    private AirportsDataBase(){
-        //Fir EZE
-        _airports.add( new Airport("Aeroparque", "SABE", FIR.EZE, true, true));
-        _airports.add( new Airport( "Bahía Blanca", "SAZB", FIR.EZE, true, true));
-        _airports.add( new Airport( "Bariloche", "SAZS", FIR.EZE, true, true));
-        _airports.add( new Airport( "Chapelco", "SAZY", FIR.EZE, true, true));
-        _airports.add( new Airport( "El Palomar", "SADP", FIR.EZE, true, true));
-        _airports.add( new Airport( "Ezeiza", "SAEZ", FIR.EZE, true, true));
-        _airports.add( new Airport( "Mar del Plata", "SAZM", FIR.EZE, true, true));
-        _airports.add( new Airport( "Neuquén", "SAZN", FIR.EZE, true, true));
-        _airports.add( new Airport( "Paraná", "SAAP", FIR.EZE, true, true));
-        _airports.add( new Airport( "Rosario", "SAAR", FIR.EZE, true, true));
-        _airports.add( new Airport( "San Fernando", "SADP", FIR.EZE, true, true));
-        _airports.add( new Airport( "Santa Rosa", "SAZR", FIR.EZE, true, true));
-        _airports.add( new Airport( "Sauce Viejo", "SAAV", FIR.EZE, true, true));
+    static final FIR EZE = new FIR(
+            "EZE",
+            "Ezeiza",
 
-        //FIR COR
-        _airports.add( new Airport("Catamarca", "SANC", FIR.CBA, true, true ));
-        _airports.add( new Airport("Córdoba", "SACO", FIR.CBA, true, true ));
-        _airports.add( new Airport("Jujuy", "SASJ", FIR.CBA, true, true ));
-        _airports.add( new Airport("La Rioja", "SANL", FIR.CBA, true, true ));
-        _airports.add( new Airport("Río Cuarto", "SAOC", FIR.CBA, true, true ));
-        _airports.add( new Airport("Salta", "SASA", FIR.CBA, true, true ));
-        _airports.add( new Airport("Santiago del Estero", "SANE", FIR.CBA, true, true ));
-        _airports.add( new Airport("Termas de Río Hondo", "SANR", FIR.CBA, true, true ));
-        _airports.add( new Airport("Tucuman", "SANT", FIR.CBA, true, true ));
+            new LinkedList<Airport>(
+                    Arrays.asList(SABE, SAAG, SAZB, SAZS, SAZY, SADP, SAEZ, SAZM, SAZN, SAAP, SAAR, SADF, SAZR, SAAV )
+            )
+    );
 
-        //FIR DOZ
-        _airports.add( new Airport("Mendoza", "SAME", FIR.DOZ, true, true));
-        _airports.add( new Airport("San Juan", "SANU", FIR.DOZ, true, true));
-        _airports.add( new Airport("San Luis", "SAOU", FIR.DOZ, true, true));
-        _airports.add( new Airport("San Rafael", "SAMR", FIR.DOZ, true, true));
+    static final FIR CBA = new FIR(
+            "CBA",
+            "Córdoba",
+            new LinkedList<Airport>(
+            Arrays.asList(
+                    new Airport("Catamarca",            "SANC",true),
+                    new Airport("La Rioja",             "SANL",true),
+                    new Airport("Córdoba",              "SACO",true),
+                    new Airport("Jujuy",                "SASJ",true),
+                    new Airport("Río Cuarto",           "SAOC",true),
+                    new Airport("Salta",                "SASA",true),
+                    new Airport("Santiago del Estero",  "SANE",true),
+                    new Airport("Termas de Río Hondo",  "SANR",true),
+                    new Airport("Tucuman",              "SANT",true)
+            )
+            )
+    );
 
-        //FIR SIS
-        _airports.add( new Airport("Corrientes", "SARC", FIR.SIS, true, true));
-        _airports.add( new Airport("Formosa", "SARF", FIR.SIS, true, true));
-        _airports.add( new Airport("Iguazú", "SARI", FIR.SIS, true, true));
-        _airports.add( new Airport("Posadas", "SARP", FIR.SIS, true, true));
-        _airports.add( new Airport("Resistencia", "SARE", FIR.SIS, true, true));
+    static final FIR DOZ = new FIR(
+            "DOZ",
+            "Mendoza",
+            new LinkedList<Airport>(
+            Arrays.asList(
+                    new Airport("Mendoza",      "SAME", true),
+                    new Airport("San Juan",     "SANU", true),
+                    new Airport("San Luis",     "SAOU", true),
+                    new Airport("San Rafael",   "SAMR", true)
+            ))
+    );
 
-        //FIR CVR
-        _airports.add( new Airport("Comodoro Rivadavia", "SAVC", FIR.CRV, true, true));
-        _airports.add( new Airport("El Calafate", "SAWC", FIR.CRV, true, true));
-        _airports.add( new Airport("Esquel", "SAVE", FIR.CRV, true, true));
-        _airports.add( new Airport("Río Gallegos", "SAWG", FIR.CRV, true, true));
-        _airports.add( new Airport("Río Grande", "SAWE", FIR.CRV, true, true));
-        _airports.add( new Airport("Trelew", "SAVT", FIR.CRV, true, true));
-        _airports.add( new Airport("Ushuaia", "SAWH", FIR.CRV, true, true));
-        _airports.add( new Airport("Viedma", "SAVV", FIR.CRV, true, true));
-    }
+    static final FIR CRV = new FIR(
+            "CRV",
+            "Comodoro Rivadavia",
+            new LinkedList<Airport>(
+            Arrays.asList(
+                    new Airport("Comodoro Rivadavia", "SAVC", true),
+                    new Airport("El Calafate",        "SAWC", true),
+                    new Airport("Esquel",             "SAVE", true),
+                    new Airport("Río Gallegos",       "SAWG", true),
+                    new Airport("Río Grande",         "SAWE", true),
+                    new Airport("Trelew",             "SAVT", true),
+                    new Airport("Ushuaia",            "SAWH", true),
+                    new Airport("Viedma",             "SAVV", true)
+            ))
+    );
 
+    static final FIR SIS = new FIR(
+            "SIS",
+            "Resistencia",
+            new LinkedList<Airport>(
+            Arrays.asList(
+                    new Airport("Corrientes",  "SARC",true),
+                    new Airport("Formosa",     "SARF",true),
+                    new Airport("Iguazú",      "SARI",true),
+                    new Airport("Posadas",     "SARP",true),
+                    new Airport("Resistencia", "SARE",true)
+            ))
+    );
 
-    static AirportsDataBase getInstance(){
-        if( _INSTANCE == null )
-            _INSTANCE = new AirportsDataBase();
-        return _INSTANCE;
-    }
+    static final FIR ANTARTIDA = new FIR(
+            "Antártida",
+            "Antártida",
+            new LinkedList<Airport>(
+                    Arrays.asList(
+                    new Airport("Base Marambio", "SAWB", true)
+                    )
+            )
+    );
 
-    Airport getAirport(int pos){ return _airports.get(pos); }
-
-
-    /**
-     *
-     * @param fir La FIR asosiada con los aeropuertos
-     * @return retorna una lista de aeropuertos que se encuentran de la FIR fir
-     */
-    List<Airport> getAirportsByFir(FIR fir){
-        List<Airport> list = new ArrayList<>();
-        for( Airport airport : _airports )
-            if( airport.getFIR() == fir && airport.hasMetar() ) list.add(airport);
+    static ArrayList<FIR> getFIRList(){
+        ArrayList<FIR> list = new ArrayList<>();
+        list.add(EZE);
+        list.add(CBA);
+        list.add(DOZ);
+        list.add(SIS);
+        list.add(CRV);
+        list.add(ANTARTIDA);
         return list;
     }
 
-    /**
-     *
-     * @param fir La FIR asociada con los aeropuertos
-     * @return Retorna una lista de aeropuertos que poseen TAF dentro de la FIR fir
-     */
-    ArrayList<Airport> getAirportsByTaf(FIR fir){
-        ArrayList<Airport> list = new ArrayList<>();
-        for( Airport airport : _airports )
-            if( airport.getFIR() == fir && airport.hasTaf() ) list.add(airport);
-        return list;
+    static Airport getAirport(String code){
+        final List<FIR> list = getFIRList();
+        for(FIR fir : list ){
+            List<Airport> airports = EZE.getAirports();
+            for(Airport airport : airports )
+                if( airport.getIcaoCode().equals(code))
+                    return airport;
+        }
+        return null;
     }
-
-    static public int getAirportsCount(){ return _airports.size(); }
 }

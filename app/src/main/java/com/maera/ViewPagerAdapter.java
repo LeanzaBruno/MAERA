@@ -26,7 +26,7 @@ final class ViewPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return new MetarFragment(_context);
             case 1:
-                return new TafFragment();
+                return new TafFragment(_context);
             case 2:
                 return new PronareaFragment();
             default:

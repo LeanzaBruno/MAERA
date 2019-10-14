@@ -1,32 +1,30 @@
 package com.maera;
 
-public final class Airport {
+final class Airport {
     private String _name;
     private String _icaoCode;
-    private Boolean _hasMetar;
+    private FIR.DESIGNATOR _fir;
     private Boolean _hasTaf;
-    private FIR _fir;
+    private WeatherReport _metar = null;
+    private WeatherReport _taf = null;
 
-    public Airport(String name, String icaoCode, FIR fir, Boolean metar, Boolean taf){
+    Airport(String name, String icaoCode, Boolean taf) {
         _name = name;
         _icaoCode = icaoCode;
-        _fir = fir;
-        _hasMetar = metar;
         _hasTaf = taf;
     }
 
-    public String getAirportName(){ return _name; }
+    String getAirportName() { return _name; }
 
-    public String getIcaoCode(){ return _icaoCode; }
+    String getIcaoCode() { return _icaoCode; }
 
-    public FIR getFIR(){ return _fir; }
+    Boolean hasTaf() { return _hasTaf; }
 
-    public Boolean hasMetar(){ return _hasMetar; }
+    void setAirportName(String name) { _name = name; }
 
-    public Boolean hasTaf(){ return _hasTaf; }
+    void setIcaoCode(String icaoCode) { _icaoCode = icaoCode; }
 
-    public void setAirportName(String name){ _name = name; }
+    void setMetar(WeatherReport metar) { _metar = metar; }
 
-    public void setIcaoCode(String icaoCode){ _icaoCode = icaoCode; }
-
+    void setTaf(WeatherReport taf){ _taf = taf; }
 }

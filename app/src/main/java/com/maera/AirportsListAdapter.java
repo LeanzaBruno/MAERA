@@ -1,6 +1,7 @@
 package com.maera;
 
 import android.content.Context;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,29 +10,39 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * Esta clase se encarga de organizar los datos de las FIR
  *
  */
-final class AirportsListAdapter extends BaseExpandableListAdapter {
+final class AirportsListAdapter extends BaseExpandableListAdapter{
     private Context _context;
-    private MODE _mode;
-    private List<FirInfo> _firInfoList;
+    private WeatherReport.TYPE _type;
+    private List<Pair<String, List<Airport>>> _data;    //first=fir title, second=airports asociated
+    private HashMap<Airport, CheckBox> _airports = new HashMap<>();       //This container tell us the airport been shown and its checkbox associated
 
-    class FirInfo{
-        FIR fir;
-        List<CheckBox> checkBoxes = null;
-        FirInfo(FIR fir){ this.fir = fir; }
+    AirportsListAdapter(@NonNull Context context,
+                        @NonNull List<Pair<String, List<Airport>>> data,
+                        @NonNull WeatherReport.TYPE type){
+        _context = context;
+        _data = data;
+        _type = type;
+        filterAirportsByReport();
     }
 
-    AirportsListAdapter(@NonNull Context context, @NonNull MODE mode){
-        _context = context;
-        _mode = mode;
-        _firInfoList = new ArrayList<>();
-        final List<FIR> titles = FIR.getFirList();
-        for( FIR fir : titles ) _firInfoList.add( new FirInfo(fir));
+    private void filterAirportsByReport(){
+        for( Pair<String,List<Airport>> pair : _data ) {
+            Iterator<Airport> it = (pair.second).iterator();
+            while( it.hasNext() ){
+                if ( _type == WeatherReport.TYPE.TAF && !it.next().hasTaf() )
+                    it.remove();
+                else
+                    it.next();
+            }
+        }
     }
 
     @Override
@@ -40,36 +51,32 @@ final class AirportsListAdapter extends BaseExpandableListAdapter {
             LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.expandable_list_title, viewGroup, false);
         }
-        final String name = _firInfoList.get(group).fir.getFirName();
-        ((TextView) view.findViewById(R.id.title)).setText(name);
+        ((TextView) view.findViewById(R.id.title)).setText(_data.get(group).first);
         return view;
     }
 
     @Override
     public View getChildView(int group, int child, boolean b, View view, ViewGroup viewGroup) {
-        if( view != null ) return view;
-
-        final FirInfo firInfo = _firInfoList.get(group);
         final LayoutInflater layoutInflater = (LayoutInflater)_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        switch( firInfo.fir ){
-            case EZE:
-                view = layoutInflater.inflate(R.layout.fragment_eze, viewGroup, false);
-                setUpEzeizaCheckBoxes(view, firInfo);
-                break;
-            case CBA:
-                break;
-            case DOZ:
-                break;
-            case CRV:
-                break;
-            case SIS:
-                break;
-        }
+        view = layoutInflater.inflate(R.layout.expandable_list_item, viewGroup, false);
+
+        final Airport airport = _data.get(group).second.get(child);
+
+        TextView name = view.findViewById(R.id.name);
+        name.setText(airport.getAirportName());
+
+        TextView code = view.findViewById(R.id.icao);
+        code.setText(airport.getIcaoCode());
+
+        CheckBox checkBox = view.findViewById(R.id.checkBox);
+
+        _airports.put(airport, checkBox);
+
         return view;
     }
 
     @Override
-    public int getGroupCount() { return _firInfoList.size(); }
+    public int getGroupCount() { return _data.size(); }
 
     /**
      *
@@ -77,13 +84,13 @@ final class AirportsListAdapter extends BaseExpandableListAdapter {
      * @return Retorna 1 siempre porque simula ser un "fragmento"
      */
     @Override
-    public int getChildrenCount(int group) { return 1; }
+    public int getChildrenCount(int group) { return _data.get(group).second.size(); }
 
     @Override
-    public Object getGroup(int group) { return _firInfoList.get(group).fir; }
+    public Object getGroup(int group) { return _data.get(group).first; }
 
     @Override
-    public Object getChild(int group, int child) { return _firInfoList.get(group).checkBoxes; }
+    public Object getChild(int group, int child) { return _data.get(group).second.get(child); }
 
     @Override
     public long getGroupId(int group) { return group; }
@@ -99,11 +106,17 @@ final class AirportsListAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int i, int i1) { return true; }
 
-    private void setUpEzeizaCheckBoxes(View view, FirInfo firInfo){
-        firInfo.checkBoxes = new ArrayList<>();
-        firInfo.checkBoxes.add( (CheckBox) view.findViewById(R.id.saav));
-        firInfo.checkBoxes.add( (CheckBox) view.findViewById(R.id.saap));
-        firInfo.checkBoxes.add( (CheckBox) view.findViewById(R.id.sabe));
-        firInfo.checkBoxes.add( (CheckBox) view.findViewById(R.id.saez));
+    /**
+     *
+     * Este método retorna los aeropuertos con checkbox selectadas
+     * @return Retorna una lista de aeropuertos
+     */
+    List<Airport> getRequestedAirports(){
+        List<Airport> airports = new ArrayList<>();
+        for( HashMap.Entry<Airport,CheckBox> entry : _airports.entrySet() ) {
+            if( entry.getValue().isChecked() )
+                airports.add(entry.getKey());
+        }
+        return airports;
     }
 }

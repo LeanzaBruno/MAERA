@@ -3,6 +3,8 @@
 
     <string name="get">Get</string>
 
+    <string name="icao">código OACI</string>
+
     <string name="METAR">METAR</string>
     <string name="TAF">TAF</string>
     <string name="PRONAREA">PRONAREA</string>

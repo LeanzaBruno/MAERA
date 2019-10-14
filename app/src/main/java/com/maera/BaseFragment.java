@@ -18,7 +18,7 @@ abstract class BaseFragment extends Fragment {
     abstract protected void setUpViewsReferences(View view);
     abstract protected void setUpEvents();
 
-    void getMessage( Message message ) {
+    void getMessage( WeatherReport.TYPE type ) {
     }
 
     String getCodes()

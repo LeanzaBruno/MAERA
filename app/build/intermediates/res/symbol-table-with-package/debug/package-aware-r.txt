@@ -655,7 +655,6 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
-color gray
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color material_blue_grey_800
@@ -712,6 +711,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color selected_item
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
@@ -720,7 +720,7 @@ color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
 color tooltip_background_dark
 color tooltip_background_light
-color white
+color unselected_item
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -802,6 +802,7 @@ dimen abc_text_size_title_material_toolbar
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
+dimen checkbox_icao
 dimen compat_button_inset_horizontal_material
 dimen compat_button_inset_vertical_material
 dimen compat_button_padding_horizontal_material
@@ -868,8 +869,6 @@ dimen hint_pressed_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
-dimen list_icao_item
-dimen list_icao_name
 dimen mtrl_bottomappbar_fabOffsetEndMode
 dimen mtrl_bottomappbar_fab_cradle_margin
 dimen mtrl_bottomappbar_fab_cradle_rounded_corner_radius
@@ -1138,6 +1137,7 @@ id center
 id center_horizontal
 id center_vertical
 id chains
+id checkBox
 id checkbox
 id checked
 id chronometer
@@ -1182,6 +1182,7 @@ id group_divider
 id groups
 id home
 id homeAsUp
+id icao
 id icon
 id icon_group
 id ifRoom
@@ -1200,12 +1201,12 @@ id listMode
 id list_item
 id masked
 id message
-id metarBtn
 id middle
 id mini
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
+id name
 id navigation_header_container
 id never
 id none
@@ -1230,28 +1231,16 @@ id result
 id right
 id right_icon
 id right_side
-id saap
-id saar
-id saav
-id sabe
-id sadf
-id sadp
-id saez
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
-id sazb
-id sazm
-id sazn
-id sazr
-id sazs
-id sazy
 id screen
 id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id search
 id search_badge
 id search_bar
 id search_button
@@ -1401,7 +1390,6 @@ layout design_text_input_password_icon
 layout expandable_list_item
 layout expandable_list_title
 layout fragment_base
-layout fragment_eze
 layout fragment_metar
 layout fragment_pronarea
 layout fragment_taf
@@ -1458,6 +1446,7 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string get
 string hide_bottom_view_on_scroll_behavior
+string icao
 string mtrl_chip_close_icon_content_description
 string password_toggle_content_description
 string path_password_eye
@@ -1993,6 +1982,7 @@ style Widget_MaterialComponents_TextInputLayout_OutlinedBox
 style Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense
 style Widget_MaterialComponents_Toolbar
 style Widget_Support_CoordinatorLayout
+style airport
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth
