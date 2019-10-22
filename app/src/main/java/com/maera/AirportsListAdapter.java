@@ -49,7 +49,7 @@ final class AirportsListAdapter extends BaseExpandableListAdapter{
     public View getGroupView(int group, boolean b, View view, ViewGroup viewGroup) {
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.expandable_list_title, viewGroup, false);
+            view = inflater.inflate(R.layout.item_expandable_group, viewGroup, false);
         }
         ((TextView) view.findViewById(R.id.title)).setText(_data.get(group).first);
         return view;
@@ -58,7 +58,7 @@ final class AirportsListAdapter extends BaseExpandableListAdapter{
     @Override
     public View getChildView(int group, int child, boolean b, View view, ViewGroup viewGroup) {
         final LayoutInflater layoutInflater = (LayoutInflater)_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = layoutInflater.inflate(R.layout.expandable_list_item, viewGroup, false);
+        view = layoutInflater.inflate(R.layout.item_expandable_child, viewGroup, false);
 
         final Airport airport = _data.get(group).second.get(child);
 
@@ -111,8 +111,8 @@ final class AirportsListAdapter extends BaseExpandableListAdapter{
      * Este método retorna los aeropuertos con checkbox selectadas
      * @return Retorna una lista de aeropuertos
      */
-    List<Airport> getRequestedAirports(){
-        List<Airport> airports = new ArrayList<>();
+    ArrayList<Airport> getRequestedAirports(){
+        ArrayList<Airport> airports = new ArrayList<>();
         for( HashMap.Entry<Airport,CheckBox> entry : _airports.entrySet() ) {
             if( entry.getValue().isChecked() )
                 airports.add(entry.getKey());

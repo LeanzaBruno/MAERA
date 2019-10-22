@@ -1,21 +1,15 @@
 package com.maera;
 
-import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,42 +19,45 @@ import java.util.List;
  *
  */
 
-class WeatherReportDownloader extends AsyncTask<Void, Void, String>
+class WeatherReportDownloader extends AsyncTask<Void, Void, Void>
 {
-    private Context _context;
+    private WeakReference<Context> _context;
+    private ArrayList<Airport> _airports;
     private StringBuilder _finalURL = new StringBuilder();
+    private WeatherReport.TYPE _type;
 
     WeatherReportDownloader(@NonNull Context context,
-                            @NonNull List<Airport> airports,
+                            @NonNull ArrayList<Airport> airports,
                             @NonNull WeatherReport.TYPE type){
-        _context = context;
-        _finalURL.append(type.getURL());
-        for( Airport airport : airports )
-            _finalURL.append( airport.getIcaoCode() ).append("+");
+        _context = new WeakReference<>(context);
+        _airports = airports;
+        _type = type;
     }
 
 
     @Override
     protected void onPreExecute(){
-        Toast.makeText(_context, "Descargando mensaje(s)...", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    protected String doInBackground(Void... codes) {
+    protected Void doInBackground(Void... aVoid) {
+        _finalURL.append(_type.getURL());
+        for(Airport airport : _airports )
+            _finalURL.append(airport.getIcaoCode()).append("+");
+
         try {
             Document page = Jsoup.connect(_finalURL.toString()).get();
             Elements elements = page.select("td[width=\"100%\"]");
 
-            StringBuilder result = new StringBuilder();
-
-            for( Element element : elements )
-                result.append(element.text()).append("\n\n");
-
-            return result.toString();
+            Iterator<Airport> iterator = _airports.iterator();
+            for( Element element : elements ) {
+                if( _type == WeatherReport.TYPE.METAR )
+                    iterator.next().setMetar(element.text());
+                if( _type == WeatherReport.TYPE.TAF)
+                    iterator.next().setTaf(element.text());
+            }
         }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        catch(Exception e) {e.printStackTrace();}
         return null;
     }
 
@@ -76,11 +73,10 @@ class WeatherReportDownloader extends AsyncTask<Void, Void, String>
     }
 
     @Override
-    protected void onPostExecute(String result)
-    {
-        Intent intent = new Intent(_context, ResultActivity.class);
-        WeatherReport report = new WeatherReport(result);
-        intent.putExtra("RESULT", report);
-        _context.startActivity(intent);
+    protected void onPostExecute(Void aVoid) {
+        Intent intent = new Intent(_context.get(), ResultActivity.class);
+        intent.putParcelableArrayListExtra("RESULT", _airports);
+        intent.putExtra("TYPE", _type.toString());
+        _context.get().startActivity(intent);
     }
 }

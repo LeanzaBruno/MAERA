@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import java.util.ArrayList;
 
 public final class TafFragment extends Fragment {
     private Context _context;
@@ -34,6 +35,11 @@ public final class TafFragment extends Fragment {
         _getBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final Airport airport = AirportsDataBase.getAirport(_icaoCode.getText().toString());
+                if( airport != null )
+                    new WeatherReportDownloader(_context, new ArrayList<Airport>(){{add(airport);}}, WeatherReport.TYPE.TAF).execute();
+                else
+                    Toast.makeText(_context, "Error: no a valid icao code!", Toast.LENGTH_SHORT).show();
             }
         });
     }

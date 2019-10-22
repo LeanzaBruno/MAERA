@@ -7,15 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public final class MetarFragment extends Fragment {
@@ -45,28 +45,42 @@ public final class MetarFragment extends Fragment {
     }
 
     private void setUpEvents() {
-        _firList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+        _firList.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
-            public void onGroupExpand(int i) {
-                _searchText.setEnabled(false);
+            public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
+                for (int group = 0; i < _firList.getCount(); ++i)
+                    if (_firList.isGroupExpanded(group)) {
+                        _searchText.setEnabled(false);
+                        return false;
+                    }
+                _searchText.setEnabled(true);
+                return false;
             }
         });
+
+        _firList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+                CheckBox checkBox = view.findViewById(R.id.checkBox);
+                if( checkBox.isChecked() )
+                    checkBox.setChecked(false);
+                else
+                    checkBox.setChecked(true);
+                return false;
+            }
+        });
+
 
         _getBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<Airport> airports;
-                if( _searchText.isEnabled() ){
-                    if(_searchText.getText().length() < 4 ){
-                        Toast.makeText(_context, "Debes ingresar un código OACI", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+                ArrayList<Airport> airports;
+                if(_searchText.getText().length() == 4 ){
                     airports = new ArrayList<>();
                     airports.add(AirportsDataBase.getAirport(_searchText.getText().toString()));
                 }
                 else
                     airports = _adapter.getRequestedAirports();
-
                 new WeatherReportDownloader( _context, airports, WeatherReport.TYPE.METAR ).execute();
             }
         });

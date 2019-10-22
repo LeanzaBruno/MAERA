@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="selected_item">#BBBABA</color>
-    <color name="unselected_item">#ffffff</color>
+    <color name="colorPrimary">#E91E63</color>
+    <color name="colorPrimaryDark">#C2185B</color>
+    <color name="colorAccent">#607D8B</color>
+    <color name="colorPrimaryLight">#F8BBD0</color>
+    <color name="colorTextIcons">#FFFFFF</color>
+    <color name="colorAccentText">#212121</color>
+    <color name="colorSecundaryText">#BDBDBD</color>
 </resources>

@@ -1,9 +1,11 @@
 package com.maera;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +20,23 @@ public class MainActivity extends AppCompatActivity {
         setUpViewPager();
         setUpTabLayout();
         setUpEvents();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        final int id = item.getItemId();
+
+        if( id == R.id.search ){
+
+
+        }
+        return true;
     }
 
     private void setUpViewsReferences() {

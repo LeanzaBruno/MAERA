@@ -1,17 +1,40 @@
 package com.maera;
 
-final class Airport {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+final class Airport implements Parcelable {
+    public static final Parcelable.Creator<Airport> CREATOR = new Parcelable.Creator<Airport>(){
+        public Airport createFromParcel(Parcel in){
+            return new Airport(in);
+        }
+        public Airport[] newArray(int size){
+            return new Airport[size];
+        }
+    };
+
     private String _name;
     private String _icaoCode;
-    private FIR.DESIGNATOR _fir;
+    private String _fir;
     private Boolean _hasTaf;
-    private WeatherReport _metar = null;
-    private WeatherReport _taf = null;
+    private String _metar;
+    private String _taf;
 
-    Airport(String name, String icaoCode, Boolean taf) {
+    Airport(String name, String icaoCode, String fir, Boolean taf) {
         _name = name;
         _icaoCode = icaoCode;
+        _fir = fir;
         _hasTaf = taf;
+        _metar = _taf = null;
+    }
+
+    Airport(Parcel in){
+        _name = in.readString();
+        _icaoCode = in.readString();
+        _fir = in.readString();
+        _hasTaf = in.readBoolean();
+        _metar = in.readString();
+        _taf = in.readString();
     }
 
     String getAirportName() { return _name; }
@@ -20,11 +43,28 @@ final class Airport {
 
     Boolean hasTaf() { return _hasTaf; }
 
-    void setAirportName(String name) { _name = name; }
+    String getFir(){ return _fir; }
 
-    void setIcaoCode(String icaoCode) { _icaoCode = icaoCode; }
+    void setMetar(String metar) { _metar = metar; }
 
-    void setMetar(WeatherReport metar) { _metar = metar; }
+    void setTaf(String taf){ _taf = taf; }
 
-    void setTaf(WeatherReport taf){ _taf = taf; }
+    String getMetar(){ return _metar; }
+
+    String getTaf(){ return _taf; }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(_name);
+        parcel.writeString(_icaoCode);
+        parcel.writeString(_fir);
+        parcel.writeBoolean(_hasTaf);
+        parcel.writeString(_metar);
+        parcel.writeString(_taf);
+    }
 }
