@@ -1,24 +1,25 @@
 package com.maera;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.widget.SearchView;
+import android.widget.Toast;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-    private TabLayout _tabLayout;
-    private ViewPager _viewPager;
+    private RecyclerView _airportsRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUpViewsReferences();
-        setUpViewPager();
-        setUpTabLayout();
+        setUpViews();
         setUpEvents();
     }
 
@@ -40,22 +41,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpViewsReferences() {
-        _tabLayout = findViewById(R.id.tabLayout);
-        _viewPager = findViewById(R.id.viewPager);
-    }
-    private void setUpViewPager() {
-        String[] titles = new String[]{ getResources().getString(R.string.METAR),
-                                        getResources().getString(R.string.TAF),
-                                        getResources().getString(R.string.PRONAREA)
-        };
-        _viewPager.setAdapter(new ViewPagerAdapter(getApplicationContext(), getSupportFragmentManager(), titles));
+        _airportsRecycler = findViewById(R.id.airports);
     }
 
-    private void setUpTabLayout() {
-        _tabLayout.setupWithViewPager(_viewPager);
+    private void setUpViews(){
+        _airportsRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        _airportsRecycler.setAdapter( new AirportsListAdapter(AirportsDataBase.allAirportsList));
     }
 
     private void setUpEvents(){
-
     }
 }

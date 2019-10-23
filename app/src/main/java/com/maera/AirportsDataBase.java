@@ -31,7 +31,7 @@ final class AirportsDataBase {
     static final private Airport SAZR = new Airport("Santa Rosa",      "SAZR","EZE", true);
     static final private Airport SAAV = new Airport("Sauce Viejo",     "SAAV","EZE", true);
 
-    static final private FIR EZE = new FIR(
+    static final FIR EZE = new FIR(
             "EZE",
             "Ezeiza",
             new ArrayList<>(
@@ -55,7 +55,7 @@ final class AirportsDataBase {
     static final private Airport SANR = new Airport("Termas de Río Hondo",  "SANR","CBA", true);
     static final private Airport SANT = new Airport("Tucuman",              "SANT","CBA", true);
 
-    static final private FIR CBA = new FIR(
+    static final FIR CBA = new FIR(
             "CBA",
             "Córdoba",
             new ArrayList<>(
@@ -71,7 +71,7 @@ final class AirportsDataBase {
     static final private Airport SAMR = new Airport("San Rafael",   "SAMR","CBA", true);
     static final private Airport SAOR = new Airport("Villa Reynolds",   "SAOR","CBA",false);
 
-    static final private FIR DOZ = new FIR(
+    static final FIR DOZ = new FIR(
             "DOZ",
             "Mendoza",
             new ArrayList<>(
@@ -95,7 +95,7 @@ final class AirportsDataBase {
     static final private Airport SAVT = new Airport("Trelew",             "SAVT","CRV", true);
     static final private Airport SAWH = new Airport("Ushuaia",            "SAWH","CRV", true);
     static final private Airport SAVV = new Airport("Viedma",             "SAVV","CRV", true);
-    static final private FIR CRV = new FIR(
+    static final FIR CRV = new FIR(
             "CRV",
             "Comodoro Rivadavia",
             new ArrayList<>(
@@ -112,7 +112,7 @@ final class AirportsDataBase {
     static final private Airport SATR = new Airport("Reconquista",      "SATR","SIS", true);
     static final private Airport SARE = new Airport("Resistencia", "SARE","SIS", true);
 
-    static final private FIR SIS = new FIR(
+    static final FIR SIS = new FIR(
             "SIS",
             "Resistencia",
             new ArrayList<>(
@@ -122,11 +122,20 @@ final class AirportsDataBase {
 
     static final private Airport SAWB = new Airport("Marambio", "SAWB","ANT", true);
 
-    static final private FIR ANTARTIDA = new FIR(
+    static final FIR ANTARTIDA = new FIR(
             "Antártida",
             "Antártida",
             new ArrayList<Airport>(){{add(SAWB);}}
     );
+
+    static final public ArrayList<Airport> allAirportsList = new ArrayList<Airport>(){{
+        addAll(EZE.getAirports());
+        addAll(CBA.getAirports());
+        addAll(DOZ.getAirports());
+        addAll(SIS.getAirports());
+        addAll(CRV.getAirports());
+        addAll(ANTARTIDA.getAirports());
+    }};
 
     static ArrayList<FIR> getFIRList(){
         ArrayList<FIR> list = new ArrayList<>();

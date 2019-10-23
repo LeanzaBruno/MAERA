@@ -1,122 +1,63 @@
 package com.maera;
 
 import android.content.Context;
-import android.util.Pair;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
-/**
- * Esta clase se encarga de organizar los datos de las FIR
- *
- */
-final class AirportsListAdapter extends BaseExpandableListAdapter{
-    private Context _context;
-    private WeatherReport.TYPE _type;
-    private List<Pair<String, List<Airport>>> _data;    //first=fir title, second=airports asociated
-    private HashMap<Airport, CheckBox> _airports = new HashMap<>();       //This container tell us the airport been shown and its checkbox associated
+final class AirportsListAdapter extends RecyclerView.Adapter<AirportsListAdapter.AirportViewHolder> {
+    private ArrayList<Airport> _airports;
 
-    AirportsListAdapter(@NonNull Context context,
-                        @NonNull List<Pair<String, List<Airport>>> data,
-                        @NonNull WeatherReport.TYPE type){
-        _context = context;
-        _data = data;
-        _type = type;
-        filterAirportsByReport();
-    }
+    class AirportViewHolder extends RecyclerView.ViewHolder{
+        TextView _icao, _name, _fir;
 
-    private void filterAirportsByReport(){
-        for( Pair<String,List<Airport>> pair : _data ) {
-            Iterator<Airport> it = (pair.second).iterator();
-            while( it.hasNext() ){
-                if ( _type == WeatherReport.TYPE.TAF && !it.next().hasTaf() )
-                    it.remove();
-                else
-                    it.next();
-            }
+        AirportViewHolder(View view){
+            super(view);
+            view.setOnClickListener( new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    final Airport airport = _airports.get(AirportViewHolder.this.getAdapterPosition());
+                    final Context context = view.getContext();
+                    Intent intent = new Intent(context, AirportActivity.class);
+                    intent.putExtra("AIRPORT", airport);
+                    context.startActivity(intent);
+                }
+            });
+            _icao = view.findViewById(R.id.icao);
+            _name = view.findViewById(R.id.name);
+            _fir = view.findViewById(R.id.fir);
         }
     }
 
-    @Override
-    public View getGroupView(int group, boolean b, View view, ViewGroup viewGroup) {
-        if (view == null) {
-            LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.item_expandable_group, viewGroup, false);
-        }
-        ((TextView) view.findViewById(R.id.title)).setText(_data.get(group).first);
-        return view;
+    AirportsListAdapter( ArrayList<Airport> airports ){
+        _airports = airports;
     }
 
     @Override
-    public View getChildView(int group, int child, boolean b, View view, ViewGroup viewGroup) {
-        final LayoutInflater layoutInflater = (LayoutInflater)_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = layoutInflater.inflate(R.layout.item_expandable_child, viewGroup, false);
+    public AirportsListAdapter.AirportViewHolder onCreateViewHolder(@NonNull ViewGroup container, final int viewType){
+        final View view = LayoutInflater.from(container.getContext()).inflate(R.layout.cardview_airport, container, false);
 
-        final Airport airport = _data.get(group).second.get(child);
-
-        TextView name = view.findViewById(R.id.name);
-        name.setText(airport.getAirportName());
-
-        TextView code = view.findViewById(R.id.icao);
-        code.setText(airport.getIcaoCode());
-
-        CheckBox checkBox = view.findViewById(R.id.checkBox);
-
-        _airports.put(airport, checkBox);
-
-        return view;
+        return new AirportsListAdapter.AirportViewHolder(view);
     }
 
     @Override
-    public int getGroupCount() { return _data.size(); }
-
-    /**
-     *
-     * @param group posición del grupo
-     * @return Retorna 1 siempre porque simula ser un "fragmento"
-     */
-    @Override
-    public int getChildrenCount(int group) { return _data.get(group).second.size(); }
-
-    @Override
-    public Object getGroup(int group) { return _data.get(group).first; }
-
-    @Override
-    public Object getChild(int group, int child) { return _data.get(group).second.get(child); }
-
-    @Override
-    public long getGroupId(int group) { return group; }
-
-    @Override
-    public long getChildId(int group, int child) { return child; }
-
-    @Override
-    public boolean hasStableIds() {
-        return false;
+    public void onBindViewHolder(@NonNull AirportsListAdapter.AirportViewHolder viewHolder, int position){
+        final Airport airport = _airports.get(position);
+        viewHolder._icao.setText(airport.getIcaoCode());
+        viewHolder._name.setText(airport.getAirportName());
+        viewHolder._fir.setText(airport.getFir());
     }
 
     @Override
-    public boolean isChildSelectable(int i, int i1) { return true; }
-
-    /**
-     *
-     * Este método retorna los aeropuertos con checkbox selectadas
-     * @return Retorna una lista de aeropuertos
-     */
-    ArrayList<Airport> getRequestedAirports(){
-        ArrayList<Airport> airports = new ArrayList<>();
-        for( HashMap.Entry<Airport,CheckBox> entry : _airports.entrySet() ) {
-            if( entry.getValue().isChecked() )
-                airports.add(entry.getKey());
-        }
-        return airports;
+    public int getItemCount(){
+        return _airports.size();
     }
+
+
+
 }

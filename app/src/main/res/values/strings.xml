@@ -5,9 +5,10 @@
 
     <string name="icao">código OACI</string>
 
-    <string name="METAR">METAR</string>
-    <string name="TAF">TAF</string>
+    <string name="METAR">Consultar METAR</string>
+    <string name="TAF">Consultar TAF</string>
     <string name="PRONAREA">PRONAREA</string>
+    <string name="FIR">FIR</string>
 
     <string name="sabe">SABE</string>
     <string name="sabe_long">Aeroparque Jorge Newbery</string>

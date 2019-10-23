@@ -15,7 +15,7 @@
 11-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:4:22-64
 12
 13    <application
-13-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:6:5-25:19
+13-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:6:5-22:19
 14        android:allowBackup="true"
 14-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:7:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -32,27 +32,26 @@
 21        android:testOnly="true"
 22        android:theme="@style/AppTheme" >
 22-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:12:9-40
-23        <activity android:name="com.maera.MainActivity" >
-23-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:13:9-19:20
-23-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:13:19-47
-24            <intent-filter>
-24-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:14:13-18:29
-25                <action android:name="android.intent.action.MAIN" />
-25-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:15:17-69
-25-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:15:25-66
-26
-27                <category android:name="android.intent.category.LAUNCHER" />
-27-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:17:17-77
-27-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:17:27-74
-28            </intent-filter>
-29        </activity>
-30        <activity
-30-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:21:9-24:20
-31            android:name="com.maera.ResultActivity"
-31-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:21:19-49
-32            android:parentActivityName="com.maera.MainActivity" >
-32-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:21:50-92
-33        </activity>
-34    </application>
-35
-36</manifest>
+23        <activity
+23-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:13:9-95
+24            android:name="com.maera.AirportActivity"
+24-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:13:19-50
+25            android:parentActivityName="com.maera.MainActivity" />
+25-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:13:51-93
+26        <activity android:name="com.maera.MainActivity" >
+26-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:14:9-20:20
+26-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:14:19-47
+27            <intent-filter>
+27-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:15:13-19:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:16:17-69
+28-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:16:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:18:17-77
+30-->/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/AndroidManifest.xml:18:27-74
+31            </intent-filter>
+32        </activity>
+33    </application>
+34
+35</manifest>

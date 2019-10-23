@@ -68,10 +68,6 @@
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/f5bdf8930f5b0dade80802408310dda6/appcompat-1.1.0/res/drawable-xxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/layout_item_expandable_group.xml.flat",
-        "source": "/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/res/layout/item_expandable_group.xml"
-    },
-    {
         "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/color_mtrl_chip_text_color.xml.flat",
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/9ee5da6fca20f6f07dce6c73fc4ca33a/material-1.0.0/res/color/mtrl_chip_text_color.xml"
     },
@@ -448,6 +444,10 @@
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/f5bdf8930f5b0dade80802408310dda6/appcompat-1.1.0/res/color/abc_tint_default.xml"
     },
     {
+        "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/layout_cardview_result.xml.flat",
+        "source": "/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/res/layout/cardview_result.xml"
+    },
+    {
         "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_design_ic_visibility.png.flat",
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/9ee5da6fca20f6f07dce6c73fc4ca33a/material-1.0.0/res/drawable-xxhdpi-v4/design_ic_visibility.png"
     },
@@ -578,6 +578,10 @@
     {
         "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/f5bdf8930f5b0dade80802408310dda6/appcompat-1.1.0/res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/layout_activity_airport.xml.flat",
+        "source": "/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/res/layout/activity_airport.xml"
     },
     {
         "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/color_mtrl_btn_text_btn_ripple_color.xml.flat",
@@ -1592,10 +1596,6 @@
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/7f6c41cc2a14c0fbaa8d0166c17dc544/core-1.1.0/res/layout/notification_template_icon_group.xml"
     },
     {
-        "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/layout_item_result_list.xml.flat",
-        "source": "/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/res/layout/item_result_list.xml"
-    },
-    {
         "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/color-v21_abc_btn_colored_borderless_text_material.xml.flat",
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/f5bdf8930f5b0dade80802408310dda6/appcompat-1.1.0/res/color-v21/abc_btn_colored_borderless_text_material.xml"
     },
@@ -1690,6 +1690,10 @@
     {
         "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/f5bdf8930f5b0dade80802408310dda6/appcompat-1.1.0/res/drawable-mdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/layout_cardview_airport.xml.flat",
+        "source": "/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/res/layout/cardview_airport.xml"
     },
     {
         "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
@@ -1922,10 +1926,6 @@
     {
         "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "/home/qwertz/.gradle/caches/transforms-2/files-2.1/f5bdf8930f5b0dade80802408310dda6/appcompat-1.1.0/res/drawable-xxxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
-    },
-    {
-        "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/layout_item_expandable_child.xml.flat",
-        "source": "/home/qwertz/AndroidStudioProjects/MAERA/app/src/main/res/layout/item_expandable_child.xml"
     },
     {
         "merged": "/home/qwertz/AndroidStudioProjects/MAERA/app/build/intermediates/res/merged/debug/layout_fragment_pronarea.xml.flat",

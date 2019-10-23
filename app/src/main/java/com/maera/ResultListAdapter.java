@@ -32,13 +32,13 @@ final class ResultListAdapter extends RecyclerView.Adapter<ResultListAdapter.Vie
     @NonNull
     @Override
     public ResultListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_result_list, parent, false);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_result, parent, false);
 
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ResultListAdapter.ViewHolder holder, int position) {
         final Airport airport = _airports.get(position);
         holder._airportName.setText(airport.getAirportName());
 

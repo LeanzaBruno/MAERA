@@ -633,9 +633,11 @@ color cardview_shadow_end_color
 color cardview_shadow_start_color
 color colorAccent
 color colorAccentText
+color colorCardViewBackground
 color colorPrimary
 color colorPrimaryDark
 color colorPrimaryLight
+color colorPrimaryText
 color colorSecundaryText
 color colorTextIcons
 color design_bottom_navigation_shadow_color
@@ -1127,6 +1129,7 @@ id actions
 id activity_chooser_view_content
 id add
 id airportName
+id airports
 id alertTitle
 id all
 id always
@@ -1137,17 +1140,19 @@ id beginning
 id blocking
 id bottom
 id buttonPanel
+id cardView
+id cardView2
 id center
 id center_horizontal
 id center_vertical
 id chains
-id checkBox
 id checkbox
 id checked
 id chronometer
 id clip_horizontal
 id clip_vertical
 id collapseActionView
+id constraintLayout
 id container
 id content
 id contentPanel
@@ -1176,6 +1181,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id fir
 id fir_eze
 id fixed
 id forever
@@ -1205,6 +1211,7 @@ id listMode
 id list_item
 id masked
 id message
+id metarBtn
 id middle
 id mini
 id mtrl_child_content_container
@@ -1232,6 +1239,8 @@ id progress_circular
 id progress_horizontal
 id radio
 id result
+id resultMetar
+id resultTaf
 id right
 id right_icon
 id right_side
@@ -1278,8 +1287,8 @@ id start
 id stretch
 id submenuarrow
 id submit_area
-id tabLayout
 id tabMode
+id tafBtn
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -1293,6 +1302,9 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
+id textView2
+id textView4
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1314,7 +1326,6 @@ id uniform
 id unlabeled
 id up
 id useLogo
-id viewPager
 id view_offset_helper
 id visible
 id weatherReport
@@ -1375,8 +1386,11 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_airport
 layout activity_main
 layout activity_result
+layout cardview_airport
+layout cardview_result
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1396,9 +1410,6 @@ layout fragment_base
 layout fragment_metar
 layout fragment_pronarea
 layout fragment_taf
-layout item_expandable_child
-layout item_expandable_group
-layout item_result_list
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout notification_action
@@ -1414,6 +1425,7 @@ layout support_simple_spinner_dropdown_item
 menu main
 mipmap ic_launcher
 mipmap ic_launcher_round
+string FIR
 string METAR
 string PRONAREA
 string TAF
@@ -1989,8 +2001,9 @@ style Widget_MaterialComponents_TextInputLayout_OutlinedBox
 style Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense
 style Widget_MaterialComponents_Toolbar
 style Widget_Support_CoordinatorLayout
-style airport
-style airportTitle
+style airportCode
+style airportFir
+style airportName
 style tabItem
 style weatherReport
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle

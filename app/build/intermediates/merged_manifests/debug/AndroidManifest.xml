@@ -20,16 +20,15 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.maera.AirportActivity"
+            android:parentActivityName="com.maera.MainActivity" />
         <activity android:name="com.maera.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.maera.ResultActivity"
-            android:parentActivityName="com.maera.MainActivity" >
         </activity>
     </application>
 
