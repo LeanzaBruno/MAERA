@@ -806,6 +806,7 @@ dimen abc_text_size_title_material_toolbar
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
+dimen category_value_separation
 dimen checkbox_icao
 dimen compat_button_inset_horizontal_material
 dimen compat_button_inset_vertical_material
@@ -1069,6 +1070,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+font ubuntu_medium
 id ALT
 id CTRL
 id FUNCTION
@@ -1209,6 +1211,7 @@ id line3
 id list
 id listMode
 id list_item
+id location
 id masked
 id message
 id metarBtn
@@ -1235,12 +1238,11 @@ id parentPanel
 id parent_matrix
 id percent
 id pin
+id progressBar
 id progress_circular
 id progress_horizontal
 id radio
 id result
-id resultMetar
-id resultTaf
 id right
 id right_icon
 id right_side
@@ -1288,6 +1290,7 @@ id stretch
 id submenuarrow
 id submit_area
 id tabMode
+id tafAvailable
 id tafBtn
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -1302,6 +1305,12 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textTextView3
+id textTextView5
+id textTextView6
+id textTextView7
+id textTextView8
+id textTextView9
 id textView
 id textView2
 id textView4
@@ -1388,7 +1397,6 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_airport
 layout activity_main
-layout activity_result
 layout cardview_airport
 layout cardview_result
 layout custom_dialog
@@ -1423,6 +1431,8 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu main
+mipmap check
+mipmap cross
 mipmap ic_launcher
 mipmap ic_launcher_round
 string FIR
@@ -1461,12 +1471,16 @@ string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string character_counter_content_description
 string character_counter_pattern
+string code
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string get
 string hide_bottom_view_on_scroll_behavior
 string icao
+string info
+string location
 string mtrl_chip_close_icon_content_description
+string name
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -1501,6 +1515,7 @@ string sazy
 string sazy_long
 string search_menu_title
 string status_bar_notification_info_overflow
+string tafAvailable
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -2001,10 +2016,10 @@ style Widget_MaterialComponents_TextInputLayout_OutlinedBox
 style Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense
 style Widget_MaterialComponents_Toolbar
 style Widget_Support_CoordinatorLayout
-style airportCode
-style airportFir
-style airportName
-style tabItem
+style base
+style category
+style title
+style value
 style weatherReport
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity

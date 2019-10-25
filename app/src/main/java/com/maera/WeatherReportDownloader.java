@@ -1,8 +1,10 @@
 package com.maera;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -11,7 +13,6 @@ import org.jsoup.select.Elements;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 
 /**
@@ -21,22 +22,36 @@ import java.util.List;
 
 class WeatherReportDownloader extends AsyncTask<Void, Void, Void>
 {
-    private WeakReference<Context> _context;
+    private Window _window;
+    private WeakReference<ProgressBar> _progressBar;
     private ArrayList<Airport> _airports;
     private StringBuilder _finalURL = new StringBuilder();
     private WeatherReport.TYPE _type;
 
-    WeatherReportDownloader(@NonNull Context context,
+    WeatherReportDownloader(@NonNull ProgressBar progressBar,
                             @NonNull ArrayList<Airport> airports,
                             @NonNull WeatherReport.TYPE type){
-        _context = new WeakReference<>(context);
+        _progressBar = new WeakReference<>(progressBar);
         _airports = airports;
+        _type = type;
+    }
+
+    WeatherReportDownloader(@NonNull Window window,
+                            @NonNull ProgressBar progressBar,
+                            @NonNull Airport airport,
+                            @NonNull WeatherReport.TYPE type){
+        _window = window;
+        _progressBar = new WeakReference<>(progressBar);
+        _airports = new ArrayList<>();
+        _airports.add(airport);
         _type = type;
     }
 
 
     @Override
     protected void onPreExecute(){
+        _window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        _progressBar.get().setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -64,19 +79,12 @@ class WeatherReportDownloader extends AsyncTask<Void, Void, Void>
     @Override
     protected void onProgressUpdate(Void... values)
     {
-    }
 
-
-    @Override
-    protected void onCancelled()
-    {
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        Intent intent = new Intent(_context.get(), ResultActivity.class);
-        intent.putParcelableArrayListExtra("RESULT", _airports);
-        intent.putExtra("TYPE", _type.toString());
-        _context.get().startActivity(intent);
+        _progressBar.get().setVisibility(View.GONE);
+        _window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 }
