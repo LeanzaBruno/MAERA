@@ -15,10 +15,10 @@ final class Airport implements Parcelable {
     private Boolean mFavourite = false;
 
     Airport(String name, String icaoCode, String localCode, String fir, String location, Boolean taf) { 
-	mLocation = location;
+    	mLocation = location;
         mName = name;
         mIcaoCode = icaoCode;
-	mLocalCode = localCode;
+	    mLocalCode = localCode;
         mFir = fir;
         mHasTaf = taf;
         mMetar = mtaf = null;
@@ -40,7 +40,6 @@ final class Airport implements Parcelable {
     Boolean isFavourite(){ return mFavourite; }
 
     //Setters
-    void setLocation(String location){ mLocation = location; }
 
     void setMetar(String metar) { mMetar = metar; }
 
@@ -71,9 +70,9 @@ final class Airport implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(mName);
         parcel.writeString(mIcaoCode);
-	parcel.writeString(mLocalCode);
+    	parcel.writeString(mLocalCode);
         parcel.writeString(mFir);
-	parcel.writeString(mLocation);
+	    parcel.writeString(mLocation);
         parcel.writeBoolean(mHasTaf);
         parcel.writeString(mMetar);
         parcel.writeString(mtaf);
@@ -82,9 +81,9 @@ final class Airport implements Parcelable {
     Airport(Parcel in){
         mName = in.readString();
         mIcaoCode = in.readString();
-	mLocalCode = in.readString();
+    	mLocalCode = in.readString();
         mFir = in.readString();
-	mLocation = in.readString();
+	    mLocation = in.readString();
         mHasTaf = in.readBoolean();
         mMetar = in.readString();
         mtaf = in.readString();

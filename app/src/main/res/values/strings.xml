@@ -13,9 +13,11 @@
     <string name="code">Código OACI</string>
     <string name="name">Nombre oficial</string>
     <string name="location">Ubicación</string>
-    <string name="tafAvailable">Taf disponible</string>
+    <string name="tafAvailable">Emisión de taf</string>
     <string name="info">Información general</string>
     <string name="messages">Reportes meteorológicos</string>
+    <string name="localCode">Código local</string>
+    <string name="download">Descargar</string>
 
     <string name="sabe">SABE</string>
     <string name="sabe_long">Aeroparque Jorge Newbery</string>
