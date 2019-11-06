@@ -190,14 +190,14 @@
     <color name="cardview_light_background">#FFFFFFFF</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
-    <color name="colorAccent">#536DFE</color>
+    <color name="colorAccent">#9E9E9E</color>
     <color name="colorAccentText">#536DFE</color>
     <color name="colorCardViewBackground">#99ffbb</color>
-    <color name="colorPrimary">#795548</color>
-    <color name="colorPrimaryDark">#5D4037</color>
-    <color name="colorPrimaryLight">#D7CCC8</color>
-    <color name="colorPrimaryText">#FFFFFF</color>
-    <color name="colorSecundaryText">#B1B1B1</color>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorPrimaryLight">#978D8E</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecundaryText">#757575</color>
     <color name="colorTextIcons">#FFFFFF</color>
     <color name="design_bottom_navigation_shadow_color">#14000000</color>
     <color name="design_default_color_primary">#3F51B5</color>
@@ -214,6 +214,7 @@
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
+    <color name="dividerColor">#BDBDBD</color>
     <color name="error_color_material_dark">#ff7043</color>
     <color name="error_color_material_light">#ff5722</color>
     <color name="foreground_material_dark">@android:color/white</color>
@@ -573,9 +574,15 @@
     <integer name="mtrl_tab_indicator_anim_duration_ms">250</integer>
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="Antártida">Antártida</string>
+    <string name="CBA">FIR CBA</string>
+    <string name="CRV">FIR CRV</string>
+    <string name="DOZ">FIR DOZ</string>
+    <string name="EZE">FIR EZE</string>
     <string name="FIR">FIR</string>
     <string name="METAR">METAR</string>
     <string name="PRONAREA">PRONAREA</string>
+    <string name="SIS">FIR SIS</string>
     <string name="TAF">TAF</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
@@ -604,19 +611,26 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with <ns1:g example="Mail" id="application_name">%s</ns1:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="app_name">Mensajes AERonáuticos Argentinos</string>
+    <string name="about">Acerca de</string>
+    <string name="allFir">Todo</string>
+    <string name="app_name">MAERA</string>
+    <string name="app_name_long">Mensajes AERonáuticos Argentinos</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
+    <string name="category_metar">Metar</string>
     <string name="character_counter_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="code">Código OACI</string>
+    <string name="download">Descargar</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
     <string name="get">Get</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string name="icao">código OACI</string>
     <string name="info">Información general</string>
+    <string name="localCode">Código local</string>
     <string name="location">Ubicación</string>
+    <string name="messages">Reportes meteorológicos</string>
     <string name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
     <string name="name">Nombre oficial</string>
     <string name="password_toggle_content_description">Show password</string>
@@ -630,7 +644,6 @@
     <string name="saap">SAAP</string>
     <string name="saap_long">José Urquiza</string>
     <string name="saar">SAAR</string>
-    <string name="saav">SAAV</string>
     <string name="saav_long">Sauce Viejo</string>
     <string name="sabe">SABE</string>
     <string name="sabe_long">Aeroparque Jorge Newbery</string>
@@ -639,7 +652,6 @@
     <string name="sadm">SADM</string>
     <string name="sadp">SADP</string>
     <string name="saez">SAEZ</string>
-    <string name="sare">SARE</string>
     <string name="satr">SATR</string>
     <string name="sazb">SAZB</string>
     <string name="sazb_long">Bahía Blanca</string>
@@ -651,9 +663,20 @@
     <string name="sazt">SAZT</string>
     <string name="sazy">SAZY</string>
     <string name="sazy_long">Chapelco</string>
+    <string name="search">Buscar</string>
+    <string name="searchBy">Buscar por</string>
+    <string name="searchByCode">Código</string>
+    <string name="searchByLocation">Ubicación</string>
+    <string name="searchByName">Nombre</string>
+    <string name="search_hint_code">Buscando por código</string>
+    <string name="search_hint_location">Buscando por ubicación</string>
+    <string name="search_hint_name">Buscando por nombre</string>
     <string name="search_menu_title">Search</string>
+    <string name="showOnly">Ver</string>
+    <string name="sort">Sort</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="tafAvailable">Taf disponible</string>
+    <string name="tafAvailable">Emisión de taf</string>
+    <style name="ActionBar" parent="Theme.AppCompat.Light.DarkActionBar"/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -663,11 +686,8 @@
     <item name="android:windowEnterAnimation">@anim/design_bottom_sheet_slide_in</item>
     <item name="android:windowExitAnimation">@anim/design_bottom_sheet_slide_out</item>
   </style>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
@@ -3034,6 +3054,12 @@
         <item name="android:textColor">@color/colorPrimaryText</item>
         <item name="fontFamily">@font/ubuntu_medium</item>
     </style>
+    <style name="buttonStyle" parent="base">
+        <item name="android:textSize">10sp</item>
+        <item name="android:background">@drawable/refresh_black</item>
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+    </style>
     <style name="category" parent="base">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorSecundaryText</item>
@@ -3045,9 +3071,11 @@
     <style name="value" parent="base">
         <item name="android:textSize">16sp</item>
     </style>
-    <style name="weatherReport" parent="base">
+    <style name="weatherReportCategory" parent="base">
         <item name="android:textSize">16sp</item>
-        <item name="android:gravity">center</item>
+    </style>
+    <style name="weatherReportResult" parent="base">
+        <item name="android:textSize">14sp</item>
     </style>
     <declare-styleable name="ActionBar">
         

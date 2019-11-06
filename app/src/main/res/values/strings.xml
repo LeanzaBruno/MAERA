@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">Mensajes AERonáuticos Argentinos</string>
-
+    <string name="app_name">MAERA</string>
+    <string name="app_name_long">Mensajes AERonáuticos Argentinos</string>
     <string name="get">Get</string>
-
     <string name="icao">código OACI</string>
-
     <string name="METAR">METAR</string>
     <string name="category_metar">Metar</string>
     <string name="TAF">TAF</string>
@@ -18,47 +16,47 @@
     <string name="messages">Reportes meteorológicos</string>
     <string name="localCode">Código local</string>
     <string name="download">Descargar</string>
-
+    <string name="search_hint_code">Buscando por código</string>
+    <string name="search_hint_name">Buscando por nombre</string>
+    <string name="search_hint_location">Buscando por ubicación</string>
+    <string name="searchBy">Buscar por</string>
+    <string name="searchByName">Nombre</string>
+    <string name="searchByCode">Código</string>
+    <string name="searchByLocation">Ubicación</string>
+    <string name="showOnly">Ver</string>
+    <string name="allFir">Todo</string>
+    <string name="EZE">FIR EZE</string>
+    <string name="DOZ">FIR DOZ</string>
+    <string name="CBA">FIR CBA</string>
+    <string name="SIS">FIR SIS</string>
+    <string name="CRV">FIR CRV</string>
+    <string name="Antártida">Antártida</string>
     <string name="sabe">SABE</string>
     <string name="sabe_long">Aeroparque Jorge Newbery</string>
-
-    <string name="saav">SAAV</string>
     <string name="saav_long">Sauce Viejo</string>
-
     <string name="saap">SAAP</string>
     <string name="saap_long">José Urquiza</string>
-
-    <string name="sare">SARE</string>
-
     <string name="satr">SATR</string>
-
     <string name="saco">SACO</string>
-
     <string name="sadf">SADF</string>
     <string name="saez">SAEZ</string>
     <string name="sadm">SADM</string>
-
     <string name="saar">SAAR</string>
     <string name="sazt">SAZT</string>
     <string name="saac">SAAC</string>
     <string name="saag">SAAG</string>
     <string name="sadp">SADP</string>
-
     <string name="sazb">SAZB</string>
     <string name="sazb_long">Bahía Blanca</string>
-
     <string name="sazs">SAZS</string>
     <string name="sazg">SAZG</string>
     <string name="saaj">SAAJ</string>
-
     <string name="sazr">SAZR</string>
-
     <string name="sazm">SAZM</string>
-
     <string name="sazn">SAZN</string>
-
-
     <string name="sazy">SAZY</string>
     <string name="sazy_long">Chapelco</string>
-
+    <string name="search">Buscar</string>
+    <string name="sort">Sort</string>
+    <string name="about">Acerca de</string>
 </resources>

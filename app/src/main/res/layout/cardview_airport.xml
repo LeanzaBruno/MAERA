@@ -22,8 +22,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryLight">
+            android:layout_height="wrap_content">
 
 
             <TextView
@@ -62,8 +61,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                style="@style/value"
                 android:id="@+id/fir"
+                style="@style/value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"

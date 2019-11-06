@@ -1,3 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"/>
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="@string/search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/searchBy"
+        android:icon="@drawable/ic_sort_black_24dp"
+        android:title="@string/sort"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:title="@string/searchBy" android:enabled="false" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/searchByCode"
+                    android:checked="true"
+                    app:showAsAction="never"
+                    android:title="@string/searchByCode"/>
+                <item
+                    android:id="@+id/searchByName"
+                    android:checked="false"
+                    app:showAsAction="never"
+                    android:title="@string/searchByName"/>
+                <item
+                    android:id="@+id/searchByLocation"
+                    android:checked="false"
+                    app:showAsAction="never"
+                    android:title="@string/searchByLocation"/>
+            </group>
+
+            <item android:title="@string/showOnly" android:enabled="false"/>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/all"
+                    android:title="@string/allFir"
+                    app:showAsAction="never"
+                    android:checked="true"/>
+                <item
+                    android:id="@+id/EZE"
+                    android:title="@string/EZE"
+                    app:showAsAction="never"
+                    android:checked="false"/>
+                <item
+                    android:id="@+id/CBA"
+                    android:title="@string/CBA"
+                    app:showAsAction="never"
+                    android:checked="false"/>
+                <item
+                    android:id="@+id/DOZ"
+                    android:title="@string/DOZ"
+                    app:showAsAction="never"
+                    android:checked="false"/>
+                <item
+                    android:id="@+id/SIS"
+                    android:title="@string/SIS"
+                    app:showAsAction="never"
+                    android:checked="false"/>
+                <item
+                    android:id="@+id/CRV"
+                    android:title="@string/CRV"
+                    app:showAsAction="never"
+                    android:checked="false"/>
+                <item
+                    android:id="@+id/ANT"
+                    android:title="@string/Antártida"
+                    app:showAsAction="never"
+                    android:checked="false"/>
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/about"
+        android:title="@string/about"
+        app:showAsAction="never" />
+</menu>
+

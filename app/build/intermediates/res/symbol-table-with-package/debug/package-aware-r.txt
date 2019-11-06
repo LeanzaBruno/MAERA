@@ -657,6 +657,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color dividerColor
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -1047,12 +1048,14 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable download
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24dp
+drawable ic_sort_black_24dp
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
@@ -1068,15 +1071,24 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable refresh
+drawable refresh_black
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 font ubuntu_medium
 id ALT
+id ANT
+id CBA
+id CRV
 id CTRL
+id DOZ
+id EZE
 id FUNCTION
 id META
 id SHIFT
+id SIS
 id SYM
+id about
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
 id accessibility_custom_action_1
@@ -1211,6 +1223,7 @@ id line3
 id list
 id listMode
 id list_item
+id localCode
 id location
 id masked
 id message
@@ -1242,7 +1255,8 @@ id progressBar
 id progress_circular
 id progress_horizontal
 id radio
-id result
+id resultMetar
+id resultTaf
 id right
 id right_icon
 id right_side
@@ -1256,6 +1270,10 @@ id scrollIndicatorUp
 id scrollView
 id scrollable
 id search
+id searchBy
+id searchByCode
+id searchByLocation
+id searchByName
 id search_badge
 id search_bar
 id search_button
@@ -1314,6 +1332,9 @@ id textTextView9
 id textView
 id textView2
 id textView4
+id textView5
+id textView6
+id textView8
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1335,6 +1356,8 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id view
+id view2
 id view_offset_helper
 id visible
 id weatherReport
@@ -1433,11 +1456,19 @@ layout support_simple_spinner_dropdown_item
 menu main
 mipmap check
 mipmap cross
+mipmap download
 mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap refresh
+string Antártida
+string CBA
+string CRV
+string DOZ
+string EZE
 string FIR
 string METAR
 string PRONAREA
+string SIS
 string TAF
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -1466,19 +1497,26 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string about
+string allFir
 string app_name
+string app_name_long
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
+string category_metar
 string character_counter_content_description
 string character_counter_pattern
 string code
+string download
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string get
 string hide_bottom_view_on_scroll_behavior
 string icao
 string info
+string localCode
 string location
+string messages
 string mtrl_chip_close_icon_content_description
 string name
 string password_toggle_content_description
@@ -1492,7 +1530,6 @@ string saaj
 string saap
 string saap_long
 string saar
-string saav
 string saav_long
 string sabe
 string sabe_long
@@ -1501,7 +1538,6 @@ string sadf
 string sadm
 string sadp
 string saez
-string sare
 string satr
 string sazb
 string sazb_long
@@ -1513,9 +1549,20 @@ string sazs
 string sazt
 string sazy
 string sazy_long
+string search
+string searchBy
+string searchByCode
+string searchByLocation
+string searchByName
+string search_hint_code
+string search_hint_location
+string search_hint_name
 string search_menu_title
+string showOnly
+string sort
 string status_bar_notification_info_overflow
 string tafAvailable
+style ActionBar
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -2017,10 +2064,12 @@ style Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense
 style Widget_MaterialComponents_Toolbar
 style Widget_Support_CoordinatorLayout
 style base
+style buttonStyle
 style category
 style title
 style value
-style weatherReport
+style weatherReportCategory
+style weatherReportResult
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth
@@ -2098,3 +2147,4 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
+xml searchable
