@@ -23,7 +23,8 @@
     <string name="searchByName">Nombre</string>
     <string name="searchByCode">Código</string>
     <string name="searchByLocation">Ubicación</string>
-    <string name="showOnly">Ver</string>
+    <string name="showOnly">Mostrar</string>
+    <string name="favourite">favourite</string>
     <string name="allFir">Todo</string>
     <string name="EZE">FIR EZE</string>
     <string name="DOZ">FIR DOZ</string>

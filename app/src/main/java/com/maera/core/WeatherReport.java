@@ -3,15 +3,16 @@ package com.maera.core;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+public
 class WeatherReport implements Parcelable {
-    enum TYPE{
+    public enum TYPE{
         METAR("https://ssl.smn.gob.ar/mensajes/index.php?observacion=metar&operacion=consultar&tipoEstacion=OACI&CODIGO_FIR=-1&CODIGO="),
         TAF("https://ssl.smn.gob.ar/mensajes/index.php?observacion=taf&operacion=consultar&tipoEstacion=OACI&CODIGO_FIR=-1&CODIGO="),
         PRONAREA("https://ssl.smn.gob.ar/mensajes/index.php?observacion=pronarea&operacion=consultar&${PRONAREA}=on");
 
         private String _url;
         TYPE(String url){ _url = url;}
-        String getURL(){ return _url; }
+        public String getURL(){ return _url; }
     }
 
     private String _report;

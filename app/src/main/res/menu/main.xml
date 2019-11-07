@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/search"
@@ -14,62 +15,70 @@
         app:showAsAction="ifRoom">
         <menu>
             <item
-                android:title="@string/searchBy" android:enabled="false" />
+                android:enabled="false"
+                android:title="@string/searchBy" />
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/searchByCode"
                     android:checked="true"
-                    app:showAsAction="never"
-                    android:title="@string/searchByCode"/>
+                    android:title="@string/searchByCode"
+                    app:showAsAction="never" />
                 <item
                     android:id="@+id/searchByName"
                     android:checked="false"
-                    app:showAsAction="never"
-                    android:title="@string/searchByName"/>
+                    android:title="@string/searchByName"
+                    app:showAsAction="never" />
                 <item
                     android:id="@+id/searchByLocation"
                     android:checked="false"
-                    app:showAsAction="never"
-                    android:title="@string/searchByLocation"/>
+                    android:title="@string/searchByLocation"
+                    app:showAsAction="never" />
             </group>
 
-            <item android:title="@string/showOnly" android:enabled="false"/>
+
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/showOnly"
+        android:title="@string/showOnly">
+        <menu>
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/all"
+                    android:checked="true"
                     android:title="@string/allFir"
-                    app:showAsAction="never"
-                    android:checked="true"/>
+                    app:showAsAction="never" />
                 <item
                     android:id="@+id/EZE"
+                    android:checked="false"
                     android:title="@string/EZE"
-                    app:showAsAction="never"
-                    android:checked="false"/>
+                    app:showAsAction="never" />
                 <item
                     android:id="@+id/CBA"
+                    android:checked="false"
                     android:title="@string/CBA"
-                    app:showAsAction="never"
-                    android:checked="false"/>
+                    app:showAsAction="never" />
                 <item
                     android:id="@+id/DOZ"
+                    android:checked="false"
                     android:title="@string/DOZ"
-                    app:showAsAction="never"
-                    android:checked="false"/>
+                    app:showAsAction="never" />
                 <item
                     android:id="@+id/SIS"
+                    android:checked="false"
                     android:title="@string/SIS"
-                    app:showAsAction="never"
-                    android:checked="false"/>
+                    app:showAsAction="never" />
                 <item
                     android:id="@+id/CRV"
+                    android:checked="false"
                     android:title="@string/CRV"
-                    app:showAsAction="never"
-                    android:checked="false"/>
+                    app:showAsAction="never" />
                 <item
                     android:id="@+id/ANT"
+                    android:checked="false"
                     android:title="@string/Antártida"
-                    app:showAsAction="never"
-                    android:checked="false"/>
+                    app:showAsAction="never" />
             </group>
         </menu>
     </item>

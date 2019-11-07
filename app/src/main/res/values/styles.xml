@@ -1,16 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat">
     </style>
-
-
-    <style name="ActionBar" parent="Theme.AppCompat.Light.DarkActionBar"/>
 
     <style name="base">
         <item name="android:textColor">@color/colorPrimaryText</item>
-        <item name="fontFamily">@font/ubuntu_medium</item>
+        <item name="fontFamily">monospace</item>
     </style>
 
     <style name="title" parent="base">
@@ -24,7 +20,8 @@
     </style>
 
     <style name="value" parent="base">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
     <style name="weatherReportCategory" parent="base">
@@ -37,7 +34,6 @@
 
     <style name="buttonStyle" parent="base">
         <item name="android:textSize">10sp</item>
-        <item name="android:background">@drawable/refresh_black</item>
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
     </style>

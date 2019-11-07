@@ -1,13 +1,7 @@
 package com.maera.core;
 
-import android.os.AsyncTask;
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.annotation.NonNull;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 public final class Airport implements Parcelable {
     private String mName;
@@ -29,27 +23,6 @@ public final class Airport implements Parcelable {
         mHasTaf = taf;
     }
 
-    private
-    void
-    downloadWeatherMessage(WeatherReport.TYPE type){
-        if( type == WeatherReport.TYPE.METAR )
-            new MessageDownloader(type).execute();
-        if( type == WeatherReport.TYPE.TAF )
-            new MessageDownloader(type).execute();
-    }
-
-    public
-    void
-    refreshMetar() {
-        downloadWeatherMessage(WeatherReport.TYPE.METAR);
-    }
-
-    public
-    void
-    refreshTaf(){
-        downloadWeatherMessage(WeatherReport.TYPE.TAF);
-    }
-
     //Getters
     public
     String getAirportName() { return mName; }
@@ -61,7 +34,7 @@ public final class Airport implements Parcelable {
     String getLocalCode() { return mLocalCode; }
 
     public
-    Boolean hasTaf() { return mHasTaf; }
+    Boolean issuesTaf() { return mHasTaf; }
 
     public
     String getLocation(){ return mLocation; }
@@ -117,6 +90,7 @@ public final class Airport implements Parcelable {
         parcel.writeString(mtaf);
     }
 
+    private
     Airport(Parcel in){
         mName = in.readString();
         mIcaoCode = in.readString();
@@ -126,46 +100,5 @@ public final class Airport implements Parcelable {
         mHasTaf = in.readInt() == 1;
         mMetar = in.readString();
         mtaf = in.readString();
-    }
-
-    private
-    class MessageDownloader extends AsyncTask<Void, Void, Void>
-    {
-        private StringBuilder _finalURL = new StringBuilder();
-        private WeatherReport.TYPE _type;
-        private String mWeatherMessage;
-
-        MessageDownloader(@NonNull WeatherReport.TYPE type){
-            _type = type;
-            _finalURL.append(_type.getURL()).append(Airport.this.mIcaoCode);
-        }
-
-        @Override
-        protected void onPreExecute(){ }
-
-        @Override
-        protected Void doInBackground(Void... aVoid) {
-            try {
-                Document page = Jsoup.connect(_finalURL.toString()).get();
-                final Elements elements = page.select("td[width=\"100%\"]");
-                final Element el = elements.first();
-                if( el != null )
-                    mWeatherMessage = el.text();
-            }
-            catch(Exception e) {e.printStackTrace();}
-            return null;
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            if( _type == WeatherReport.TYPE.METAR )
-                Airport.this.mMetar = mWeatherMessage;
-            if( _type == WeatherReport.TYPE.TAF)
-                Airport.this.mtaf = mWeatherMessage;
-        }
     }
 }

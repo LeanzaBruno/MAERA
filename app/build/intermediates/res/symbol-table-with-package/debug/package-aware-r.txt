@@ -627,13 +627,13 @@ color bright_foreground_material_dark
 color bright_foreground_material_light
 color button_material_dark
 color button_material_light
+color cardViewBackground
 color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
 color colorAccent
 color colorAccentText
-color colorCardViewBackground
 color colorPrimary
 color colorPrimaryDark
 color colorPrimaryLight
@@ -1032,6 +1032,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable available
 drawable avd_hide_password
 drawable avd_show_password
 drawable btn_checkbox_checked_mtrl
@@ -1042,6 +1043,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable copy
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1049,6 +1051,8 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable download
+drawable favourite_off
+drawable favourite_on
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
@@ -1059,6 +1063,7 @@ drawable ic_sort_black_24dp
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
+drawable not_available
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -1072,7 +1077,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable refresh
-drawable refresh_black
+drawable selector_favourite
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 font ubuntu_medium
@@ -1142,7 +1147,6 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
-id airportName
 id airports
 id alertTitle
 id all
@@ -1154,7 +1158,6 @@ id beginning
 id blocking
 id bottom
 id buttonPanel
-id cardView
 id cardView2
 id center
 id center_horizontal
@@ -1166,11 +1169,12 @@ id chronometer
 id clip_horizontal
 id clip_vertical
 id collapseActionView
-id constraintLayout
 id container
 id content
 id contentPanel
 id coordinator
+id copyMETAR
+id copyTAF
 id custom
 id customPanel
 id decor_content_parent
@@ -1191,15 +1195,14 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id favourite
 id fill
 id fill_horizontal
 id fill_vertical
 id filled
 id fir
-id fir_eze
 id fixed
 id forever
-id get
 id ghost_view
 id gone
 id group_divider
@@ -1220,7 +1223,6 @@ id largeLabel
 id left
 id line1
 id line3
-id list
 id listMode
 id list_item
 id localCode
@@ -1289,6 +1291,7 @@ id selected
 id shortcut
 id showCustom
 id showHome
+id showOnly
 id showTitle
 id smallLabel
 id snackbar_action
@@ -1329,9 +1332,6 @@ id textTextView6
 id textTextView7
 id textTextView8
 id textTextView9
-id textView
-id textView2
-id textView4
 id textView5
 id textView6
 id textView8
@@ -1360,7 +1360,6 @@ id view
 id view2
 id view_offset_helper
 id visible
-id weatherReport
 id withText
 id wrap
 id wrap_content
@@ -1421,7 +1420,6 @@ layout abc_tooltip
 layout activity_airport
 layout activity_main
 layout cardview_airport
-layout cardview_result
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1437,10 +1435,6 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
-layout fragment_base
-layout fragment_metar
-layout fragment_pronarea
-layout fragment_taf
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout notification_action
@@ -1510,6 +1504,7 @@ string code
 string download
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string favourite
 string get
 string hide_bottom_view_on_scroll_behavior
 string icao
@@ -1562,7 +1557,6 @@ string showOnly
 string sort
 string status_bar_notification_info_overflow
 string tafAvailable
-style ActionBar
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

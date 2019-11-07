@@ -7,7 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.maera.R;
@@ -26,11 +29,17 @@ class AirportsListAdapter extends RecyclerView.Adapter<AirportsListAdapter.Airpo
     private final ArrayList<Airport> _airports;
     private ArrayList<Airport> _filteredAirports;
 
+
     class AirportViewHolder extends RecyclerView.ViewHolder{
         TextView _icao, _name, _fir;
+        ToggleButton _favouriteBtn;
 
         AirportViewHolder(View view){
             super(view);
+            _icao = view.findViewById(R.id.icao);
+            _name = view.findViewById(R.id.name);
+            _fir = view.findViewById(R.id.fir);
+            _favouriteBtn = view.findViewById(R.id.favourite);
             view.setOnClickListener( new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
@@ -41,9 +50,6 @@ class AirportsListAdapter extends RecyclerView.Adapter<AirportsListAdapter.Airpo
                     context.startActivity(intent);
                 }
             });
-            _icao = view.findViewById(R.id.icao);
-            _name = view.findViewById(R.id.name);
-            _fir = view.findViewById(R.id.fir);
         }
     }
 
@@ -66,7 +72,11 @@ class AirportsListAdapter extends RecyclerView.Adapter<AirportsListAdapter.Airpo
         final Airport airport = _filteredAirports.get(position);
         viewHolder._icao.setText(airport.getIcaoCode());
         viewHolder._name.setText(airport.getAirportName());
-        viewHolder._fir.setText(airport.getFir());
+        viewHolder._fir.setText(airport.getLocation());
+        if( airport.isFavourite() )
+            viewHolder._favouriteBtn.setChecked(true);
+        else
+            viewHolder._favouriteBtn.setChecked(false);
     }
 
     @Override
