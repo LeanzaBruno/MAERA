@@ -3,29 +3,34 @@ package com.maera.core;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 public final class Airport implements Parcelable {
-    private String mName;
-    private String mIcaoCode;
-    private String mLocalCode;
-    private String mFir;
-    private String mLocation;
+    private String  mIcaoCode;
+    private String  mLocalCode;
+    private String  mName;
+    private Location mLocation;
+    private FIR mFir;
     private Boolean mHasTaf;
     private String mMetar;
     private String mtaf;
     private Boolean mFavourite = false;
 
-    Airport(String name, String icaoCode, String localCode, String fir, String location, Boolean taf) { 
-    	mLocation = location;
-        mName = name;
+    Airport(){ }
+
+    Airport(String name, String icaoCode, String localCode, FIR fir, String city, PROVINCE province, Boolean taf) {
         mIcaoCode = icaoCode;
-	    mLocalCode = localCode;
+        mLocalCode = localCode;
+        mName = name;
+        mLocation = new Location(city,province);
         mFir = fir;
         mHasTaf = taf;
     }
 
     //Getters
     public
-    String getAirportName() { return mName; }
+    String getName() { return mName; }
 
     public
     String getIcaoCode() { return mIcaoCode; }
@@ -37,10 +42,10 @@ public final class Airport implements Parcelable {
     Boolean issuesTaf() { return mHasTaf; }
 
     public
-    String getLocation(){ return mLocation; }
+    Location getLocation(){ return mLocation; }
 
     public
-    String getFir(){ return mFir; }
+    FIR getFir(){ return mFir; }
 
     public
     Boolean isFavourite(){ return mFavourite; }
@@ -52,14 +57,26 @@ public final class Airport implements Parcelable {
     String getTaf(){ return mtaf; }
 
     //Setters
+    void setIcaoCode(String icao) { mIcaoCode = icao; }
+
+    void setNationalCode(String code ){ mLocalCode = code; }
+
+    void setFIR(FIR fir){ mFir = fir; }
+
+    void setName(String name){ mName = name; }
+
+    void setLocation(@NonNull String city, @Nullable PROVINCE province){ mLocation = new Location(city, province); }
+
+    void setTafAvailability(Boolean availability){ mHasTaf = availability; }
+
+    public
+    void setFavourite(Boolean favourite){ mFavourite = favourite; }
+
     public
     void setMetar(String metar) { mMetar = metar; }
 
     public
     void setTaf(String taf){ mtaf = taf; }
-
-    public
-    void setFavourite(Boolean favourite){ mFavourite = favourite; }
 
     //Parcel implementation
     public
@@ -80,11 +97,12 @@ public final class Airport implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(mName);
         parcel.writeString(mIcaoCode);
-    	parcel.writeString(mLocalCode);
-        parcel.writeString(mFir);
-	    parcel.writeString(mLocation);
+        parcel.writeString(mLocalCode);
+        parcel.writeString(mName);
+        parcel.writeString(mLocation.getCity());
+        parcel.writeString(mLocation.getProvince().name());
+        parcel.writeString(mFir.getCode());
         parcel.writeInt(mHasTaf ? 1 : 0);
         parcel.writeString(mMetar);
         parcel.writeString(mtaf);
@@ -95,8 +113,8 @@ public final class Airport implements Parcelable {
         mName = in.readString();
         mIcaoCode = in.readString();
     	mLocalCode = in.readString();
-        mFir = in.readString();
-	    mLocation = in.readString();
+    	mFir = FIR.valueOf(in.readString());
+	    mLocation = new Location(in.readString(), PROVINCE.valueOf(in.readString()));
         mHasTaf = in.readInt() == 1;
         mMetar = in.readString();
         mtaf = in.readString();

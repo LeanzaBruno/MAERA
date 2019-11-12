@@ -4,44 +4,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/search"
-        android:icon="@drawable/ic_search_black_24dp"
+        android:icon="@drawable/search"
         android:title="@string/search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/searchBy"
-        android:icon="@drawable/ic_sort_black_24dp"
-        android:title="@string/sort"
-        app:showAsAction="ifRoom">
-        <menu>
-            <item
-                android:enabled="false"
-                android:title="@string/searchBy" />
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/searchByCode"
-                    android:checked="true"
-                    android:title="@string/searchByCode"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/searchByName"
-                    android:checked="false"
-                    android:title="@string/searchByName"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/searchByLocation"
-                    android:checked="false"
-                    android:title="@string/searchByLocation"
-                    app:showAsAction="never" />
-            </group>
-
-
-        </menu>
-    </item>
 
     <item
         android:id="@+id/showOnly"
-        android:title="@string/showOnly">
+        android:icon="@drawable/show"
+        android:title="@string/showOnly"
+        app:showAsAction="ifRoom">
         <menu>
             <group android:checkableBehavior="single">
                 <item

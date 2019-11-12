@@ -15,9 +15,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintCircleRadius="15dp"
-        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,39 +29,40 @@
 
             <TextView
                 android:id="@+id/icao"
-                style="@style/value"
+                style="@style/cardView_icao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="2dp"
                 app:layout_constraintBottom_toTopOf="@id/name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/name"
-                style="@style/value"
+                style="@style/cardView_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                app:layout_constraintBottom_toTopOf="@id/fir"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                app:fontFamily="@font/roboto"
+                app:layout_constraintBottom_toTopOf="@id/location"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/icao" />
 
             <TextView
-                android:id="@+id/fir"
-                style="@style/value"
+                android:id="@+id/location"
+                style="@style/cardView_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/name" />

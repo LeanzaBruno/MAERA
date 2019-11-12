@@ -13,11 +13,11 @@
             android:id="@+id/view2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginRight="70dp"
             android:background="@color/colorSecundaryText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -96,16 +96,6 @@
             android:text="@string/FIR"
             app:layout_constraintStart_toStartOf="@+id/location"
             app:layout_constraintTop_toBottomOf="@+id/location" />
-
-        <TextView
-            android:id="@+id/fir"
-            style="@style/value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/category_value_separation"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="@+id/textTextView6"
-            app:layout_constraintTop_toBottomOf="@+id/textTextView6" />
 
         <TextView
             android:id="@+id/textTextView7"
@@ -204,11 +194,11 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginRight="70dp"
             android:background="@color/colorSecundaryText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -289,6 +279,15 @@
             app:layout_constraintEnd_toStartOf="@+id/tafBtn"
             app:layout_constraintTop_toTopOf="@+id/textView6"
             app:srcCompat="@drawable/copy" />
+
+        <TextView
+            android:id="@+id/fir"
+            style="@style/value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/textTextView6"
+            app:layout_constraintTop_toBottomOf="@+id/textTextView6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
