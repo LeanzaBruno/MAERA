@@ -64,12 +64,12 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/anim/btn_checkbox_to_checked_icon_null_animation.xml"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-v21_design_bottom_navigation_item_background.xml.flat",
-        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/2946ca0ea6c89dab7d7d9fbc18e54292/material-1.0.0/res/drawable-v21/design_bottom_navigation_item_background.xml"
-    },
-    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "/home/kertz/MAERA/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-v21_design_bottom_navigation_item_background.xml.flat",
+        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/2946ca0ea6c89dab7d7d9fbc18e54292/material-1.0.0/res/drawable-v21/design_bottom_navigation_item_background.xml"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
@@ -92,20 +92,20 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
-        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_000.png"
-    },
-    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_radio.xml.flat",
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/layout/abc_list_menu_item_radio.xml"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
-        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-hdpi-v4/abc_ic_star_half_black_36dp.png"
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
+        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_launcher_foreground.png.flat",
         "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-ldpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
+        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-hdpi-v4/abc_ic_star_half_black_36dp.png"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -636,12 +636,12 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/anim/abc_slide_in_top.xml"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-hdpi_favourite_on.png.flat",
-        "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-hdpi/favourite_on.png"
-    },
-    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/color_abc_tint_edittext.xml.flat",
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/color/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-hdpi_favourite_on.png.flat",
+        "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-hdpi/favourite_on.png"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable_tooltip_frame_dark.xml.flat",
@@ -860,12 +860,12 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-xxxhdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
-        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi_available.png.flat",
         "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-mdpi/available.png"
+    },
+    {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
+        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/color_abc_tint_switch_track.xml.flat",
@@ -992,12 +992,12 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-mdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/anim_abc_slide_out_top.xml.flat",
-        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/anim/abc_slide_out_top.xml"
-    },
-    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/font_roboto.xml.flat",
         "source": "/home/kertz/MAERA/app/src/main/res/font/roboto.xml"
+    },
+    {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/anim_abc_slide_out_top.xml.flat",
+        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/anim/abc_slide_out_top.xml"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/color_mtrl_tabs_colored_ripple_color.xml.flat",
@@ -1248,12 +1248,12 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-v21/abc_list_divider_material.xml"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
-        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
-    },
-    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi_search.png.flat",
         "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-mdpi/search.png"
+    },
+    {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
+        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -1500,12 +1500,12 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-hdpi-v4/abc_list_focused_holo.9.png"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/interpolator_fast_out_slow_in.xml.flat",
-        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/interpolator/fast_out_slow_in.xml"
-    },
-    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_copy.xml.flat",
         "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-anydpi-v21/copy.xml"
+    },
+    {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/interpolator_fast_out_slow_in.xml.flat",
+        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/interpolator/fast_out_slow_in.xml"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_refresh.png.flat",
@@ -1784,12 +1784,12 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/2946ca0ea6c89dab7d7d9fbc18e54292/material-1.0.0/res/layout/mtrl_layout_snackbar.xml"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
-        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-mdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
-    },
-    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_not_available.png.flat",
         "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-xxxhdpi/not_available.png"
+    },
+    {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
+        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-mdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/color_abc_secondary_text_material_light.xml.flat",
@@ -1928,12 +1928,12 @@
         "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-xxhdpi/search.png"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
-        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-mdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
-    },
-    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
+        "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-mdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
@@ -2084,6 +2084,10 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/color/abc_secondary_text_material_dark.xml"
     },
     {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/layout_fragment_list_airport.xml.flat",
+        "source": "/home/kertz/MAERA/app/src/main/res/layout/fragment_list_airport.xml"
+    },
+    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable_abc_ic_voice_search_api_material.xml.flat",
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable/abc_ic_voice_search_api_material.xml"
     },
@@ -2128,12 +2132,12 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/color/abc_tint_seek_thumb.xml"
     },
     {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/mipmap-hdpi_refresh.png.flat",
-        "source": "/home/kertz/MAERA/app/src/main/res/mipmap-hdpi/refresh.png"
-    },
-    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-ldpi_show.png.flat",
         "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-ldpi/show.png"
+    },
+    {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/mipmap-hdpi_refresh.png.flat",
+        "source": "/home/kertz/MAERA/app/src/main/res/mipmap-hdpi/refresh.png"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_search_black_24dp.xml.flat",
@@ -2320,16 +2324,16 @@
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/2946ca0ea6c89dab7d7d9fbc18e54292/material-1.0.0/res/drawable/navigation_empty_icon.xml"
     },
     {
+        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-ldpi_copy.png.flat",
+        "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-ldpi/copy.png"
+    },
+    {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable_abc_btn_radio_material.xml.flat",
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable/abc_btn_radio_material.xml"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
         "source": "/home/kertz/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-mdpi-v4/abc_text_select_handle_right_mtrl_light.png"
-    },
-    {
-        "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-ldpi_copy.png.flat",
-        "source": "/home/kertz/MAERA/app/build/generated/res/pngs/debug/drawable-ldpi/copy.png"
     },
     {
         "merged": "/home/kertz/MAERA/app/build/intermediates/res/merged/debug/drawable-xhdpi_copy.png.flat",

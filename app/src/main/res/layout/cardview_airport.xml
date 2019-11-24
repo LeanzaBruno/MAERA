@@ -41,6 +41,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/national"
+                style="@style/cardView_icao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/icao"
+                app:layout_constraintStart_toEndOf="@+id/icao"
+                app:layout_constraintTop_toTopOf="@+id/icao" />
+
+            <TextView
                 android:id="@+id/name"
                 style="@style/cardView_name"
                 android:layout_width="wrap_content"

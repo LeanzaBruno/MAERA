@@ -1156,7 +1156,6 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
-id airports
 id alertTitle
 id all
 id always
@@ -1168,6 +1167,7 @@ id blocking
 id bottom
 id buttonPanel
 id cardView2
+id categories
 id center
 id center_horizontal
 id center_vertical
@@ -1245,8 +1245,10 @@ id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
 id name
+id national
 id navigation_header_container
 id never
+id no_airports
 id none
 id normal
 id notification_background
@@ -1266,6 +1268,7 @@ id progressBar
 id progress_circular
 id progress_horizontal
 id radio
+id recyclerView
 id resultMetar
 id resultTaf
 id right
@@ -1281,6 +1284,7 @@ id scrollIndicatorUp
 id scrollView
 id scrollable
 id search
+id searchOptions
 id search_badge
 id search_bar
 id search_button
@@ -1316,7 +1320,6 @@ id stretch
 id submenuarrow
 id submit_area
 id tabICAO
-id tabLayout
 id tabLocal
 id tabLocation
 id tabMode
@@ -1368,6 +1371,7 @@ id up
 id useLogo
 id view
 id view2
+id viewPager
 id view_offset_helper
 id visible
 id withText
@@ -1445,6 +1449,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout fragment_list_airport
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout notification_action
@@ -1502,6 +1507,7 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string about
+string allAirports
 string allFir
 string app_name
 string app_name_long
@@ -1515,6 +1521,7 @@ string download
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string favourite
+string favourites
 string get
 string hide_bottom_view_on_scroll_behavior
 string icao
@@ -1524,6 +1531,7 @@ string location
 string messages
 string mtrl_chip_close_icon_content_description
 string name
+string noFavourites
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -2077,6 +2085,7 @@ style cardView_icao
 style cardView_location
 style cardView_name
 style category
+style noFavourite
 style title
 style value
 style weatherReportCategory

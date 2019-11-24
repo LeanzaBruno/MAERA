@@ -3,9 +3,6 @@ package com.maera.core;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 public final class Airport implements Parcelable {
     private String  mIcaoCode;
     private String  mLocalCode;
@@ -19,7 +16,7 @@ public final class Airport implements Parcelable {
 
     Airport(){ }
 
-    Airport(String name, String icaoCode, String localCode, FIR fir, String city, PROVINCE province, Boolean taf) {
+    Airport(String name, String icaoCode, String localCode, FIR fir, String city, String province, Boolean taf) {
         mIcaoCode = icaoCode;
         mLocalCode = localCode;
         mName = name;
@@ -65,11 +62,10 @@ public final class Airport implements Parcelable {
 
     void setName(String name){ mName = name; }
 
-    void setLocation(@NonNull String city, @Nullable PROVINCE province){ mLocation = new Location(city, province); }
+    void setLocation( String city, String province){ mLocation = new Location(city, province); }
 
     void setTafAvailability(Boolean availability){ mHasTaf = availability; }
 
-    public
     void setFavourite(Boolean favourite){ mFavourite = favourite; }
 
     public
@@ -101,22 +97,18 @@ public final class Airport implements Parcelable {
         parcel.writeString(mLocalCode);
         parcel.writeString(mName);
         parcel.writeString(mLocation.getCity());
-        parcel.writeString(mLocation.getProvince().name());
-        parcel.writeString(mFir.getCode());
+        parcel.writeString(mLocation.getProvince());
+        parcel.writeString(mFir.name());
         parcel.writeInt(mHasTaf ? 1 : 0);
-        parcel.writeString(mMetar);
-        parcel.writeString(mtaf);
     }
 
     private
     Airport(Parcel in){
-        mName = in.readString();
         mIcaoCode = in.readString();
-    	mLocalCode = in.readString();
-    	mFir = FIR.valueOf(in.readString());
-	    mLocation = new Location(in.readString(), PROVINCE.valueOf(in.readString()));
+        mLocalCode = in.readString();
+        mName = in.readString();
+        mLocation = new Location(in.readString(), in.readString());
+        mFir = FIR.valueOf(in.readString());
         mHasTaf = in.readInt() == 1;
-        mMetar = in.readString();
-        mtaf = in.readString();
     }
 }

@@ -3,22 +3,14 @@ package com.maera.core;
 import androidx.annotation.NonNull;
 
 public enum FIR{
-    EZE("EZE", "Ezeiza"),
-    CBA("CBA", "Córdoba"),
-    SIS("SIS", "Resistencia"),
-    DOZ("DOZ", "Mendoza"),
-    CRV("CRV", "Comodoro Rivadavia"),
-    ANTARTIDA("ANT", "Antártida");
-    private String _code;
+    EZE("Ezeiza"),
+    CBA("Córdoba"),
+    SIS("Resistencia"),
+    DOZ("Mendoza"),
+    CRV("Comodoro Rivadavia"),
+    ANT("Antártida");
     private String _name;
-    FIR(String code, String name) {
-        _code = code;
-        _name = name;
-    }
-
-    @NonNull
-    public
-    String getCode(){ return _code; }
+    FIR(String name) { _name = name; }
 
     @Override
     @NonNull

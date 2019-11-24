@@ -22,7 +22,10 @@
     <string name="tabLayout_Local">CÓDIGO\nNACIONAL</string>
     <string name="tabLayout_Location">UBICACIÓN</string>
     <string name="tabLayout_Name">NOMBRE</string>
+    <string name="favourites">FAVORITOS</string>
+    <string name="allAirports">AEROPUERTOS</string>
 
+    <string name="noFavourites">Aún no tenés ningún favorito</string>
     <string name="searchBy">Buscar por</string>
     <string name="searchByName">Nombre</string>
     <string name="searchByICAO">Código OACI</string>
