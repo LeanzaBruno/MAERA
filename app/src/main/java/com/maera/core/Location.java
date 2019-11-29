@@ -19,6 +19,10 @@ public final class Location {
 
     public
     String toString(){
-        return _city + ", " + _province;
+        StringBuilder builder = new StringBuilder();
+        builder.append(_city);
+        if( _province == null || _province.isEmpty() )
+            return builder.toString();
+        return builder.append(", ").append(_province).toString();
     }
 }

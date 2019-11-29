@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,25 +28,35 @@ public class AirportActivity extends AppCompatActivity {
     private ImageView _imageView;
     private ProgressBar _progressBar;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_airport, menu);
+
+
+        return true;
+    }
 
     private void setUpViewReferences(){
+        /*
         _icao = findViewById(R.id.icao);
         _localCode = findViewById(R.id.localCode);
         _name = findViewById(R.id.name);
         _fir = findViewById(R.id.fir);
+        _imageView = findViewById(R.id.tafAvailable);
+         */
         _resultMetar = findViewById(R.id.resultMetar);
         _resultTaf = findViewById(R.id.resultTaf);
-    	_location = findViewById(R.id.location);
+        _location = findViewById(R.id.location);
         _metarBtn = findViewById(R.id.metarBtn);
         _tafBtn = findViewById(R.id.tafBtn);
         _copyMETAR = findViewById(R.id.copyMETAR);
         _copyTAF = findViewById(R.id.copyTAF);
-        _imageView = findViewById(R.id.tafAvailable);
         _progressBar = findViewById(R.id.progressBar);
     }
 
     private void setUpViews(){
-        setTitle(_airport.getName());
+        setTitle(_airport.getIcaoCode() + " / " + _airport.getLocalCode());
+        /*
         _icao.setText(_airport.getIcaoCode());
         _localCode.setText(_airport.getLocalCode());
         _name.setText(_airport.getName());
@@ -60,6 +71,7 @@ public class AirportActivity extends AppCompatActivity {
             _imageView.setImageDrawable(getResources().getDrawable(R.drawable.not_available));
             _tafBtn.setEnabled(false);
         }
+         */
     }
 
     private void setUpEvents() {

@@ -1,154 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:background="@color/colorSecundaryText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/resultMetar" />
-
-        <TextView
-            android:id="@+id/textTextView9"
-            style="@style/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/info"
-            android:typeface="normal"
-            app:fontFamily="@font/ubuntu_medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/localCode"
-            style="@style/value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/category_value_separation"
-            app:layout_constraintEnd_toEndOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-        <TextView
-            android:id="@+id/textTextView3"
-            style="@style/category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/code"
-            app:layout_constraintStart_toStartOf="@+id/textTextView9"
-            app:layout_constraintTop_toBottomOf="@+id/textTextView9" />
-
-        <TextView
-            android:id="@+id/icao"
-            style="@style/value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/category_value_separation"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="@+id/textTextView3"
-            app:layout_constraintTop_toBottomOf="@+id/textTextView3" />
-
-        <TextView
-            android:id="@+id/textTextView5"
-            style="@style/category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/name"
-            app:layout_constraintStart_toStartOf="@+id/icao"
-            app:layout_constraintTop_toBottomOf="@+id/icao" />
-
-        <TextView
-            android:id="@+id/name"
-            style="@style/value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/category_value_separation"
-            app:layout_constraintHorizontal_weight="2"
-            app:layout_constraintStart_toStartOf="@+id/textTextView5"
-            app:layout_constraintTop_toBottomOf="@+id/textTextView5" />
-
-        <TextView
-            android:id="@+id/textTextView6"
-            style="@style/category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/FIR"
-            app:layout_constraintStart_toStartOf="@+id/location"
-            app:layout_constraintTop_toBottomOf="@+id/location" />
-
-        <TextView
-            android:id="@+id/textTextView7"
-            style="@style/category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/location"
-            app:layout_constraintStart_toStartOf="@+id/name"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
-
-        <TextView
-            android:id="@+id/location"
-            style="@style/value"
-            android:layout_width="0dp"
-            android:layout_height="23dp"
-            android:layout_marginTop="@dimen/category_value_separation"
-            app:layout_constraintStart_toStartOf="@+id/textTextView7"
-            app:layout_constraintTop_toBottomOf="@+id/textTextView7" />
-
-        <TextView
-            android:id="@+id/textTextView8"
-            style="@style/category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="@string/tafAvailable"
-            app:layout_constraintBottom_toBottomOf="@+id/textTextView6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textTextView6" />
-
-        <ImageView
-            android:id="@+id/tafAvailable"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="@dimen/category_value_separation"
-            android:contentDescription="@string/tafAvailable"
-            app:layout_constraintEnd_toEndOf="@+id/textTextView8"
-            app:layout_constraintTop_toBottomOf="@+id/textTextView8" />
 
         <ProgressBar
             android:id="@+id/progressBar"
-            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+            style="@style/Widget.AppCompat.ProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="false"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/textView5"
@@ -157,22 +28,35 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:text="@string/METAR"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/copyMETAR"
+            android:layout_width="wrap_content"
+            android:contentDescription="@string/METAR"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/metarBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/resultMetar"
+            app:layout_constraintTop_toTopOf="@+id/resultMetar"
+            app:srcCompat="@drawable/copy" />
 
         <ImageButton
             android:id="@+id/metarBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginTop="4dp"
             android:contentDescription="@string/TAF"
-            android:src="@drawable/refresh"
-            app:layout_constraintBottom_toBottomOf="@+id/copyMETAR"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/copyMETAR" />
+            app:layout_constraintEnd_toEndOf="@+id/copyMETAR"
+            app:layout_constraintStart_toStartOf="@+id/copyMETAR"
+            app:layout_constraintTop_toBottomOf="@+id/copyMETAR"
+            app:srcCompat="@drawable/refresh" />
 
         <TextView
             android:id="@+id/resultMetar"
@@ -181,14 +65,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="16dp"
             android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/copyMETAR"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/metarBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
 
         <View
             android:id="@+id/view"
@@ -203,7 +85,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tafAvailable" />
+            app:layout_constraintTop_toBottomOf="@+id/metarBtn" />
+
 
         <TextView
             android:id="@+id/textView6"
@@ -212,22 +95,35 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:text="@string/TAF"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view2" />
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <ImageButton
+            android:id="@+id/copyTAF"
+            android:layout_width="wrap_content"
+            android:contentDescription="@string/TAF"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/tafBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/resultTaf"
+            app:layout_constraintTop_toTopOf="@+id/resultTaf"
+            app:srcCompat="@drawable/copy" />
 
         <ImageButton
             android:id="@+id/tafBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginTop="4dp"
             android:contentDescription="@string/METAR"
-            android:src="@drawable/refresh"
-            app:layout_constraintBottom_toBottomOf="@+id/copyTAF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/copyTAF" />
+            app:layout_constraintEnd_toEndOf="@+id/copyTAF"
+            app:layout_constraintStart_toStartOf="@+id/copyTAF"
+            app:layout_constraintTop_toBottomOf="@+id/copyTAF"
+            app:srcCompat="@drawable/refresh" />
 
         <TextView
             android:id="@+id/resultTaf"
@@ -236,58 +132,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/copyTAF"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tafBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-        <TextView
-            android:id="@+id/textView8"
-            style="@style/category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="@string/localCode"
-            app:layout_constraintBottom_toBottomOf="@+id/textTextView3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textTextView3" />
-
-        <ImageButton
-            android:id="@+id/copyMETAR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView5"
-            app:layout_constraintEnd_toStartOf="@+id/metarBtn"
-            app:layout_constraintTop_toTopOf="@+id/textView5"
-            app:srcCompat="@drawable/copy" />
-
-        <ImageButton
-            android:id="@+id/copyTAF"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
-            app:layout_constraintEnd_toStartOf="@+id/tafBtn"
-            app:layout_constraintTop_toTopOf="@+id/textView6"
-            app:srcCompat="@drawable/copy" />
-
-        <TextView
-            android:id="@+id/fir"
-            style="@style/value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="@+id/textTextView6"
-            app:layout_constraintTop_toBottomOf="@+id/textTextView6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

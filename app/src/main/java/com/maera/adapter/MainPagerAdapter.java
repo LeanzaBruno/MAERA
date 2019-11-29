@@ -4,11 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import com.maera.fragment.BaseListFragment;
+import com.maera.fragment.AirportsListFragment;
 
 public final class MainPagerAdapter extends FragmentPagerAdapter {
-    private final BaseListFragment[] _fragments;
-    public MainPagerAdapter(@NonNull FragmentManager fm, BaseListFragment[] fragments) {
+    private final AirportsListFragment[] _fragments;
+    public MainPagerAdapter(@NonNull FragmentManager fm, AirportsListFragment[] fragments) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         _fragments = fragments;
     }

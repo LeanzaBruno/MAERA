@@ -13,7 +13,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorGravity="bottom"/>
+        app:tabIndicatorGravity="bottom"
+        app:tabMode="scrollable" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
@@ -23,52 +24,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categories" />
-
-
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/searchOptions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:fadingEdgeLength="5dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:tabIconTint="@color/colorAccent"
-        app:tabIndicatorColor="@color/colorAccent"
-        app:tabInlineLabel="false"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/colorAccent"
-        app:tabTextAppearance="@style/TabLayout"
-        app:tabTextColor="@color/colorSecundaryText">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabICAO"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tabLayout_ICAO" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabLocal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tabLayout_Local" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tabLayout_Location" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tabLayout_Name" />
-    </com.google.android.material.tabs.TabLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

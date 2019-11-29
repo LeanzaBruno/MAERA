@@ -41,7 +41,6 @@ public final class Airport implements Parcelable {
     public
     Location getLocation(){ return mLocation; }
 
-    public
     FIR getFir(){ return mFir; }
 
     public

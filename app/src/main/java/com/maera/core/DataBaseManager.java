@@ -135,7 +135,7 @@ public final class DataBaseManager extends SQLiteOpenHelper {
         airports.add(new Airport("General San Martín", "SARP", "POS", FIR.SIS, "Posadas", "Misiones", true));
         airports.add(new Airport("Reconquista", "SATR", "RTA", FIR.SIS, "Reconquista", "Santa Fe", true));
         airports.add(new Airport("Resistencia", "SARE", "SIS", FIR.SIS, "Resistencia", "Chaco", true));
-        airports.add(new Airport("Vicecomodoro Marambio", "SAWB", "MBI", FIR.ANT, "Isla Marambio, Mar de Weddell", "Tierra del Fuego", true));
+        airports.add(new Airport("Vicecomodoro Marambio", "SAWB", "MBI", FIR.CRV, "Isla Marambio, Mar de Weddell", "Tierra del Fuego", true));
 
         for( int index = 0 ; index < airports.size() ; ++index )
             database.insert(TABLE_NAME, null, fillRow(airports.get(index)));

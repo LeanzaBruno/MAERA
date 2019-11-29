@@ -7,8 +7,7 @@ public enum FIR{
     CBA("Córdoba"),
     SIS("Resistencia"),
     DOZ("Mendoza"),
-    CRV("Comodoro Rivadavia"),
-    ANT("Antártida");
+    CRV("Comodoro Rivadavia");
     private String _name;
     FIR(String name) { _name = name; }
 

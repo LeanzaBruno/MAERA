@@ -2,4 +2,5 @@
 <resources>
     <dimen name="checkbox_icao">18sp</dimen>
     <dimen name="category_value_separation">4dp</dimen>
+    <dimen name="bottomSheetSeparation">20dp</dimen>
 </resources>

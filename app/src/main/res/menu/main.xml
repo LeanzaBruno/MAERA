@@ -10,52 +10,6 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/showOnly"
-        android:icon="@drawable/show"
-        android:title="@string/showOnly"
-        app:showAsAction="ifRoom">
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/all"
-                    android:checked="true"
-                    android:title="@string/allFir"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/EZE"
-                    android:checked="false"
-                    android:title="@string/EZE"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/CBA"
-                    android:checked="false"
-                    android:title="@string/CBA"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/DOZ"
-                    android:checked="false"
-                    android:title="@string/DOZ"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/SIS"
-                    android:checked="false"
-                    android:title="@string/SIS"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/CRV"
-                    android:checked="false"
-                    android:title="@string/CRV"
-                    app:showAsAction="never" />
-                <item
-                    android:id="@+id/ANT"
-                    android:checked="false"
-                    android:title="@string/Antártida"
-                    app:showAsAction="never" />
-            </group>
-        </menu>
-    </item>
-
-    <item
         android:id="@+id/about"
         android:title="@string/about"
         app:showAsAction="never" />

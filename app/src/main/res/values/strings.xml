@@ -28,8 +28,8 @@
     <string name="noFavourites">Aún no tenés ningún favorito</string>
     <string name="searchBy">Buscar por</string>
     <string name="searchByName">Nombre</string>
-    <string name="searchByICAO">Código OACI</string>
-    <string name="searchByLocal">Código local</string>
+    <string name="searchByICAO">Identificador OACI</string>
+    <string name="searchByLocal">Identificador local</string>
     <string name="searchByLocation">Ubicación</string>
     <string name="showOnly">Mostrar</string>
     <string name="favourite">favourite</string>
