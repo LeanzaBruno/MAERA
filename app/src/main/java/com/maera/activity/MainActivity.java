@@ -3,29 +3,33 @@ package com.maera.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+
 import com.google.android.material.tabs.TabLayout;
 import com.maera.R;
-import com.maera.adapter.MainPagerAdapter;
+import com.maera.adapter.ViewPagerAdapter;
+import com.maera.core.Airport;
+import com.maera.core.AirportFilter;
 import com.maera.core.DataBaseManager;
-import com.maera.core.TypeOfSearch;
-import com.maera.fragment.AirportsListFragment;
-import com.maera.fragment.BottomSheetFragment;
+import com.maera.fragment.FilterBottomSheetDialog;
+import com.maera.fragment.MetafFragment;
+import com.maera.fragment.PronareaFragment;
+import com.maera.fragment.SearchByBottomSheetDialog;
 
 public class MainActivity extends AppCompatActivity {
-    private TabLayout _categoriesOptions;
-    private SearchView _searchView;
-    private AirportsListFragment[] _fragments;
-    private TypeOfSearch _typeOfSearch;
+    private MetafFragment _metaf;
+    private AirportFilter _filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        _filter = new AirportFilter();
         setContentView(R.layout.activity_main);
         setUpViewsReferences();
         setUpViews();
@@ -36,29 +40,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        _typeOfSearch = new TypeOfSearch();
         getMenuInflater().inflate(R.menu.main, menu);
 
-        MenuItem aboutItem = menu.findItem(R.id.about);
-        _searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-        _searchView.setQueryHint(getResources().getString(R.string.search_hint));
-        _searchView.setIconifiedByDefault(true);
-        _searchView.setOnSearchClickListener(new View.OnClickListener() {
+        SearchView searchView = (SearchView)menu.findItem(R.id.search).getActionView();
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomSheetFragment dialog = new BottomSheetFragment(_typeOfSearch);
-                dialog.show(getSupportFragmentManager(), "TAG");
+                SearchByBottomSheetDialog dialog = new SearchByBottomSheetDialog(_filter);
+                dialog.show(getSupportFragmentManager(), "SEARCH");
             }
         });
 
-        aboutItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                return false;
-            }
-        });
-
-        _searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -66,10 +59,22 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                search(newText);
+                MetafFragment.AdapterFilter adapterFilter = _metaf.getFilter();
+                adapterFilter.searchBy(_filter, newText);
                 return false;
             }
         });
+
+        MenuItem filter = menu.findItem(R.id.filter);
+        filter.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                FilterBottomSheetDialog dialog = new FilterBottomSheetDialog(_metaf.getFilter());
+                dialog.show(getSupportFragmentManager(), "FILTER");
+                return true;
+            }
+        });
+
         return true;
     }
 
@@ -79,47 +84,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpViewsReferences() {
-        _categoriesOptions = findViewById(R.id.categories);
     }
 
     private void setUpViews() {
         final DataBaseManager manager = DataBaseManager.getInstance(this);
-        _fragments = new AirportsListFragment[7];
-        _fragments[0] = new AirportsListFragment(AirportsListFragment.FRAGMENT_TYPE.FAVOURITE, manager);
-        _fragments[1] = new AirportsListFragment(AirportsListFragment.FRAGMENT_TYPE.AIRPORTS, manager);
-        _fragments[2] = new AirportsListFragment(AirportsListFragment.FRAGMENT_TYPE.EZE, manager);
-        _fragments[3] = new AirportsListFragment(AirportsListFragment.FRAGMENT_TYPE.CBA, manager);
-        _fragments[4] = new AirportsListFragment(AirportsListFragment.FRAGMENT_TYPE.DOZ, manager);
-        _fragments[5] = new AirportsListFragment(AirportsListFragment.FRAGMENT_TYPE.SIS, manager);
-        _fragments[6] = new AirportsListFragment(AirportsListFragment.FRAGMENT_TYPE.CRV, manager);
-        ViewPager viewPager = findViewById(R.id.viewPager);
-        _categoriesOptions.setupWithViewPager(viewPager);
+        final ViewPager viewPager = findViewById(R.id.viewPager);
+        _metaf = new MetafFragment(manager);
+        final Fragment[] fragments = new Fragment[]{_metaf, new PronareaFragment()};
+        final TabLayout tabLayout = findViewById(R.id.tabLayout);
 
-        MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager(), _fragments);
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if(_searchView != null && _searchView.getQuery().length() != 0)
-                    search(_searchView.getQuery().toString());
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                if(_searchView != null && _searchView.getQuery().length() != 0)
-                    search(_searchView.getQuery().toString());
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-    }
-
-    private void search(String text){
-        final AirportsListFragment.AirportFilter filter = _fragments[_categoriesOptions.getSelectedTabPosition()].getfilter();
-        filter.filterBy(_typeOfSearch);
-        filter.filter(text);
+        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
+        tabLayout.setupWithViewPager(viewPager);
     }
 }

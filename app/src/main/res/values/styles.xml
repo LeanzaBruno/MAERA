@@ -38,11 +38,17 @@
 
 
     <style name="weatherReportCategory" parent="base">
+        <item name="android:color">@color/colorSecundaryText</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="result" parent="base">
+        <item name="android:textColor">@color/colorPrimaryText</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="weatherReportResult" parent="base">
-        <item name="android:color">@color/colorPrimaryText</item>
+    <style name="pronareaResult" parent="base">
+        <item name="android:textColor">@color/colorPrimaryText</item>
         <item name="android:textSize">14sp</item>
     </style>
 
@@ -80,6 +86,13 @@
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">@color/colorSecundaryText</item>
+    </style>
+
+
+    <!--SearchBy bottom sheet dialog-->
+    <style name="searchByText" parent="base">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
 </resources>

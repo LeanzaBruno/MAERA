@@ -1,14 +1,21 @@
 package com.maera.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.os.Bundle;
@@ -23,55 +30,42 @@ import org.jsoup.select.Elements;
 
 public class AirportActivity extends AppCompatActivity {
     private Airport _airport;
-    private TextView _icao, _localCode, _name, _fir, _resultMetar, _resultTaf, _location;
+    private TextView _resultMetar, _resultTaf;
     private ImageButton _metarBtn, _tafBtn, _copyMETAR, _copyTAF;
-    private ImageView _imageView;
-    private ProgressBar _progressBar;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_airport, menu);
+        return true;
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        if( item.getItemId() == R.id.info)
+            showHelpDialog();
         return true;
     }
 
     private void setUpViewReferences(){
-        /*
-        _icao = findViewById(R.id.icao);
-        _localCode = findViewById(R.id.localCode);
-        _name = findViewById(R.id.name);
-        _fir = findViewById(R.id.fir);
-        _imageView = findViewById(R.id.tafAvailable);
-         */
         _resultMetar = findViewById(R.id.resultMetar);
         _resultTaf = findViewById(R.id.resultTaf);
-        _location = findViewById(R.id.location);
         _metarBtn = findViewById(R.id.metarBtn);
         _tafBtn = findViewById(R.id.tafBtn);
         _copyMETAR = findViewById(R.id.copyMETAR);
         _copyTAF = findViewById(R.id.copyTAF);
-        _progressBar = findViewById(R.id.progressBar);
+    }
+
+    private void showHelpDialog(){
+        final ViewGroup container = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_messages_codes, container, false);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(dialogView);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void setUpViews(){
         setTitle(_airport.getIcaoCode() + " / " + _airport.getLocalCode());
-        /*
-        _icao.setText(_airport.getIcaoCode());
-        _localCode.setText(_airport.getLocalCode());
-        _name.setText(_airport.getName());
-        _fir.setText(_airport.getFir().toString());
-    	_location.setText(_airport.getLocation().toString());
-
-        if( _airport.issuesTaf())
-            _imageView.setImageDrawable(getResources().getDrawable(R.drawable.available));
-        else {
-            _copyTAF.setEnabled(false);
-            _tafBtn.setImageDrawable(getResources().getDrawable(R.drawable.not_available));
-            _imageView.setImageDrawable(getResources().getDrawable(R.drawable.not_available));
-            _tafBtn.setEnabled(false);
-        }
-         */
     }
 
     private void setUpEvents() {
@@ -113,19 +107,19 @@ public class AirportActivity extends AppCompatActivity {
     private
     void
     refreshMetar() {
-        new MessageDownloader(WeatherReport.TYPE.METAR).execute();
+        new MessageDownloader(this, WeatherReport.TYPE.METAR).execute();
     }
 
     private
     void
     refreshTaf(){
-        new MessageDownloader(WeatherReport.TYPE.TAF).execute();
+        new MessageDownloader(this, WeatherReport.TYPE.TAF).execute();
     }
 
     private
     void
     setUpWeatherReportMessages(){
-        new MessageDownloader().execute();
+        new MessageDownloader(this).execute();
     }
 
     @Override
@@ -148,10 +142,12 @@ public class AirportActivity extends AppCompatActivity {
     private
     class MessageDownloader extends AsyncTask<Void, Void, Void>
     {
+        private ProgressDialog _dialog;
         private WeatherReport.TYPE _type = null;
         private StringBuilder _metarURL = new StringBuilder(), _tafURL;
 
-        MessageDownloader(){
+        MessageDownloader(@NonNull Context context){
+            _dialog = new ProgressDialog(context);
             _metarURL.append(WeatherReport.TYPE.METAR.getURL()).append(_airport.getIcaoCode());
 
             if(_airport.issuesTaf()) {
@@ -160,7 +156,8 @@ public class AirportActivity extends AppCompatActivity {
             }
         }
 
-        MessageDownloader(WeatherReport.TYPE type){
+        MessageDownloader(@NonNull Context context, WeatherReport.TYPE type){
+            _dialog = new ProgressDialog(context);
             _type = type;
             if( _type == WeatherReport.TYPE.METAR )
                 _metarURL.append(_type.getURL()).append(_airport.getIcaoCode());
@@ -172,7 +169,9 @@ public class AirportActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute(){
-            _progressBar.setVisibility(View.VISIBLE);
+            _dialog.setMessage("Descargando...");
+            _dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            _dialog.show();
         }
 
         @Override
@@ -238,8 +237,7 @@ public class AirportActivity extends AppCompatActivity {
                 _resultTaf.setText(_airport.getTaf());
                 Toast.makeText(AirportActivity.this, "TAF actualizado", Toast.LENGTH_SHORT).show();
             }
-
-            _progressBar.setVisibility(View.GONE);
+            _dialog.dismiss();
         }
     }
 }

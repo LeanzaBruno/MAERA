@@ -41,6 +41,7 @@ public final class Airport implements Parcelable {
     public
     Location getLocation(){ return mLocation; }
 
+    public
     FIR getFir(){ return mFir; }
 
     public
@@ -95,7 +96,7 @@ public final class Airport implements Parcelable {
         parcel.writeString(mIcaoCode);
         parcel.writeString(mLocalCode);
         parcel.writeString(mName);
-        parcel.writeString(mLocation.getCity());
+        parcel.writeString(mLocation.getLocality());
         parcel.writeString(mLocation.getProvince());
         parcel.writeString(mFir.name());
         parcel.writeInt(mHasTaf ? 1 : 0);

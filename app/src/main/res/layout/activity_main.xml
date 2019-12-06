@@ -7,14 +7,15 @@
     tools:context=".activity.MainActivity">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/categories"
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorGravity="bottom"
-        app:tabMode="scrollable" />
+        app:tabIndicatorColor="@color/selected"
+        app:tabRippleColor="@color/unselected"
+        app:tabSelectedTextColor="@color/selected"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
@@ -23,7 +24,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categories" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+    
 </androidx.constraintlayout.widget.ConstraintLayout>

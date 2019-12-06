@@ -1,17 +1,17 @@
 package com.maera.core;
 
 public final class Location {
-    private String _city;
+    private String _locality;
     private String _province;
 
     Location(String city, String province ){
-        _city = city;
+        _locality = city;
         _province = province;
     }
 
     public
-    String getCity(){
-        return _city;
+    String getLocality(){
+        return _locality;
     }
 
     public
@@ -20,7 +20,7 @@ public final class Location {
     public
     String toString(){
         StringBuilder builder = new StringBuilder();
-        builder.append(_city);
+        builder.append(_locality);
         if( _province == null || _province.isEmpty() )
             return builder.toString();
         return builder.append(", ").append(_province).toString();

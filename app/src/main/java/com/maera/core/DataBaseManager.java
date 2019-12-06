@@ -146,7 +146,7 @@ public final class DataBaseManager extends SQLiteOpenHelper {
         values.put(COL_ICAO, airport.getIcaoCode());
         values.put(COL_NATIONAL_CODE, airport.getLocalCode());
         values.put(COL_NAME, airport.getName());
-        values.put(COL_CITY, airport.getLocation().getCity());
+        values.put(COL_CITY, airport.getLocation().getLocality());
         values.put(COL_PROVINCE, airport.getLocation().getProvince());
         values.put(COL_FIR, airport.getFir().name());
         values.put(COL_TAF_AVAILABILITY, airport.issuesTaf() ? 1 : 0);
@@ -157,7 +157,7 @@ public final class DataBaseManager extends SQLiteOpenHelper {
     public @NonNull List<Airport> getAllAirports(){
         List<Airport> airports = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, COL_ICAO);
+        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, COL_FAVOURITE +" DESC," + COL_ICAO);
         while(cursor.moveToNext())
             airports.add(generateAirport(cursor));
         cursor.close();
