@@ -8,12 +8,11 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.maera.R;
-import com.maera.core.AirportFilter;
 
 public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
-    private AirportFilter _filter;
+    private MetafFragment.AdapterFilter _filter;
 
-    public SearchByBottomSheetDialog(@NonNull  AirportFilter type){
+    public SearchByBottomSheetDialog(@NonNull MetafFragment.AdapterFilter type){
         _filter = type;
         setCancelable(false);
     }
@@ -21,12 +20,16 @@ public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state){
         final View view = inflater.inflate(R.layout.fragment_searchby, container, false);
+        setUpListeners(view);
+        return view;
+    }
 
+    private void setUpListeners(@NonNull View view){
         ConstraintLayout oaci = view.findViewById(R.id.oaci);
         oaci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.setType(AirportFilter.TYPE_OF_FILTER.ICAO);
+                _filter.setSearchType(MetafFragment.SEARCH_TYPE.ICAO);
                 SearchByBottomSheetDialog.this.dismiss();
             }
         });
@@ -35,7 +38,7 @@ public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
         anac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.setType(AirportFilter.TYPE_OF_FILTER.ANAC);
+                _filter.setSearchType(MetafFragment.SEARCH_TYPE.ANAC);
                 SearchByBottomSheetDialog.this.dismiss();
             }
         });
@@ -45,7 +48,7 @@ public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
         name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.setType(AirportFilter.TYPE_OF_FILTER.NAME);
+                _filter.setSearchType(MetafFragment.SEARCH_TYPE.NAME);
                 SearchByBottomSheetDialog.this.dismiss();
             }
         });
@@ -55,7 +58,7 @@ public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
         locality.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.setType(AirportFilter.TYPE_OF_FILTER.LOCALITY);
+                _filter.setSearchType(MetafFragment.SEARCH_TYPE.LOCALITY);
                 SearchByBottomSheetDialog.this.dismiss();
             }
         });
@@ -64,10 +67,10 @@ public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
         province.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.setType(AirportFilter.TYPE_OF_FILTER.PROVINCE);
+                _filter.setSearchType(MetafFragment.SEARCH_TYPE.PROVINCE);
                 SearchByBottomSheetDialog.this.dismiss();
             }
         });
-        return view;
+
     }
 }

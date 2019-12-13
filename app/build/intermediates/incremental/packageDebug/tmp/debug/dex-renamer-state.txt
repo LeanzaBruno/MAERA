@@ -1,4 +1,4 @@
-#Mon Dec 02 12:03:20 ART 2019
+#Fri Dec 13 09:35:13 ART 2019
 base.0=/home/kertz/MAERA/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

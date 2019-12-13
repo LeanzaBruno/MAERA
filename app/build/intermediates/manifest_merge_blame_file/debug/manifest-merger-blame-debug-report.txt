@@ -19,7 +19,7 @@
 14        android:allowBackup="true"
 14-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:7:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-15-->[androidx.core:core:1.1.0] /home/kertz/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/AndroidManifest.xml:24:18-86
+15-->[androidx.core:core:1.1.0] /home/kertz/.gradle/caches/transforms-2/files-2.1/e9dab9c67c1ee3668e0bbf86c6d8cbd8/core-1.1.0/AndroidManifest.xml:24:18-86
 16        android:debuggable="true"
 17        android:icon="@mipmap/ic_launcher"
 17-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:8:9-43

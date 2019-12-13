@@ -1,14 +1,15 @@
 package com.maera.fragment;
-
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.maera.R;
-import com.maera.core.AirportFilter;
 
 public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
     private MetafFragment.AdapterFilter _filter;
@@ -21,21 +22,70 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle data){
         View view = inflater.inflate(R.layout.layout_filter, container, false);
+        selectCurrentFilter(view);
+        setUpListeners(view);
+        return view;
+    }
 
+    @Override
+    public void onDismiss(@NonNull DialogInterface dialog){
+        super.onDismiss(dialog);
+        _filter.filter();
+    }
+
+    private void selectCurrentFilter(@NonNull View view){
+        int textId, imageId;
+        switch(_filter.getFilterType()){
+            case ALL:
+                textId = R.id.allText;
+                imageId = R.id.allCheck;
+                break;
+            case FAVS:
+                textId = R.id.favsText;
+                imageId = R.id.favsCheck;
+                break;
+            case EZE:
+                textId = R.id.ezeText;
+                imageId = R.id.ezeCheck;
+                break;
+            case CBA:
+                textId = R.id.cbaText;
+                imageId = R.id.cbaCheck;
+                break;
+            case DOZ:
+                textId = R.id.dozText;
+                imageId = R.id.dozCheck;
+                break;
+            case SIS:
+                textId = R.id.sisText;
+                imageId = R.id.sisCheck;
+                break;
+            case CRV:
+            default:
+                textId = R.id.crvText;
+                imageId = R.id.crvCheck;
+                break;
+        }
+        view.findViewById(imageId).setVisibility(View.VISIBLE);
+        TextView text = view.findViewById(textId);
+        text.setTextColor(getResources().getColor(R.color.selected));
+    }
+
+
+    private void setUpListeners(@NonNull View view){
         ConstraintLayout all = view.findViewById(R.id.all);
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.filterBy(AirportFilter.TYPE_OF_FILTER.EZE);
+                _filter.setFilterType(MetafFragment.FILTER_TYPE.ALL);
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
-
         ConstraintLayout favs = view.findViewById(R.id.favourites);
         favs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.filterBy(AirportFilter.TYPE_OF_FILTER.FAVS);
+                _filter.setFilterType(MetafFragment.FILTER_TYPE.FAVS);
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -44,7 +94,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
         eze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.filterBy(AirportFilter.TYPE_OF_FILTER.EZE);
+                _filter.setFilterType(MetafFragment.FILTER_TYPE.EZE);
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -52,7 +102,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
         cba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.filterBy(AirportFilter.TYPE_OF_FILTER.CBA);
+                _filter.setFilterType(MetafFragment.FILTER_TYPE.CBA);
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -60,7 +110,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
         doz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.filterBy(AirportFilter.TYPE_OF_FILTER.DOZ);
+                _filter.setFilterType(MetafFragment.FILTER_TYPE.DOZ);
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -68,7 +118,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
         sis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.filterBy(AirportFilter.TYPE_OF_FILTER.SIS);
+                _filter.setFilterType(MetafFragment.FILTER_TYPE.SIS);
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -76,18 +126,9 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
         crv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _filter.filterBy(AirportFilter.TYPE_OF_FILTER.CRV);
+                _filter.setFilterType(MetafFragment.FILTER_TYPE.CRV);
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
-        ConstraintLayout ant = view.findViewById(R.id.ant);
-        ant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                _filter.filterBy(AirportFilter.TYPE_OF_FILTER.ANT);
-                FilterBottomSheetDialog.this.dismiss();
-            }
-        });
-        return view;
     }
 }

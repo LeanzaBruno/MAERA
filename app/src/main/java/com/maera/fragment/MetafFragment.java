@@ -19,7 +19,6 @@ import com.maera.R;
 import com.maera.activity.AirportActivity;
 import com.maera.core.Airport;
 import com.maera.core.DataBaseManager;
-import com.maera.core.AirportFilter;
 import com.maera.core.FIR;
 
 import java.util.ArrayList;
@@ -28,10 +27,12 @@ import java.util.List;
 public class MetafFragment extends Fragment{
     private final DataBaseManager _dataBase;
     private MetafAdapter _adapter;
-    private List<Airport> _airports, _shownList;
+    private final List<Airport> _allAirports;
+    private List<Airport> _subList, _filteredList;
 
     public MetafFragment(@NonNull DataBaseManager manager ){
         _dataBase = manager;
+        _allAirports = _dataBase.getAllAirports();
     }
 
     @Override
@@ -53,10 +54,12 @@ public class MetafFragment extends Fragment{
     }
 
     private void refreshData(){
-        _airports = _dataBase.getAllAirports();
-        if( _shownList == null ) _shownList = new ArrayList<>();
-        _shownList.clear();
-        _shownList.addAll(_airports);
+        if( _subList == null ) _subList = new ArrayList<>();
+        _subList.clear();
+        _subList.addAll(_allAirports);
+        if( _filteredList == null ) _filteredList = new ArrayList<>();
+        _filteredList.clear();
+        _filteredList.addAll(_subList);
         _dataBase.reportDataUpdated();
         _adapter.notifyDataSetChanged();
     }
@@ -81,7 +84,7 @@ public class MetafFragment extends Fragment{
 
         @Override
         public void onBindViewHolder(@NonNull AirportViewHolder viewHolder, int position) {
-            final Airport airport = _shownList.get(position);
+            final Airport airport = _filteredList.get(position);
             viewHolder.icao.setText(airport.getIcaoCode());
             viewHolder.national.setText(airport.getLocalCode());
             viewHolder.name.setText(airport.getName());
@@ -95,8 +98,8 @@ public class MetafFragment extends Fragment{
 
         @Override
         public int getItemCount() {
-            if( _shownList != null )
-                return _shownList.size();
+            if( _filteredList != null )
+                return _filteredList.size();
             else
                 return 0;
         }
@@ -112,61 +115,69 @@ public class MetafFragment extends Fragment{
      * Clase utilizada para realizar búsquedas y filtrados
      */
     public class AdapterFilter extends Filter {
-        private AirportFilter _filter;
+        private FILTER_TYPE _currentFilter = FILTER_TYPE.ALL;
+        private SEARCH_TYPE _searchType;
+        private boolean _searching = true;
 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            _shownList.clear();
-            switch (_filter.getType()) {
-                case NONE:
-                    _shownList.addAll(_airports);
-                    break;
-                case FAVS:
-                    filterFavourites();
-                    break;
-                case EZE:
-                    filterByFir(FIR.EZE);
-                    break;
-                case CBA:
-                    filterByFir(FIR.CBA);
-                    break;
-                case DOZ:
-                    filterByFir(FIR.DOZ);
-                    break;
-                case SIS:
-                    filterByFir(FIR.SIS);
-                    break;
-                case CRV:
-                    filterByFir(FIR.CRV);
-                    break;
-                case ANAC:
-                    for(Airport airport : _airports )
-                        if(airport.getLocalCode().toLowerCase().contains(constraint.toString().toLowerCase()))
-                            _shownList.add(airport);
-                    break;
-                case NAME:
-                    for(Airport airport : _airports )
-                        if(airport.getName().toLowerCase().contains(constraint.toString().toLowerCase()))
-                            _shownList.add(airport);
-                    break;
-                case LOCALITY:
-                    for(Airport airport : _airports )
-                        if(airport.getLocation().getLocality().toLowerCase().contains(constraint.toString().toLowerCase()))
-                            _shownList.add(airport);
-                    break;
-                case PROVINCE:
-                    for(Airport airport : _airports )
-                        if(airport.getLocation().getProvince().toLowerCase().contains(constraint.toString().toLowerCase()))
-                            _shownList.add(airport);
-                    break;
-                case ICAO:
-                    for(Airport airport : _airports )
-                        if(airport.getIcaoCode().toLowerCase().contains(constraint.toString().toLowerCase()))
-                            _shownList.add(airport);
-                    break;
+            _filteredList.clear();
+            if (_searching) {
+                switch (_searchType) {
+                    case ANAC:
+                        for (Airport airport : _subList)
+                            if (airportMatches(airport.getLocalCode(), constraint))
+                                _filteredList.add(airport);
+                        break;
+                    case NAME:
+                        for (Airport airport : _subList)
+                            if (airportMatches(airport.getName(), constraint))
+                                _filteredList.add(airport);
+                        break;
+                    case LOCALITY:
+                        for (Airport airport : _subList)
+                            if (airportMatches(airport.getLocation().getLocality(), constraint))
+                                _filteredList.add(airport);
+                        break;
+                    case PROVINCE:
+                        for (Airport airport : _subList)
+                            if (airportMatches(airport.getLocation().getProvince(), constraint))
+                                _filteredList.add(airport);
+                        break;
+                    case ICAO:
+                    default:
+                        for (Airport airport : _subList)
+                            if (airportMatches(airport.getIcaoCode(), constraint))
+                                _filteredList.add(airport);
+                }
+            } else {
+                _subList.clear();
+                switch (_currentFilter) {
+                    case ALL:
+                        _filteredList.addAll(_allAirports);
+                        _subList.addAll(_allAirports);
+                        break;
+                    case FAVS:
+                        filterFavourites();
+                        break;
+                    case EZE:
+                        filterByFir(FIR.EZE);
+                        break;
+                    case CBA:
+                        filterByFir(FIR.CBA);
+                        break;
+                    case DOZ:
+                        filterByFir(FIR.DOZ);
+                        break;
+                    case SIS:
+                        filterByFir(FIR.SIS);
+                        break;
+                    case CRV:
+                        filterByFir(FIR.CRV);
+                }
             }
             FilterResults filterResults = new FilterResults();
-            filterResults.values = _shownList;
+            filterResults.values = _filteredList;
             return filterResults;
         }
 
@@ -175,27 +186,46 @@ public class MetafFragment extends Fragment{
             _adapter.notifyDataSetChanged();
         }
 
-        public void searchBy(@NonNull AirportFilter type,@NonNull String query){
-            _filter = type;
+        void setSearchType(@NonNull SEARCH_TYPE searchType) {
+            _searchType = searchType;
+        }
+
+        void setFilterType(FILTER_TYPE type) {
+            _currentFilter = type;
+        }
+
+        FILTER_TYPE getFilterType() {
+            return _currentFilter;
+        }
+
+        public void search(@NonNull String query) {
+            _searching = true;
             filter(query);
         }
 
-        void filterBy(AirportFilter.TYPE_OF_FILTER type){
-            _filter = new AirportFilter();
-            _filter.setType(type);
+        void filter() {
+            _searching = false;
             filter("");
         }
 
-        private void filterByFir(FIR fir){
-            for(Airport airport : _airports)
-                if(airport.getFir() == fir)
-                    _shownList.add(airport);
+        private void filterByFir(FIR fir) {
+            for (Airport airport : _allAirports)
+                if (airport.getFir() == fir) {
+                    _subList.add(airport);
+                    _filteredList.add(airport);
+                }
         }
 
-        private void filterFavourites(){
-            for(Airport airport : _airports)
-                if(airport.isFavourite())
-                    _shownList.add(airport);
+        private void filterFavourites() {
+            for (Airport airport : _allAirports)
+                if (airport.isFavourite()) {
+                    _subList.add(airport);
+                    _filteredList.add(airport);
+                }
+        }
+
+        private boolean airportMatches(@NonNull String target, @NonNull CharSequence query) {
+            return target.toLowerCase().contains(query.toString().toLowerCase());
         }
     }
 
@@ -218,7 +248,7 @@ public class MetafFragment extends Fragment{
                 @Override
 
                 public void onClick(View v) {
-                    Airport airport = _shownList.get(getAdapterPosition());
+                    Airport airport = _filteredList.get(getAdapterPosition());
                     if (_favouriteBtn.isChecked()) {
                         _dataBase.setFavourite(airport, true);
                         Toast.makeText(v.getContext(), "Agregado a favoritos", Toast.LENGTH_SHORT).show();
@@ -226,7 +256,7 @@ public class MetafFragment extends Fragment{
                         _dataBase.setFavourite(airport, false);
                         Toast.makeText(v.getContext(), "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
                     }
-                    refreshData();
+                    _adapter.notifyDataSetChanged();
                 }
             });
 
@@ -237,7 +267,7 @@ public class MetafFragment extends Fragment{
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final Airport airport = _shownList.get(AirportViewHolder.this.getAdapterPosition());
+                    final Airport airport = _filteredList.get(AirportViewHolder.this.getAdapterPosition());
                     final Context context = view.getContext();
                     Intent intent = new Intent(context, AirportActivity.class);
                     intent.putExtra("AIRPORT", airport);
@@ -246,4 +276,6 @@ public class MetafFragment extends Fragment{
             });
         }
     }
+    public enum FILTER_TYPE{EZE, CBA, DOZ, SIS, CRV, FAVS, ALL}
+    public enum SEARCH_TYPE{ICAO, ANAC, LOCALITY, PROVINCE, NAME}
 }

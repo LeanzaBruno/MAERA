@@ -14,8 +14,6 @@ import android.widget.SearchView;
 import com.google.android.material.tabs.TabLayout;
 import com.maera.R;
 import com.maera.adapter.ViewPagerAdapter;
-import com.maera.core.Airport;
-import com.maera.core.AirportFilter;
 import com.maera.core.DataBaseManager;
 import com.maera.fragment.FilterBottomSheetDialog;
 import com.maera.fragment.MetafFragment;
@@ -24,18 +22,14 @@ import com.maera.fragment.SearchByBottomSheetDialog;
 
 public class MainActivity extends AppCompatActivity {
     private MetafFragment _metaf;
-    private AirportFilter _filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        _filter = new AirportFilter();
         setContentView(R.layout.activity_main);
         setUpViewsReferences();
         setUpViews();
-        ActionBar bar = getSupportActionBar();
-        if( bar != null )
-            bar.setElevation(0);
+        setUpActionBar();
     }
 
     @Override
@@ -46,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SearchByBottomSheetDialog dialog = new SearchByBottomSheetDialog(_filter);
+                SearchByBottomSheetDialog dialog = new SearchByBottomSheetDialog(_metaf.getFilter());
                 dialog.show(getSupportFragmentManager(), "SEARCH");
             }
         });
@@ -60,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 MetafFragment.AdapterFilter adapterFilter = _metaf.getFilter();
-                adapterFilter.searchBy(_filter, newText);
+                adapterFilter.search(newText);
                 return false;
             }
         });
@@ -69,8 +63,9 @@ public class MainActivity extends AppCompatActivity {
         filter.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                FilterBottomSheetDialog dialog = new FilterBottomSheetDialog(_metaf.getFilter());
+                final FilterBottomSheetDialog dialog = new FilterBottomSheetDialog(_metaf.getFilter());
                 dialog.show(getSupportFragmentManager(), "FILTER");
+
                 return true;
             }
         });
@@ -95,5 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void setUpActionBar(){
+        ActionBar bar = getSupportActionBar();
+        if( bar != null )
+            bar.setElevation(0);
     }
 }
