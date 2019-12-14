@@ -7,15 +7,27 @@
     android:focusable="true"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/showing"
+        style="@style/showingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/airports"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#7F323232"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/showing">
 
     </androidx.recyclerview.widget.RecyclerView>
 

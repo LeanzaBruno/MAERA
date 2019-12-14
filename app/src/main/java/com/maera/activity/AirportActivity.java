@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -27,6 +26,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.w3c.dom.Text;
 
 public class AirportActivity extends AppCompatActivity {
     private Airport _airport;
@@ -66,6 +66,18 @@ public class AirportActivity extends AppCompatActivity {
 
     private void setUpViews(){
         setTitle(_airport.getIcaoCode() + " / " + _airport.getLocalCode());
+
+        TextView icao = findViewById(R.id.icao);
+        icao.setText(_airport.getIcaoCode());
+
+        TextView anac = findViewById(R.id.anac);
+        anac.setText(_airport.getLocalCode());
+
+        TextView fir = findViewById(R.id.fir);
+        fir.setText(_airport.getFir().toString());
+
+        TextView name = findViewById(R.id.name);
+        name.setText();
     }
 
     private void setUpEvents() {

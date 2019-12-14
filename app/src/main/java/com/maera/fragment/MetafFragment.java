@@ -20,19 +20,17 @@ import com.maera.activity.AirportActivity;
 import com.maera.core.Airport;
 import com.maera.core.DataBaseManager;
 import com.maera.core.FIR;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MetafFragment extends Fragment{
     private final DataBaseManager _dataBase;
     private MetafAdapter _adapter;
-    private final List<Airport> _allAirports;
+    private List<Airport> _allAirports;
     private List<Airport> _subList, _filteredList;
 
     public MetafFragment(@NonNull DataBaseManager manager ){
         _dataBase = manager;
-        _allAirports = _dataBase.getAllAirports();
     }
 
     @Override
@@ -50,15 +48,21 @@ public class MetafFragment extends Fragment{
     @Override
     public void onResume(){
         super.onResume();
-            refreshData();
+        refreshData();
     }
 
-    private void refreshData(){
-        if( _subList == null ) _subList = new ArrayList<>();
-        _subList.clear();
+    private void refreshData() {
+        _allAirports = _dataBase.getAllAirports();
+        if( _subList == null || _filteredList == null ) {
+            _subList = new ArrayList<>();
+            _filteredList = new ArrayList<>();
+        }
+        else
+        {
+            _subList.clear();
+            _filteredList.clear();
+        }
         _subList.addAll(_allAirports);
-        if( _filteredList == null ) _filteredList = new ArrayList<>();
-        _filteredList.clear();
         _filteredList.addAll(_subList);
         _dataBase.reportDataUpdated();
         _adapter.notifyDataSetChanged();
@@ -85,11 +89,20 @@ public class MetafFragment extends Fragment{
         @Override
         public void onBindViewHolder(@NonNull AirportViewHolder viewHolder, int position) {
             final Airport airport = _filteredList.get(position);
-            viewHolder.icao.setText(airport.getIcaoCode());
-            viewHolder.national.setText(airport.getLocalCode());
+            StringBuilder codes = new StringBuilder();
+            codes.append(airport.getIcaoCode());
+            if(!airport.getLocalCode().isEmpty())
+                codes.append(" / ").append(airport.getLocalCode());
+            viewHolder.icao.setText(codes);
+
             viewHolder.name.setText(airport.getName());
-            String location = airport.getLocation().getLocality() + ", " + airport.getLocation().getProvince();
+
+            StringBuilder location = new StringBuilder();
+            location.append(airport.getLocation().getLocality());
+            if(!airport.getLocation().getProvince().isEmpty())
+                location.append(", ").append(airport.getLocation().getProvince());
             viewHolder.location.setText(location);
+
             if (airport.isFavourite())
                 viewHolder._favouriteBtn.setChecked(true);
             else
@@ -233,13 +246,13 @@ public class MetafFragment extends Fragment{
      * Implementación del ViewHolder, cuya función es mostrar cada elemento de la lista
      */
     private class AirportViewHolder extends RecyclerView.ViewHolder {
-        TextView icao, national, name, location;
+        TextView icao, anac, name, location;
         ToggleButton _favouriteBtn;
 
         AirportViewHolder(View view) {
             super(view);
             icao = view.findViewById(R.id.icao);
-            national = view.findViewById(R.id.national);
+            anac = view.findViewById(R.id.anac);
             name = view.findViewById(R.id.name);
             location = view.findViewById(R.id.location);
             _favouriteBtn = view.findViewById(R.id.favourite);
@@ -250,9 +263,11 @@ public class MetafFragment extends Fragment{
                 public void onClick(View v) {
                     Airport airport = _filteredList.get(getAdapterPosition());
                     if (_favouriteBtn.isChecked()) {
+                        airport.setFavourite(true);
                         _dataBase.setFavourite(airport, true);
                         Toast.makeText(v.getContext(), "Agregado a favoritos", Toast.LENGTH_SHORT).show();
                     } else {
+                        airport.setFavourite(false);
                         _dataBase.setFavourite(airport, false);
                         Toast.makeText(v.getContext(), "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
                     }

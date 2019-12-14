@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
-
+import android.widget.TextView;
 import com.google.android.material.tabs.TabLayout;
 import com.maera.R;
 import com.maera.adapter.ViewPagerAdapter;
@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
         filter.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                final FilterBottomSheetDialog dialog = new FilterBottomSheetDialog(_metaf.getFilter());
+                final TextView textView = findViewById(R.id.showing);
+                final FilterBottomSheetDialog dialog = new FilterBottomSheetDialog(_metaf.getFilter(), textView);
                 dialog.show(getSupportFragmentManager(), "FILTER");
-
                 return true;
             }
         });

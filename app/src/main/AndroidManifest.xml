@@ -10,7 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.AirportActivity" android:parentActivityName=".activity.MainActivity"/>
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +18,7 @@
             <meta-data android:name="android.app.searachable"
                 android:resource="@xml/searchable"/>
         </activity>
+        <activity android:name=".activity.AirportActivity" android:parentActivityName=".activity.MainActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

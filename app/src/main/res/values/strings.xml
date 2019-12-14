@@ -3,14 +3,16 @@
     <string name="app_name_long">Mensajes AERonáuticos Argentinos</string>
     <string name="get">Get</string>
     <string name="loading">Cargando&#8230;</string>
-    <string name="icao">código OACI</string>
     <string name="METAR">METAR</string>
     <string name="category_metar">Metar</string>
     <string name="TAF">TAF</string>
     <string name="PRONAREA">PRONAREA</string>
+    <string name="datos">Datos del aeropuerto</string>
     <string name="FIR">FIR</string>
-    <string name="code">Código OACI</string>
-    <string name="name">Nombre oficial</string>
+    <string name="OACI">OACI</string>
+    <string name="ANAC">ANAC</string>
+
+    <string name="name">Nombre</string>
     <string name="pronarea">Pronarea</string>
     <string name="aerodrom">METAR/TAF</string>
     <string name="location">Ubicación</string>
@@ -20,6 +22,12 @@
     <string name="localCode">Código local</string>
     <string name="download">Descargar</string>
     <string name="search_hint">Buscar aeropuerto</string>
+    <string name="showingFavs">Mostrando favoritos</string>
+    <string name="showingEZE">Mostrando FIR Ezeiza</string>
+    <string name="showingCBA">Mostrando FIR Córdoba</string>
+    <string name="showingDOZ">Mostrando FIR Mendoza</string>
+    <string name="showingSIS">Mostrando FIR Resistencia</string>
+    <string name="showingCRV">Mostrando FIR Comodoro Rivadavia</string>
 
     <string name="tabLayout_ICAO">CÓDIGO\nOACI</string>
     <string name="tabLayout_Local">CÓDIGO\nNACIONAL</string>
@@ -27,9 +35,8 @@
     <string name="tabLayout_Name">NOMBRE</string>
     <string name="favourites">FAVORITOS</string>
     <string name="allAirports">Todos</string>
-
-    <string name="noFavourites">Aún no tenés ningún favorito</string>
-
+    <string name="sort">Ordenar</string>
+    <string name="sortBy">Ordenar por</string>
 
     <string name="searchBy">Buscar por</string>
     <string name="searchByName">Nombre</string>
@@ -57,7 +64,6 @@
     <string name="CRV_long">FIR Comodoro Rivadavia</string>
     <string name="ANT_long">Antártida</string>
     <string name="search">Buscar</string>
-    <string name="sort">Sort</string>
     <string name="filter">Mostrar</string>
     <string name="about">Acerca de</string>
     <string name="test">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>

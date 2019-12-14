@@ -13,15 +13,16 @@ import com.maera.R;
 
 public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
     private MetafFragment.AdapterFilter _filter;
+    private TextView _infoText;
 
-    public FilterBottomSheetDialog(@NonNull MetafFragment.AdapterFilter filter) {
+    public FilterBottomSheetDialog(@NonNull MetafFragment.AdapterFilter filter, @NonNull TextView infoText) {
         _filter = filter;
-        setCancelable(false);
+        _infoText = infoText;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle data){
-        View view = inflater.inflate(R.layout.layout_filter, container, false);
+        View view = inflater.inflate(R.layout.fragment_filterby, container, false);
         selectCurrentFilter(view);
         setUpListeners(view);
         return view;
@@ -31,6 +32,10 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
     public void onDismiss(@NonNull DialogInterface dialog){
         super.onDismiss(dialog);
         _filter.filter();
+        if(_filter.getFilterType() != MetafFragment.FILTER_TYPE.ALL)
+            _infoText.setVisibility(View.VISIBLE);
+        else
+            _infoText.setVisibility(View.GONE);
     }
 
     private void selectCurrentFilter(@NonNull View view){
@@ -78,6 +83,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 _filter.setFilterType(MetafFragment.FILTER_TYPE.ALL);
+                _infoText.setText("");
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -86,6 +92,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 _filter.setFilterType(MetafFragment.FILTER_TYPE.FAVS);
+                _infoText.setText(getResources().getString(R.string.showingFavs));
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -95,6 +102,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 _filter.setFilterType(MetafFragment.FILTER_TYPE.EZE);
+                _infoText.setText(getResources().getString(R.string.showingEZE));
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -103,6 +111,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 _filter.setFilterType(MetafFragment.FILTER_TYPE.CBA);
+                _infoText.setText(getResources().getString(R.string.showingCBA));
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -111,6 +120,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 _filter.setFilterType(MetafFragment.FILTER_TYPE.DOZ);
+                _infoText.setText(getResources().getString(R.string.showingDOZ));
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -119,6 +129,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 _filter.setFilterType(MetafFragment.FILTER_TYPE.SIS);
+                _infoText.setText(getResources().getString(R.string.showingSIS));
                 FilterBottomSheetDialog.this.dismiss();
             }
         });
@@ -127,6 +138,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 _filter.setFilterType(MetafFragment.FILTER_TYPE.CRV);
+                _infoText.setText(getResources().getString(R.string.showingCRV));
                 FilterBottomSheetDialog.this.dismiss();
             }
         });

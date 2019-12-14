@@ -68,7 +68,7 @@ public final class DataBaseManager extends SQLiteOpenHelper {
         List<Airport> airports = new ArrayList<>();
         airports.add(new Airport("Aeroparque Jorge Newbery", "SABE", "AEP", FIR.EZE, "Ciudad Autonónoma de Buenos Aires", "", true));
         airports.add(new Airport("Ministro Pistarini", "SAEZ", "EZE", FIR.EZE, "Ezeiza", "Buenos Aires", true));
-        airports.add(new Airport("San Fernando", "SADF", "FDO", FIR.EZE, "San Fernando", "Buenos Aires", true));
+        airports.add(new Airport("Aeropuerto de San Fernando", "SADF", "FDO", FIR.EZE, "San Fernando", "Buenos Aires", true));
         airports.add(new Airport("Ing. aeronáutico Ambrosio Taravella", "SACO", "CBA", FIR.CBA, "Córdoba", "Córdoba", true));
 
         airports.add(new Airport("Francisco Gabrielli", "SAME", "DOZ", FIR.DOZ, "Mendoza", "Mendoza", true));
@@ -81,18 +81,18 @@ public final class DataBaseManager extends SQLiteOpenHelper {
         airports.add(new Airport("Presidente Rivadavia", "SADM", "MOR", FIR.EZE, "Morón", "Buenos Aires", false));
         airports.add(new Airport("General Pico", "SAZG", "GPI", FIR.EZE, "General Pico", "La Pampa", false));
 
-        airports.add(new Airport("Gualeguaychú", "SAAG", "GUA", FIR.EZE, "Gualeguaychú", "Entre Ríos",false));
+        airports.add(new Airport("Aeropuerto de Gualeguaychú", "SAAG", "GUA", FIR.EZE, "Gualeguaychú", "Entre Ríos",false));
         airports.add(new Airport("Junín", "SAZY", "NIN", FIR.EZE, "Junín", "Buenos Aires", false));
         airports.add(new Airport("Mariano Moreno", "SADJ", "ENO", FIR.EZE, "José C. Paz", "Buenos Aires", false));
 
         airports.add(new Airport("General Urquiza", "SAAP", "PAR", FIR.EZE, "Paraná", "Entre Ríos", true));
-        airports.add(new Airport("Santa Rosa", "SAZR", "OSA", FIR.EZE, "Santa Rosa", "La Pampa", true));
-        airports.add(new Airport("Sauce Viejo", "SAAV", "SVO", FIR.EZE, "Sauce Viejo", "Santa Fe", true));
-        airports.add(new Airport("Catamarca", "SANC", "CAT", FIR.CBA, "San Fernando del Valle de Catamarca", "Catamarca", true));
+        airports.add(new Airport("Aeropuerto de Santa Rosa", "SAZR", "OSA", FIR.EZE, "Santa Rosa", "La Pampa", true));
+        airports.add(new Airport("Aeropuerto de Sauce Viejo", "SAAV", "SVO", FIR.EZE, "Sauce Viejo", "Santa Fe", true));
+        airports.add(new Airport("Coronel Felipe Varela", "SANC", "CAT", FIR.CBA, "San Fernando del Valle de Catamarca", "Catamarca", true));
 
         airports.add(new Airport("Teniente Luis Candelaria", "SAZS", "BAR", FIR.EZE, "San Carlos de Bariloche", "Río Negro", true));
         airports.add(new Airport("Puerto Iguazú", "SARI", "IGU", FIR.SIS, "Puerto Iguazú", "Misiones", true));
-        airports.add(new Airport("El Palomar", "SADP", "PAL", FIR.EZE, "El Palomar", "Buenos Aires", true));
+        airports.add(new Airport("Aeropuerto de El Palomar", "SADP", "PAL", FIR.EZE, "El Palomar", "Buenos Aires", true));
         airports.add(new Airport("Presidente Perón", "SAZN", "NEU", FIR.EZE, "Neuquén", "Neuquén", true));
 
         airports.add(new Airport("Teniente General Benjamín Matienzo", "SANT", "TUC", FIR.CBA, "Tucumán", "Tucumán", true));

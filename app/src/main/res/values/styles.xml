@@ -13,7 +13,7 @@
 
 
     <style name="base">
-        <item name="fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/open_sans</item>
     </style>
 
     <style name="title" parent="base">
@@ -70,23 +70,48 @@
         <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
-    <style name="cardView_icao">
-        <item name="fontFamily">@font/roboto_bold</item>
+    <style name="cardView_first">
+        <item name="fontFamily">@font/open_sans_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
-    <style name="cardView_name">
-        <item name="fontFamily">@font/roboto</item>
+    <style name="cardView_second">
+        <item name="fontFamily">@font/open_sans</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
-    <style name="cardView_location">
-        <item name="fontFamily">@font/roboto</item>
-        <item name="android:textSize">11sp</item>
+    <style name="cardView_third">
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorSecundaryText</item>
     </style>
+
+    <style name="showingText" parent="base">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="activity_airport_title" parent="base">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+
+    <style name="activity_airport_category" parent="base">
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/colorSecundaryText</item>
+    </style>
+
+    <style name="activity_airport_value" parent="base">
+        <item name="fontFamily">@font/open_sans_bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+
+
 
 
     <!--SearchBy bottom sheet dialog-->

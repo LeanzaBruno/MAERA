@@ -1096,6 +1096,8 @@ drawable showing
 drawable sort
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+font open_sans
+font open_sans_bold
 font roboto
 font roboto_bold
 font ubuntu_medium
@@ -1267,7 +1269,6 @@ id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
 id name
-id national
 id navigation_header_container
 id never
 id none
@@ -1323,6 +1324,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id showing
 id sis
 id sisCheck
 id sisText
@@ -1331,6 +1333,7 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id sort
 id spacer
 id split_action_bar
 id spread
@@ -1463,11 +1466,12 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout dialog_messages_codes
+layout fragment_filterby
 layout fragment_metaf
 layout fragment_pronarea
 layout fragment_searchby
+layout fragment_sortby
 layout item_message_code
-layout layout_filter
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout notification_action
@@ -1558,7 +1562,6 @@ string location
 string messages
 string mtrl_chip_close_icon_content_description
 string name
-string noFavourites
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -1578,7 +1581,14 @@ string searchByProvince
 string search_hint
 string search_menu_title
 string showOnly
+string showingCBA
+string showingCRV
+string showingDOZ
+string showingEZE
+string showingFavs
+string showingSIS
 string sort
+string sortBy
 string status_bar_notification_info_overflow
 string tabLayout_ICAO
 string tabLayout_Local
@@ -2089,9 +2099,9 @@ style Widget_MaterialComponents_Toolbar
 style Widget_Support_CoordinatorLayout
 style base
 style buttonStyle
-style cardView_icao
-style cardView_location
-style cardView_name
+style cardView_first
+style cardView_second
+style cardView_third
 style category
 style noFavourite
 style primaryText
@@ -2099,6 +2109,7 @@ style pronareaResult
 style result
 style searchByText
 style secundaryText
+style showingText
 style title
 style value
 style weatherReportCategory

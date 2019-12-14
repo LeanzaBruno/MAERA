@@ -66,7 +66,7 @@ public final class Airport implements Parcelable {
 
     void setTafAvailability(Boolean availability){ mHasTaf = availability; }
 
-    void setFavourite(Boolean favourite){ mFavourite = favourite; }
+    public void setFavourite(Boolean favourite){ mFavourite = favourite; }
 
     public
     void setMetar(String metar) { mMetar = metar; }

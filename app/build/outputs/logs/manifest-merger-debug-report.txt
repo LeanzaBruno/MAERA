@@ -83,32 +83,32 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/kertz
 		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:7:9-35
 	android:theme
 		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:12:9-40
-activity#com.maera.activity.AirportActivity
-ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:13:9-113
-	android:parentActivityName
-		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:13:60-111
-	android:name
-		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:13:19-59
 activity#com.maera.activity.MainActivity
-ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:14:9-21:20
+ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:13:9-20:20
 	android:name
-		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:14:19-56
+		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:13:19-56
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:15:13-18:29
+ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:14:13-17:29
 action#android.intent.action.MAIN
-ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:16:17-69
+ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:15:17-69
 	android:name
-		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:16:25-66
+		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:15:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:17:17-77
+ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:16:17-77
 	android:name
-		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:17:27-74
+		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:16:27-74
 meta-data#android.app.searachable
-ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:19:13-20:53
+ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:18:13-19:53
 	android:resource
-		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:20:17-51
+		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:19:17-51
 	android:name
-		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:19:24-62
+		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:18:24-62
+activity#com.maera.activity.AirportActivity
+ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:21:9-113
+	android:parentActivityName
+		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:21:60-111
+	android:name
+		ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:21:19-59
 meta-data#preloaded_fonts
 ADDED from /home/kertz/MAERA/app/src/main/AndroidManifest.xml:23:9-25:57
 	android:resource
