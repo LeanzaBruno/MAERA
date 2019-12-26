@@ -33,19 +33,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView9"
+                style="@style/cardView_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/separator"
+                app:layout_constraintStart_toEndOf="@+id/icao"
+                app:layout_constraintTop_toTopOf="@+id/icao" />
 
             <TextView
                 android:id="@+id/anac"
                 style="@style/cardView_first"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                app:layout_constraintStart_toEndOf="@+id/icao"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@+id/textView9"
                 app:layout_constraintTop_toTopOf="@+id/icao" />
 
             <TextView
@@ -75,7 +83,6 @@
                 android:layout_height="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/selector_favourite"
                 android:checked="false"

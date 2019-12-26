@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
@@ -11,19 +10,18 @@
 
     <TextView
         android:id="@+id/searchBy"
-        style="@style/secundaryText"
+        style="@style/searchBySecundaryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/bottomSheetTitlePadding"
-        android:layout_marginLeft="@dimen/bottomSheetStartPadding"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:text="@string/searchBy"
-        app:layout_constraintBottom_toTopOf="@+id/oaci"
+        app:layout_constraintBottom_toTopOf="@+id/icao"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/oaci"
+        android:id="@+id/icao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?android:selectableItemBackground"
@@ -36,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bottomSheetStartPadding"
-            android:layout_marginLeft="@dimen/bottomSheetStartPadding"
             android:layout_marginTop="@dimen/bottomSheetTitlePadding"
             android:layout_marginBottom="@dimen/bottomSheetTitlePadding"
             android:text="@string/searchByICAO"
@@ -53,14 +50,13 @@
         android:background="?android:selectableItemBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/oaci">
+        app:layout_constraintTop_toBottomOf="@+id/icao">
 
         <TextView
             style="@style/searchByText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bottomSheetStartPadding"
-            android:layout_marginLeft="@dimen/bottomSheetStartPadding"
             android:layout_marginTop="@dimen/bottomSheetTitlePadding"
             android:layout_marginBottom="@dimen/bottomSheetTitlePadding"
             android:text="@string/searchByLocal"
@@ -83,7 +79,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bottomSheetStartPadding"
-            android:layout_marginLeft="@dimen/bottomSheetStartPadding"
             android:layout_marginTop="@dimen/bottomSheetTitlePadding"
             android:layout_marginBottom="@dimen/bottomSheetTitlePadding"
             android:text="@string/searchByName"
@@ -106,7 +101,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bottomSheetStartPadding"
-            android:layout_marginLeft="@dimen/bottomSheetStartPadding"
             android:layout_marginTop="@dimen/bottomSheetTitlePadding"
             android:layout_marginBottom="@dimen/bottomSheetTitlePadding"
             android:text="@string/searchByLocality"
@@ -129,7 +123,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/bottomSheetStartPadding"
-            android:layout_marginLeft="@dimen/bottomSheetStartPadding"
             android:layout_marginTop="@dimen/bottomSheetTitlePadding"
             android:layout_marginBottom="@dimen/bottomSheetTitlePadding"
             android:text="@string/searchByProvince"

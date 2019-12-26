@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -25,6 +24,7 @@ import java.util.List;
 
 public class MetafFragment extends Fragment{
     private final DataBaseManager _dataBase;
+    private RecyclerView _recyclerView;
     private MetafAdapter _adapter;
     private List<Airport> _allAirports;
     private List<Airport> _subList, _filteredList;
@@ -37,36 +37,30 @@ public class MetafFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_metaf, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.airports);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
+        _recyclerView = view.findViewById(R.id.airports);
+        _recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
 
         _adapter = new MetafAdapter();
-        recyclerView.setAdapter(_adapter);
+        _recyclerView.setAdapter(_adapter);
         return view;
     }
 
     @Override
     public void onResume(){
         super.onResume();
-        refreshData();
+        refresh();
     }
 
-    private void refreshData() {
+    public void refresh() {
         _allAirports = _dataBase.getAllAirports();
-        if( _subList == null || _filteredList == null ) {
-            _subList = new ArrayList<>();
-            _filteredList = new ArrayList<>();
-        }
-        else
-        {
-            _subList.clear();
-            _filteredList.clear();
-        }
-        _subList.addAll(_allAirports);
-        _filteredList.addAll(_subList);
-        _dataBase.reportDataUpdated();
-        _adapter.notifyDataSetChanged();
+        if( _subList == null ) _subList = new ArrayList<>();
+        if(_filteredList == null ) _filteredList = new ArrayList<>();
+        _adapter.getFilter().filter();
+        _recyclerView.smoothScrollToPosition(0);
     }
+
+
+
 
     public AdapterFilter getFilter(){
         return _adapter.getFilter();
@@ -89,12 +83,8 @@ public class MetafFragment extends Fragment{
         @Override
         public void onBindViewHolder(@NonNull AirportViewHolder viewHolder, int position) {
             final Airport airport = _filteredList.get(position);
-            StringBuilder codes = new StringBuilder();
-            codes.append(airport.getIcaoCode());
-            if(!airport.getLocalCode().isEmpty())
-                codes.append(" / ").append(airport.getLocalCode());
-            viewHolder.icao.setText(codes);
-
+            viewHolder.icao.setText(airport.getIcaoCode());
+            viewHolder.anac.setText(airport.getLocalCode());
             viewHolder.name.setText(airport.getName());
 
             StringBuilder location = new StringBuilder();
@@ -261,17 +251,11 @@ public class MetafFragment extends Fragment{
                 @Override
 
                 public void onClick(View v) {
-                    Airport airport = _filteredList.get(getAdapterPosition());
-                    if (_favouriteBtn.isChecked()) {
-                        airport.setFavourite(true);
+                    final Airport airport = _filteredList.get(getAdapterPosition());
+                    if (_favouriteBtn.isChecked())
                         _dataBase.setFavourite(airport, true);
-                        Toast.makeText(v.getContext(), "Agregado a favoritos", Toast.LENGTH_SHORT).show();
-                    } else {
-                        airport.setFavourite(false);
+                    else
                         _dataBase.setFavourite(airport, false);
-                        Toast.makeText(v.getContext(), "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
-                    }
-                    _adapter.notifyDataSetChanged();
                 }
             });
 

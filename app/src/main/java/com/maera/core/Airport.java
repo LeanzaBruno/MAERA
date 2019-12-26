@@ -2,8 +2,9 @@ package com.maera.core;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import java.util.Comparator;
 
-public final class Airport implements Parcelable {
+public final class Airport implements Parcelable, Comparator<Airport>, Comparable<Airport> {
     private String  mIcaoCode;
     private String  mLocalCode;
     private String  mName;
@@ -12,7 +13,7 @@ public final class Airport implements Parcelable {
     private Boolean mHasTaf;
     private String mMetar;
     private String mtaf;
-    private Boolean mFavourite = false;
+    private Boolean mFavourite;
 
     Airport(){ }
 
@@ -100,6 +101,7 @@ public final class Airport implements Parcelable {
         parcel.writeString(mLocation.getProvince());
         parcel.writeString(mFir.name());
         parcel.writeInt(mHasTaf ? 1 : 0);
+        parcel.writeInt(mFavourite ? 1 : 0);
     }
 
     private
@@ -110,5 +112,15 @@ public final class Airport implements Parcelable {
         mLocation = new Location(in.readString(), in.readString());
         mFir = FIR.valueOf(in.readString());
         mHasTaf = in.readInt() == 1;
+        mFavourite = in.readInt() == 1;
+    }
+
+    public int compare(Airport a, Airport b) {
+        return Boolean.compare(a.isFavourite(),b.isFavourite());
+    }
+
+    @Override
+    public int compareTo(Airport airport) {
+        return isFavourite().compareTo(airport.isFavourite());
     }
 }

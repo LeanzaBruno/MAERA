@@ -7,7 +7,7 @@
     <string name="category_metar">Metar</string>
     <string name="TAF">TAF</string>
     <string name="PRONAREA">PRONAREA</string>
-    <string name="datos">Datos del aeropuerto</string>
+    <string name="datos">Datos del aeródromo</string>
     <string name="FIR">FIR</string>
     <string name="OACI">OACI</string>
     <string name="ANAC">ANAC</string>
@@ -16,7 +16,7 @@
     <string name="pronarea">Pronarea</string>
     <string name="aerodrom">METAR/TAF</string>
     <string name="location">Ubicación</string>
-    <string name="tafAvailable">Emisión de taf</string>
+    <string name="tafAvailable">TAF</string>
     <string name="info">Información general</string>
     <string name="messages">Reportes meteorológicos</string>
     <string name="localCode">Código local</string>
@@ -29,14 +29,17 @@
     <string name="showingSIS">Mostrando FIR Resistencia</string>
     <string name="showingCRV">Mostrando FIR Comodoro Rivadavia</string>
 
+    <string name="noTAF">No emite TAF</string>
+
     <string name="tabLayout_ICAO">CÓDIGO\nOACI</string>
     <string name="tabLayout_Local">CÓDIGO\nNACIONAL</string>
     <string name="tabLayout_Location">UBICACIÓN</string>
     <string name="tabLayout_Name">NOMBRE</string>
     <string name="favourites">FAVORITOS</string>
     <string name="allAirports">Todos</string>
-    <string name="sort">Ordenar</string>
+    <string name="refresh">Actualizar</string>
     <string name="sortBy">Ordenar por</string>
+    <string name="separator">/</string>
 
     <string name="searchBy">Buscar por</string>
     <string name="searchByName">Nombre</string>
@@ -47,8 +50,7 @@
     <string name="searchByProvince">Provincia</string>
     <string name="searchByFir">FIR</string>
     <string name="searchByFavourites">Favoritos</string>
-
-
+    <string name="code">Código</string>
     <string name="showOnly">Mostrar</string>
     <string name="favourite">favourite</string>
     <string name="EZE">EZE</string>

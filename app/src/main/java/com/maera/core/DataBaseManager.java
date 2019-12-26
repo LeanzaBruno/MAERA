@@ -5,9 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import androidx.annotation.NonNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,12 +75,12 @@ public final class DataBaseManager extends SQLiteOpenHelper {
         airports.add(new Airport("Campo de Mayo", "SADO", "CPO", FIR.EZE, "San Miguel", "Buenos Aires", false));
 
         airports.add(new Airport("Comodoro Juan José Pierrestegui", "SAAC", "DIA", FIR.EZE, "Concordia", "Entre Ríos", false));
-        airports.add(new Airport("Aviador José Campos", "SAZY", "CHP", FIR.EZE, "San Martín de los Andes", "Mendoza", true));
+        airports.add(new Airport("Aviador José Campos", "SAZY", "CHP", FIR.EZE, "San Martín de los Andes", "Neuquén", true));
         airports.add(new Airport("Presidente Rivadavia", "SADM", "MOR", FIR.EZE, "Morón", "Buenos Aires", false));
         airports.add(new Airport("General Pico", "SAZG", "GPI", FIR.EZE, "General Pico", "La Pampa", false));
 
         airports.add(new Airport("Aeropuerto de Gualeguaychú", "SAAG", "GUA", FIR.EZE, "Gualeguaychú", "Entre Ríos",false));
-        airports.add(new Airport("Junín", "SAZY", "NIN", FIR.EZE, "Junín", "Buenos Aires", false));
+        airports.add(new Airport("Aeropuerto de Junín", "SAAJ", "NIN", FIR.EZE, "Junín", "Buenos Aires", false));
         airports.add(new Airport("Mariano Moreno", "SADJ", "ENO", FIR.EZE, "José C. Paz", "Buenos Aires", false));
 
         airports.add(new Airport("General Urquiza", "SAAP", "PAR", FIR.EZE, "Paraná", "Entre Ríos", true));
@@ -103,7 +101,7 @@ public final class DataBaseManager extends SQLiteOpenHelper {
         airports.add(new Airport("Comandante Armando Tola", "SAWC", "ECA", FIR.CRV, "El Calafate", "Santa Cruz", true));
         airports.add(new Airport("Astor Piazzolla", "SAZM", "MDP", FIR.EZE, "Mar del Plata", "Buenos Aires", true));
         airports.add(new Airport("Azul", "SAZA", "ZUL", FIR.EZE, "Azul", "Buenos Aires", false));
-        airports.add(new Airport("Escuela de Aviación", "SACE", "", FIR.CBA, "Córdoba", "Córdoba", false));
+        airports.add(new Airport("Escuela de Aviación", "SACE", "FMA", FIR.CBA, "Córdoba", "Córdoba", false));
 
         airports.add(new Airport("Gobernador Guzmán", "SASJ", "JUJ", FIR.CBA, "Jujuy", "", true));
         airports.add(new Airport("Capitán Almonacid", "SANL", "LAR", FIR.CBA, "La Rioja","La Rioja", true));
@@ -112,7 +110,7 @@ public final class DataBaseManager extends SQLiteOpenHelper {
 
         airports.add(new Airport("Vcom. Ángel La Paz Aragonés", "SANE", "SDE", FIR.CBA, "Santiago del Estero", "Santiago del Estero", true));
         airports.add(new Airport("General Mosconi", "SAST", "TAR", FIR.CBA, "Tartagal", "Salta", false));
-        airports.add(new Airport("Termas de Río Hondo", "SANR", "TRH", FIR.CBA, "Termas de Río Hondo", "Santiago del Estero", true));
+        airports.add(new Airport("Aeropuerto de Termas de Río Hondo", "SANR", "TRH", FIR.CBA, "Termas de Río Hondo", "Santiago del Estero", true));
         airports.add(new Airport("Comodoro Ricardo Salomón", "SAMM", "LGS", FIR.DOZ, "Malargüe", "Mendoza", false));
 
         airports.add(new Airport("Domingo Faustino Sarmiento", "SANU", "JUA", FIR.DOZ, "San Juan", "San Juan", true));
@@ -126,15 +124,15 @@ public final class DataBaseManager extends SQLiteOpenHelper {
         airports.add(new Airport("Piloto Civil N. Fernández", "SAWG", "GAL", FIR.CRV, "Río Gallegos", "Santa Cruz", true));
         airports.add(new Airport("Río Grande", "SAWE", "GRA", FIR.CRV, "Río Grande", "Tierra del Fuego", true));
         airports.add(new Airport("Capitán D. Daniel Vázquez", "SAWJ", "SJU", FIR.CRV, "San Julián", "Santa Cruz", false));
-        airports.add(new Airport("Santa Cruz", "SAWU", "SCZ", FIR.CRV, "Santa Cruz", "Santa Cruz", false));
+        airports.add(new Airport("Aeropuerto de Puerto Santa Cruz", "SAWU", "SCZ", FIR.CRV, "Puerto Santa Cruz", "Santa Cruz", false));
         airports.add(new Airport("Almirante Zar", "SAVT", "TRE", FIR.CRV, "Trelew", "Chubut", true));
         airports.add(new Airport("Gobernador Castello", "SAVV", "VIE", FIR.CRV, "Viedma", "Río Negro", true));
-        airports.add(new Airport("Doctor Fernando Piragine Niveryro", "SARC", "CRR", FIR.SIS, "Corrientes", "Corrientes", true));
-        airports.add(new Airport("Formosa", "SARF", "FSA", FIR.SIS, "Formosa", "Formosa", true));
+        airports.add(new Airport("Dr. Piragine Niveyro", "SARC", "CRR", FIR.SIS, "Corrientes", "Corrientes", true));
+        airports.add(new Airport("Aeropuerto Internacional de Formosa", "SARF", "FSA", FIR.SIS, "Formosa", "Formosa", true));
         airports.add(new Airport("Paso de los Libres", "SARL", "LIB", FIR.SIS, "Paso de los Libres", "Corrientes", false));
         airports.add(new Airport("General San Martín", "SARP", "POS", FIR.SIS, "Posadas", "Misiones", true));
-        airports.add(new Airport("Reconquista", "SATR", "RTA", FIR.SIS, "Reconquista", "Santa Fe", true));
-        airports.add(new Airport("Resistencia", "SARE", "SIS", FIR.SIS, "Resistencia", "Chaco", true));
+        airports.add(new Airport("Aeropuerto de Reconquista", "SATR", "RTA", FIR.SIS, "Reconquista", "Santa Fe", true));
+        airports.add(new Airport("Aeropuerto de Resistencia", "SARE", "SIS", FIR.SIS, "Resistencia", "Chaco", true));
         airports.add(new Airport("Vicecomodoro Marambio", "SAWB", "MBI", FIR.CRV, "Isla Marambio, Mar de Weddell", "Tierra del Fuego", true));
 
         for( int index = 0 ; index < airports.size() ; ++index )
@@ -149,8 +147,8 @@ public final class DataBaseManager extends SQLiteOpenHelper {
         values.put(COL_CITY, airport.getLocation().getLocality());
         values.put(COL_PROVINCE, airport.getLocation().getProvince());
         values.put(COL_FIR, airport.getFir().name());
-        values.put(COL_TAF_AVAILABILITY, airport.issuesTaf() ? 1 : 0);
-        values.put(COL_FAVOURITE, airport.isFavourite() ? 1 : 0);
+        values.put(COL_TAF_AVAILABILITY, airport.issuesTaf());
+        values.put(COL_FAVOURITE, airport.isFavourite());
         return values;
     }
 
@@ -158,30 +156,6 @@ public final class DataBaseManager extends SQLiteOpenHelper {
         List<Airport> airports = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, COL_FAVOURITE +" DESC," + COL_ICAO);
-        while(cursor.moveToNext())
-            airports.add(generateAirport(cursor));
-        cursor.close();
-        return airports;
-    }
-
-    public @NonNull List<Airport> getAirportsByFir(String fir){
-        List<Airport> airports = new ArrayList<>();
-        SQLiteDatabase database = getReadableDatabase();
-        final String selection = COL_FIR + "=?";
-        final String[] selectionargs = new String[]{fir};
-        Cursor cursor = database.query(TABLE_NAME, null, selection, selectionargs, null, null, COL_ICAO );
-        while(cursor.moveToNext())
-            airports.add(generateAirport(cursor));
-        cursor.close();
-        return airports;
-    }
-
-    public @NonNull List<Airport> getFavouriteAirports(){
-        List<Airport> airports = new ArrayList<>();
-        SQLiteDatabase database = getReadableDatabase();
-        final String selection = COL_FAVOURITE + "=?";
-        final String[] selectionArgs = new String[]{"1"};
-        Cursor cursor = database.query(TABLE_NAME, null, selection, selectionArgs, null, null, COL_ICAO);
         while(cursor.moveToNext())
             airports.add(generateAirport(cursor));
         cursor.close();
@@ -225,8 +199,4 @@ public final class DataBaseManager extends SQLiteOpenHelper {
             database.endTransaction();
         }
     }
-
-    public boolean dataUpdated(){ return _dataUpdated; }
-
-    public void reportDataUpdated(){ _dataUpdated = true; }
 }

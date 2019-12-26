@@ -7,58 +7,61 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import com.google.android.material.tabs.TabLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.maera.R;
 import com.maera.core.FIR;
 import com.maera.core.WeatherReport;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class PronareaFragment extends Fragment {
-    private TabLayout _tabLayout;
-    private TextView _textResult;
+    private List<FIR> _firs;
+    private RecyclerView _list;
+    private RecyclerAdapter _adapter;
+
+    public PronareaFragment(){
+        _firs = new ArrayList<>();
+        _firs.add(FIR.EZE);
+        _firs.add(FIR.CBA);
+        _firs.add(FIR.DOZ);
+        _firs.add(FIR.SIS);
+        _firs.add(FIR.CRV);
+        _firs.add(FIR.ANT);
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle data){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle data) {
         View view = inflater.inflate(R.layout.fragment_pronarea, container, false);
 
-        _textResult = view.findViewById(R.id.result);
-        _tabLayout = view.findViewById(R.id.tabLayout);
-        setUpTabLayout();
-
+        _list = view.findViewById(R.id.list);
+        _list.setLayoutManager(new LinearLayoutManager(getContext()));
+        _adapter = new RecyclerAdapter();
+        _list.setAdapter(_adapter);
         return view;
     }
 
-    private void setUpTabLayout(){
-        _tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                new PronareaDownloader(tab.getPosition()).execute();
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-    }
-
     private class PronareaDownloader extends AsyncTask<Void, Void, Void> {
+        private static final String CSS_QUERY = "td[width=\"100%\"]";
         private ProgressDialog _dialog;
-        private int _firSelected;
+        private TextView _textView;
         private StringBuilder _URL = new StringBuilder();
         private String _result;
 
-        PronareaDownloader(int position){
-            _firSelected = position;
+        PronareaDownloader(FIR fir, TextView textView){
+            _textView = textView;
+            _URL.append(WeatherReport.PRONAREA.generateURL(fir));
         }
+
 
         @Override
         protected void onPreExecute(){
@@ -70,30 +73,65 @@ public final class PronareaFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... voids){
-            _URL.append(WeatherReport.TYPE.PRONAREA.getURL());
-            switch(_firSelected){
-                case 0: _URL.append(FIR.EZE.getCode());break;
-                case 1: _URL.append(FIR.CBA.getCode());break;
-                case 2: _URL.append(FIR.DOZ.getCode());break;
-                case 3: _URL.append(FIR.SIS.getCode());break;
-                case 4: _URL.append(FIR.CRV.getCode());break;
-                case 5: _URL.append(FIR.ANT.getCode());break;
-            }
-            _URL.append("=on");
-            try{
-
+            try {
                 Document page = Jsoup.connect(_URL.toString()).get();
-                Elements elements = page.select("td[width=\"100%\"]");
-                _result = elements.first().text();
-
-            }catch(Exception e){ e.printStackTrace();}
+                final Elements query = page.select(CSS_QUERY);
+                final Element element = query.first();
+                if(element != null)
+                    _result = element.text();
+            }catch(Exception e){e.printStackTrace();}
             return null;
         }
 
         @Override
         protected void onPostExecute(Void avoid){
-            _textResult.setText(_result);
+            _textView.setText(_result);
+            _textView.setVisibility(View.VISIBLE);
             _dialog.dismiss();
         }
     }
+
+
+    private class RecyclerAdapter extends RecyclerView.Adapter<FIRViewHolder>{
+
+        @NonNull @Override
+        public FIRViewHolder onCreateViewHolder(@NonNull ViewGroup container, final int viewType){
+            final View view = LayoutInflater.from(container.getContext()).inflate(R.layout.cardview_fir, container, false);
+            return new FIRViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull FIRViewHolder viewHolder, int position){
+            final FIR fir = _firs.get(position);
+            viewHolder._code.setText(fir.name());
+            viewHolder._name.setText(fir.toString());
+        }
+
+        @Override
+        public int getItemCount() {
+            return _firs.size();
+        }
+
+
+    }
+    private class FIRViewHolder extends RecyclerView.ViewHolder{
+        private TextView _code, _name, _result;
+        FIRViewHolder(View view){
+            super(view);
+            _code = view.findViewById(R.id.code);
+            _name = view.findViewById(R.id.name);
+            _result = view.findViewById(R.id.result);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   PronareaDownloader task = new PronareaDownloader(_firs.get(getAdapterPosition()), _result);
+                   task.execute();
+
+                }
+            });
+        }
+    }
+
+
 }
