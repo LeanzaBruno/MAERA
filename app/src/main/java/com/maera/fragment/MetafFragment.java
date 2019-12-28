@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.maera.R;
@@ -38,7 +39,10 @@ public class MetafFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_metaf, container, false);
 
         _recyclerView = view.findViewById(R.id.airports);
-        _recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
+        LinearLayoutManager manager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false);
+        _recyclerView.setLayoutManager(manager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(_recyclerView.getContext(), manager.getOrientation());
+        _recyclerView.addItemDecoration(dividerItemDecoration);
 
         _adapter = new MetafAdapter();
         _recyclerView.setAdapter(_adapter);
@@ -83,15 +87,10 @@ public class MetafFragment extends Fragment{
         @Override
         public void onBindViewHolder(@NonNull AirportViewHolder viewHolder, int position) {
             final Airport airport = _filteredList.get(position);
-            viewHolder.icao.setText(airport.getIcaoCode());
-            viewHolder.anac.setText(airport.getLocalCode());
-            viewHolder.name.setText(airport.getName());
+            final String builder = airport.getIcaoCode() + " / " + airport.getLocalCode();
+            viewHolder.title.setText(builder);
 
-            StringBuilder location = new StringBuilder();
-            location.append(airport.getLocation().getLocality());
-            if(!airport.getLocation().getProvince().isEmpty())
-                location.append(", ").append(airport.getLocation().getProvince());
-            viewHolder.location.setText(location);
+            viewHolder.name.setText(airport.getName());
 
             if (airport.isFavourite())
                 viewHolder._favouriteBtn.setChecked(true);
@@ -236,15 +235,13 @@ public class MetafFragment extends Fragment{
      * Implementación del ViewHolder, cuya función es mostrar cada elemento de la lista
      */
     private class AirportViewHolder extends RecyclerView.ViewHolder {
-        TextView icao, anac, name, location;
+        TextView title,name;
         ToggleButton _favouriteBtn;
 
         AirportViewHolder(View view) {
             super(view);
-            icao = view.findViewById(R.id.icao);
-            anac = view.findViewById(R.id.anac);
+            title = view.findViewById(R.id.title);
             name = view.findViewById(R.id.name);
-            location = view.findViewById(R.id.location);
             _favouriteBtn = view.findViewById(R.id.favourite);
 
             _favouriteBtn.setOnClickListener(new View.OnClickListener() {

@@ -1182,7 +1182,6 @@ id beginning
 id blocking
 id bottom
 id buttonPanel
-id cardView2
 id cba
 id cbaCheck
 id cbaText
@@ -1253,7 +1252,6 @@ id guideline2
 id guideline3
 id home
 id homeAsUp
-id icao
 id icon
 id icon_group
 id ifRoom
@@ -1383,7 +1381,6 @@ id textView5
 id textView6
 id textView7
 id textView8
-id textView9
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -2132,9 +2129,9 @@ style activity_airport_value
 style activity_title
 style base
 style buttonStyle
-style cardView_first
-style cardView_second
+style cardView_caption
 style cardView_third
+style cardView_title
 style category
 style noFavourite
 style primaryText

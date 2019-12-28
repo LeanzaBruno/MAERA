@@ -25,7 +25,7 @@ public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
     }
 
     private void setUpListeners(@NonNull View view){
-        ConstraintLayout oaci = view.findViewById(R.id.icao);
+        ConstraintLayout oaci = view.findViewById(R.id.title);
         oaci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/name"
-                style="@style/cardView_first"
+                style="@style/cardView_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -60,7 +60,7 @@
 
             <TextView
                 android:id="@+id/code"
-                style="@style/cardView_first"
+                style="@style/cardView_caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"

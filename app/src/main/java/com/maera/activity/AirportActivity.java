@@ -87,7 +87,7 @@ public class AirportActivity extends AppCompatActivity {
     private void setUpViews(){
         setTitle(_airport.getIcaoCode() + " / " + _airport.getLocalCode());
 
-        TextView icao = findViewById(R.id.icao);
+        TextView icao = findViewById(R.id.title);
         icao.setText(_airport.getIcaoCode());
 
         TextView anac = findViewById(R.id.anac);
