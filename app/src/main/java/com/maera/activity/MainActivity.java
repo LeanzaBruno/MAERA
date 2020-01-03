@@ -3,21 +3,15 @@ package com.maera.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
-import com.google.android.material.tabs.TabLayout;
 import com.maera.R;
-import com.maera.adapter.ViewPagerAdapter;
-import com.maera.core.DataBaseManager;
 import com.maera.fragment.FilterBottomSheetDialog;
 import com.maera.fragment.MetafFragment;
-import com.maera.fragment.PronareaFragment;
 import com.maera.fragment.SearchByBottomSheetDialog;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
 
-        final MenuItem about = menu.findItem(R.id.about);
         final MenuItem refresh = menu.findItem(R.id.refresh);
         refresh.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -99,13 +92,16 @@ public class MainActivity extends AppCompatActivity {
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final DataBaseManager manager = DataBaseManager.getInstance(this);
-        final ViewPager viewPager = findViewById(R.id.viewPager);
-        _metaf = new MetafFragment(manager);
-        final Fragment[] fragments = new Fragment[]{_metaf, new PronareaFragment()};
-        final TabLayout tabLayout = findViewById(R.id.tabLayout);
+        _metaf = (MetafFragment)getSupportFragmentManager().findFragmentById(R.id.metaf);
+        _metaf.setDataBaseContext(this);
+        _metaf.refresh();
+        //final DataBaseManager manager = DataBaseManager.getInstance(this);
+        //final ViewPager viewPager = findViewById(R.id.viewPager);
+        //_metaf = new MetafFragment(manager);
+        //final Fragment[] fragments = new Fragment[]{_metaf, new PronareaFragment()};
+        //final TabLayout tabLayout = findViewById(R.id.tabLayout);
 
-        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
-        tabLayout.setupWithViewPager(viewPager);
+        //viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
+        //tabLayout.setupWithViewPager(viewPager);
     }
 }

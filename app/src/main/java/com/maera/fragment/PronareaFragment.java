@@ -118,7 +118,7 @@ public final class PronareaFragment extends Fragment {
         private TextView _code, _name, _result;
         FIRViewHolder(View view){
             super(view);
-            _code = view.findViewById(R.id.code);
+            _code = view.findViewById(R.id.codes);
             _name = view.findViewById(R.id.name);
             _result = view.findViewById(R.id.result);
 

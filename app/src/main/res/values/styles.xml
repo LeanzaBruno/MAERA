@@ -4,17 +4,22 @@
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/onPrimary</item>
     </style>
-    
+
     <style name="toolbar">
-        <item name="android:fontFamily">@font/roboto_condensed_regular</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/toolbar_text</item>
+        <item name="android:elevation">1dp</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:titleTextColor">@color/onPrimary</item>
     </style>
 
     <style name="TabLayout" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">11sp</item>
-        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
 
@@ -54,7 +59,7 @@
     </style>
 
     <style name="activity_title" parent="base">
-        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textColor">@color/onPrimary</item>
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
@@ -81,23 +86,7 @@
         <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
-    <style name="cardView_title">
-        <item name="fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/colorPrimaryText</item>
-    </style>
 
-    <style name="cardView_caption">
-        <item name="fontFamily">@font/roboto_condensed_regular</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/colorSecundaryText</item>
-    </style>
-
-    <style name="cardView_third">
-        <item name="fontFamily">@font/open_sans</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/colorSecundaryText</item>
-    </style>
 
     <style name="showingText" parent="base">
         <item name="android:textColor">@color/colorPrimaryText</item>
@@ -133,6 +122,24 @@
     </style>
 
 
+
+    <!--Layout airport-->
+    <style name="layout_airport_title">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/onBackground</item>
+    </style>
+    <style name="layout_airport_body2">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/SecundaryOnBackground</item>
+    </style>
+
+    <style name="layout_airport_caption">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/SecundaryOnBackground</item>
+    </style>
 
 
 

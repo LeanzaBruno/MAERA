@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#323232</color>
-    <color name="colorPrimaryDark">#141414</color>
-    <color name="colorPrimaryLight">#F8BBD0</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <!--Base color theme-->
+    <color name="colorPrimary">#795548</color>
+    <color name="colorPrimaryDark">#4b2c20</color>
+    <color name="colorPrimaryLight">#a98274</color>
+    <color name="colorSecundary">#ffffff</color>
+    <color name="colorSecundaryDark">#ffffff</color>
+    <color name="colorSecundaryLight">#ffffff</color>
+
+    <color name="colorAccent">#FF5252</color>
     <color name="colorAccentText">#5050C8</color>
-    <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="colorPrimaryText">#000000</color>
     <color name="colorSecundaryText">#757575</color>
-    <color name="dividerColor">#757575</color>
-    <color name="favorite">#ff5d55</color>
+    <color name="dividerColor">#BDBDBD</color>
+    <color name="colorBackground">#ffffff</color>
+    <color name="colorSurface">#ffffff</color>
+    <color name="colorError">#B00020</color>
 
+    <color name="onPrimary">#ffffff</color>
+    <color name="SecondTextonPrimary">#BDBDBD</color>
+    <color name="onSecundary">#000000</color>
+    <color name="onBackground">#000000</color>
+    <color name="SecundaryOnBackground">#757575</color>
+    <color name="onSurface">#000000</color>
+    <color name="onError">#ffffff</color>
 
-    <!--Toolbar-->
-    <color name="toolbar_background">#363640</color>
-    <color name="toolbar_text">#FFFFFF</color>
-    <color name="toolbar_icons">#99FFFFFF</color>
-
-    <!--Colores para tabLayout de aeródromos-->
-    <color name="selected">#FFB300</color>
-    <color name="unselected">#757575</color>
-    </resources>
+    <!-- Icons -->
+    <color name="colorFavorite">#F44336</color>
+    <color name="colorIcons">#2196F3</color>
+    <color name="colorSecundaryIcon">@color/colorSecundaryText</color>
+    <color name="colorPressed">#f8f8f8</color>
+</resources>

@@ -2,6 +2,9 @@ package com.maera.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +14,11 @@ import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.maera.R;
@@ -24,15 +30,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MetafFragment extends Fragment{
-    private final DataBaseManager _dataBase;
+    private DataBaseManager _dataBase;
     private RecyclerView _recyclerView;
     private MetafAdapter _adapter;
     private List<Airport> _allAirports;
     private List<Airport> _subList, _filteredList;
-
-    public MetafFragment(@NonNull DataBaseManager manager ){
-        _dataBase = manager;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -41,8 +43,8 @@ public class MetafFragment extends Fragment{
         _recyclerView = view.findViewById(R.id.airports);
         LinearLayoutManager manager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false);
         _recyclerView.setLayoutManager(manager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(_recyclerView.getContext(), manager.getOrientation());
-        _recyclerView.addItemDecoration(dividerItemDecoration);
+        Divider divider = new Divider(getContext(), R.drawable.divider);
+        _recyclerView.addItemDecoration(divider);
 
         _adapter = new MetafAdapter();
         _recyclerView.setAdapter(_adapter);
@@ -52,7 +54,6 @@ public class MetafFragment extends Fragment{
     @Override
     public void onResume(){
         super.onResume();
-        refresh();
     }
 
     public void refresh() {
@@ -61,6 +62,10 @@ public class MetafFragment extends Fragment{
         if(_filteredList == null ) _filteredList = new ArrayList<>();
         _adapter.getFilter().filter();
         _recyclerView.smoothScrollToPosition(0);
+    }
+
+    public void setDataBaseContext(@NonNull Context context){
+        _dataBase = DataBaseManager.getInstance(context);
     }
 
 
@@ -80,18 +85,19 @@ public class MetafFragment extends Fragment{
         @NonNull
         @Override
         public AirportViewHolder onCreateViewHolder(@NonNull ViewGroup container, final int viewType) {
-            final View view = LayoutInflater.from(container.getContext()).inflate(R.layout.cardview_airport, container, false);
+            final View view = LayoutInflater.from(container.getContext()).inflate(R.layout.layout_airport, container, false);
             return new AirportViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull AirportViewHolder viewHolder, int position) {
+        public void onBindViewHolder(@NonNull final AirportViewHolder viewHolder, int position) {
             final Airport airport = _filteredList.get(position);
-            final String builder = airport.getIcaoCode() + " / " + airport.getLocalCode();
-            viewHolder.title.setText(builder);
-
+            final String codes = airport.getIcaoCode()+"/"+airport.getLocalCode();
+            viewHolder.code.setText(codes);
             viewHolder.name.setText(airport.getName());
-
+            final String fir = airport.getFir().name();
+            viewHolder.fir.setText(fir);
+            viewHolder.location.setText(airport.getLocation().toString());
             if (airport.isFavourite())
                 viewHolder._favouriteBtn.setChecked(true);
             else
@@ -110,6 +116,7 @@ public class MetafFragment extends Fragment{
         public AdapterFilter getFilter() {
             return _filter;
         }
+
     }
 
 
@@ -235,13 +242,17 @@ public class MetafFragment extends Fragment{
      * Implementación del ViewHolder, cuya función es mostrar cada elemento de la lista
      */
     private class AirportViewHolder extends RecyclerView.ViewHolder {
-        TextView title,name;
+        ConstraintLayout layout;
+        TextView code, name, fir, location;
         ToggleButton _favouriteBtn;
 
         AirportViewHolder(View view) {
             super(view);
-            title = view.findViewById(R.id.title);
+            layout = view.findViewById(R.id.layout);
+            code = view.findViewById(R.id.codes);
             name = view.findViewById(R.id.name);
+            fir = view.findViewById(R.id.fir);
+            location = view.findViewById(R.id.location);
             _favouriteBtn = view.findViewById(R.id.favourite);
 
             _favouriteBtn.setOnClickListener(new View.OnClickListener() {
@@ -266,10 +277,49 @@ public class MetafFragment extends Fragment{
                     final Airport airport = _filteredList.get(AirportViewHolder.this.getAdapterPosition());
                     final Context context = view.getContext();
                     Intent intent = new Intent(context, AirportActivity.class);
+                    //Bundle options = ActivityOptionsCompat.makeScaleUpAnimation(AirportViewHolder.this, 0, AirportViewHolder.this.g)
                     intent.putExtra("AIRPORT", airport);
-                    context.startActivity(intent);
+                    //context.startActivity(intent);
+                    ActivityCompat.startActivity(getActivity(),
+                            intent,
+                            ActivityOptionsCompat.makeScaleUpAnimation(view,0,0, view.getWidth(), view.getHeight() ).toBundle()
+                    );
                 }
             });
+        }
+    }
+
+    class Divider extends RecyclerView.ItemDecoration {
+        private Drawable _drawable;
+        Divider(Context context, int resId){
+            _drawable = ContextCompat.getDrawable(context, resId);
+        }
+
+        @Override
+        public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,@NonNull RecyclerView parent,@NonNull RecyclerView.State state){
+            super.getItemOffsets(outRect,view,parent,state);
+            if(parent.getChildAdapterPosition(view)==0)
+                return;
+            outRect.top = _drawable.getIntrinsicHeight();
+        }
+
+        @Override
+        public void onDraw(Canvas c, RecyclerView parent, @NonNull RecyclerView.State state) {
+            final int left = 0;
+            final int right = parent.getWidth();
+
+            int childCount = parent.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                View child = parent.getChildAt(i);
+
+                RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+
+                int top = child.getBottom() + params.bottomMargin;
+                int bottom = top + _drawable.getIntrinsicHeight();
+
+                _drawable.setBounds(left, top, right, bottom);
+                _drawable.draw(c);
+            }
         }
     }
     public enum FILTER_TYPE{EZE, CBA, DOZ, SIS, CRV, FAVS, ALL}

@@ -71,7 +71,7 @@ public final class DataBaseManager extends SQLiteOpenHelper {
 
         airports.add(new Airport("Aeropuerto internacional Gobernador Gabrielli", "SAME", "DOZ", FIR.DOZ, "Mendoza", "Mendoza", true));
         airports.add(new Airport("Aeropuerto internacional Miguel de Güemes", "SASA", "SLA", FIR.CBA, "Salta", "Salta", true));
-        airports.add(new Airport("Aeropuerto Comandante Espora", "SAZB", "", FIR.EZE, "Bahía Blanca", "Buenos Aires", true));
+        airports.add(new Airport("Aeropuerto Comandante Espora", "SAZB", "BCA", FIR.EZE, "Bahía Blanca", "Buenos Aires", true));
         airports.add(new Airport("Aeropuerto militar Campo de Mayo", "SADO", "CPO", FIR.EZE, "San Miguel", "Buenos Aires", false));
 
         airports.add(new Airport("Aeropuerto Comodoro Pierrestegui", "SAAC", "DIA", FIR.EZE, "Concordia", "Entre Ríos", false));
@@ -96,12 +96,12 @@ public final class DataBaseManager extends SQLiteOpenHelper {
         airports.add(new Airport("Aeropuerto internacional Teniente General Matienzo", "SANT", "TUC", FIR.CBA, "Tucumán", "Tucumán", true));
         airports.add(new Airport("Aeropuerto internacional Malvinas Argentinas", "SAWH", "USU", FIR.CRV, "Ushuaia", "Tierra del Fuego, Islas del Atlántico Sur y Antártida", true));
         airports.add(new Airport("Aeropuerto internacional Islas Malvinas", "SAAR", "ROS", FIR.EZE, "Rosario", "Santa Fe", true));
-        airports.add(new Airport("Aeropuerto internacional General Mosconi", "SAVC", "", FIR.CRV, "Comodoro Rivadavia", "Chubut", true));
+        airports.add(new Airport("Aeropuerto internacional General Mosconi", "SAVC", "CRV", FIR.CRV, "Comodoro Rivadavia", "Chubut", true));
 
         airports.add(new Airport("Aeropuerto internacional Comandante Tola", "SAWC", "ECA", FIR.CRV, "El Calafate", "Santa Cruz", true));
         airports.add(new Airport("Aeropuerto internacional Astor Piazzolla", "SAZM", "MDP", FIR.EZE, "Mar del Plata", "Buenos Aires", true));
         airports.add(new Airport("Aeropuerto de Azul", "SAZA", "ZUL", FIR.EZE, "Azul", "Buenos Aires", false));
-        airports.add(new Airport("Escuela Militar de Aviación", "SACE", "FMA", FIR.CBA, "Córdoba", "Córdoba", false));
+        airports.add(new Airport("Escuela Militar de Aviación", "SACE", "FMA", FIR.CBA, "FIRViewHolder", "Córdoba", false));
 
         airports.add(new Airport("Aeropuerto internacional Gobernador Guzmán", "SASJ", "JUJ", FIR.CBA, "San Salvador de Jujuy", "Jujuy", true));
         airports.add(new Airport("Aeropuerto Capitán Almonacid", "SANL", "LAR", FIR.CBA, "La Rioja","La Rioja", true));

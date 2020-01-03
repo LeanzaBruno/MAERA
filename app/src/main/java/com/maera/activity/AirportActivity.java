@@ -2,6 +2,8 @@ package com.maera.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ClipData;
@@ -85,9 +87,14 @@ public class AirportActivity extends AppCompatActivity {
     }
 
     private void setUpViews(){
+        final Toolbar toolbar = findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar()!=null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         setTitle(_airport.getIcaoCode() + " / " + _airport.getLocalCode());
 
-        TextView icao = findViewById(R.id.title);
+        TextView icao = findViewById(R.id.codes);
         icao.setText(_airport.getIcaoCode());
 
         TextView anac = findViewById(R.id.anac);

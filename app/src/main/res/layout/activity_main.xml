@@ -12,16 +12,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/TabLayout"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:elevation="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:tabIndicatorColor="@color/selected"
-        app:tabRippleColor="@color/unselected"
-        app:tabSelectedTextColor="@color/selected" />
+        app:tabIndicatorColor="@color/colorSecundary"
+        app:tabIndicatorHeight="2dp"
+        app:tabSelectedTextColor="@color/colorSecundary"
+        app:tabTextAppearance="@style/TabLayout"
+        app:tabTextColor="@color/dividerColor" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
@@ -33,5 +38,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tabLayout">
 
     </androidx.viewpager.widget.ViewPager>
+    -->
+    <fragment
+        android:id="@+id/metaf"
+        android:name="com.maera.fragment.MetafFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
     
 </androidx.constraintlayout.widget.ConstraintLayout>

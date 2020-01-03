@@ -6,66 +6,66 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
-8-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml
+8-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="29" />
-9-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml
+9-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:4:5-66
-11-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:4:22-64
+11-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:4:5-66
+11-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:4:22-64
 12
 13    <application
-13-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:6:5-27:19
+13-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:6:5-27:19
 14        android:allowBackup="true"
-14-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:7:9-35
+14-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:7:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-15-->[androidx.core:core:1.1.0] /home/qwertz/.gradle/caches/transforms-2/files-2.1/e9dab9c67c1ee3668e0bbf86c6d8cbd8/core-1.1.0/AndroidManifest.xml:24:18-86
+15-->[androidx.core:core:1.1.0] /home/kertz/.gradle/caches/transforms-2/files-2.1/e9dab9c67c1ee3668e0bbf86c6d8cbd8/core-1.1.0/AndroidManifest.xml:24:18-86
 16        android:debuggable="true"
 17        android:icon="@mipmap/ic_launcher"
-17-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:8:9-43
+17-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:8:9-43
 18        android:label="@string/app_name"
-18-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:9:9-41
+18-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:9:9-41
 19        android:roundIcon="@mipmap/ic_launcher_round"
-19-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:10:9-54
+19-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:10:9-54
 20        android:supportsRtl="true"
-20-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:11:9-35
+20-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:11:9-35
 21        android:testOnly="true"
 22        android:theme="@style/AppTheme" >
-22-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:12:9-40
+22-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:12:9-40
 23        <activity android:name="com.maera.activity.MainActivity" >
-23-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:13:9-20:20
-23-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:13:19-56
+23-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:13:9-20:20
+23-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:13:19-56
 24            <intent-filter>
-24-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:14:13-17:29
+24-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:14:13-17:29
 25                <action android:name="android.intent.action.MAIN" />
-25-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:15:17-69
-25-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:15:25-66
+25-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:15:17-69
+25-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:15:25-66
 26
 27                <category android:name="android.intent.category.LAUNCHER" />
-27-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:16:17-77
-27-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:16:27-74
+27-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:16:17-77
+27-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:16:27-74
 28            </intent-filter>
 29
 30            <meta-data
-30-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:18:13-19:53
+30-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:18:13-19:53
 31                android:name="android.app.searachable"
-31-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:18:24-62
+31-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:18:24-62
 32                android:resource="@xml/searchable" />
-32-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:19:17-51
+32-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:19:17-51
 33        </activity>
 34        <activity
-34-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:21:9-113
+34-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:21:9-113
 35            android:name="com.maera.activity.AirportActivity"
-35-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:21:19-59
+35-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:21:19-59
 36            android:parentActivityName="com.maera.activity.MainActivity" />
-36-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:21:60-111
+36-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:21:60-111
 37
 38        <meta-data
-38-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:23:9-25:57
+38-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:23:9-25:57
 39            android:name="preloaded_fonts"
-39-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:24:13-43
+39-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:24:13-43
 40            android:resource="@array/preloaded_fonts" />
-40-->/home/qwertz/MAERA/app/src/main/AndroidManifest.xml:25:13-54
+40-->/home/kertz/MAERA/app/src/main/AndroidManifest.xml:25:13-54
 41    </application>
 42
 43</manifest>

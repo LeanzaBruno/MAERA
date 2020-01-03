@@ -73,7 +73,7 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
         }
         view.findViewById(imageId).setVisibility(View.VISIBLE);
         TextView text = view.findViewById(textId);
-        text.setTextColor(getResources().getColor(R.color.selected));
+        text.setTextColor(getResources().getColor(R.color.onPrimary));
     }
 
 
