@@ -1,33 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Base color theme-->
-    <color name="colorPrimary">#795548</color>
-    <color name="colorPrimaryDark">#4b2c20</color>
+    <!--Primary Color-->
+    <color name="colorPrimary">#1d1d1d</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorPrimaryLight">#a98274</color>
+    <color name="onPrimary">#ffffff</color>
+    <color name="onPrimarySecond">#BDBDBD</color>
+
+
+    <!--Secundary Color-->
     <color name="colorSecundary">#ffffff</color>
     <color name="colorSecundaryDark">#ffffff</color>
     <color name="colorSecundaryLight">#ffffff</color>
-
-    <color name="colorAccent">#FF5252</color>
-    <color name="colorAccentText">#5050C8</color>
-    <color name="colorPrimaryText">#000000</color>
-    <color name="colorSecundaryText">#757575</color>
-    <color name="dividerColor">#BDBDBD</color>
-    <color name="colorBackground">#ffffff</color>
-    <color name="colorSurface">#ffffff</color>
-    <color name="colorError">#B00020</color>
-
-    <color name="onPrimary">#ffffff</color>
-    <color name="SecondTextonPrimary">#BDBDBD</color>
     <color name="onSecundary">#000000</color>
+
+    <!--Background Color-->
+    <color name="colorBackground">#121212</color>
     <color name="onBackground">#000000</color>
-    <color name="SecundaryOnBackground">#757575</color>
+    <color name="onBackgroundSecond">#575757</color>
+
+    <!--Surface Color-->
+    <color name="colorSurface">#1d1d1d</color>
     <color name="onSurface">#000000</color>
+    <color name="onSurfaceSecond">#575757</color>
+
+
+    <!--SearchView Color-->
+    <color name="colorSearchView">#3e3e3e</color>
+    <color name="colorSearchViewText">#fefefe</color>
+    <color name="colorSearchViewHint">#a3a3a3</color>
+
+
+
+    <!--Accent Color-->
+    <color name="colorAccent">#FF5252</color>
+
+
+    <!--Error Color-->
+    <color name="colorError">#B00020</color>
     <color name="onError">#ffffff</color>
 
     <!-- Icons -->
     <color name="colorFavorite">#F44336</color>
     <color name="colorIcons">#2196F3</color>
-    <color name="colorSecundaryIcon">@color/colorSecundaryText</color>
-    <color name="colorPressed">#f8f8f8</color>
+    <color name="colorSecundaryIcon">@color/onSecundary</color>
+    <color name="colorPressed">#1AF8F8F8</color>
+    <color name="dividerColor">#BDBDBD</color>
 </resources>

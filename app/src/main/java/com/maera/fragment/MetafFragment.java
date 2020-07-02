@@ -2,22 +2,17 @@ package com.maera.fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,73 +24,110 @@ import com.maera.core.FIR;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * El fragmento que se encarga de mostrar los aeropuertos.
+ */
 public class MetafFragment extends Fragment{
+
+    /**
+     * Para filtrar por FIR.
+     */
+    public enum TIPO_FILTRO{EZE, CBA, DOZ, SIS, CRV, FAVS, TODOS}
+
+    /**
+     * La base de datos donde se guardan los aeropuertos.
+     */
     private DataBaseManager _dataBase;
-    private RecyclerView _recyclerView;
+
+    /**
+     * El adaptador encargado de mostrar cada uno de los aeropuertos
+     */
     private MetafAdapter _adapter;
+
+    /**
+     * La lista allAirports contiene, como su nombre lo indica, todos los aeropuertos y es inmutable.
+     * Se usa de backup para poder volver a la lista de aeropuertos original.
+     */
     private List<Airport> _allAirports;
-    private List<Airport> _subList, _filteredList;
+
+    /**
+     * La lista sublist es otra lista a modo de backup. Cuando el usuario filtra los aeropuertos por FIR(u otra etiqueta),
+     * sublist pasa a contener todos los aeropuertos que coincidan con ese criterio. De esta forma, cuando se haga un filtrado
+     * a esta sublista, se puede volver hacia atrás si el usuario cancela la búsqueda o sus criterios son menos específicos.
+     * Si no hay ningun criterio de separación en uso, entonces sublist es igual a la lista allAirports.
+     */
+    private List<Airport> _subList;
+
+    /**
+     * Esta lista es la que se mostrará al usuario, es el resultado de los filtrados realizados en las listas anteriores.
+     */
+    private List<Airport> _filteredList;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_metaf, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+       View view = inflater.inflate(R.layout.fragment_metaf, container, false);
 
-        _recyclerView = view.findViewById(R.id.airports);
-        LinearLayoutManager manager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false);
-        _recyclerView.setLayoutManager(manager);
-        Divider divider = new Divider(getContext(), R.drawable.divider);
-        _recyclerView.addItemDecoration(divider);
+        RecyclerView recyclerView = view.findViewById(R.id.airports);
+        LinearLayoutManager manager = new LinearLayoutManager(view.getContext(), RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(manager);
 
         _adapter = new MetafAdapter();
-        _recyclerView.setAdapter(_adapter);
+        recyclerView.setAdapter(_adapter);
         return view;
     }
 
-    @Override
-    public void onResume(){
-        super.onResume();
-    }
-
-    public void refresh() {
+    /**
+     * Refresca la lista.
+     */
+    public void refrescar() {
         _allAirports = _dataBase.getAllAirports();
         if( _subList == null ) _subList = new ArrayList<>();
         if(_filteredList == null ) _filteredList = new ArrayList<>();
-        _adapter.getFilter().filter();
-        _recyclerView.smoothScrollToPosition(0);
+        _subList.addAll(_allAirports);
+        _filteredList.addAll(_allAirports);
     }
 
+    public void buscar(String consulta){
+        _adapter.getFilter().buscar(consulta);
+    }
+
+    public void filtrar(TIPO_FILTRO tipo){
+        _adapter.getFilter().filtrar(tipo);
+    }
+
+    /**
+     * Setea el contexto para la base de datos. Muy importante para que sepa donde está la base de datos.
+     */
     public void setDataBaseContext(@NonNull Context context){
         _dataBase = DataBaseManager.getInstance(context);
     }
 
-
-
-
-    public AdapterFilter getFilter(){
-        return _adapter.getFilter();
-    }
-
     /**
-     * El adaptador se encarga de administrar laa lista que va a ser mostrada dentro del fragmento.
-     * También implementa Filterable para así poder filtrar los aeropuertos para una búsqueda
+     * El adaptador se encarga de administrar la lista que va a ser mostrada dentro del fragmento.
+     * También implementa Filterable para así poder filtrar los aeropuertos para una búsqueda.
      */
     private class MetafAdapter extends RecyclerView.Adapter<AirportViewHolder> implements Filterable {
+
+        /**
+         * El adaptador encargado de filtrar.
+         */
         private AdapterFilter _filter = new AdapterFilter();
 
         @NonNull
         @Override
         public AirportViewHolder onCreateViewHolder(@NonNull ViewGroup container, final int viewType) {
-            final View view = LayoutInflater.from(container.getContext()).inflate(R.layout.layout_airport, container, false);
+            final View view = LayoutInflater.from(container.getContext()).inflate(R.layout.cardview_airport, container, false);
             return new AirportViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(@NonNull final AirportViewHolder viewHolder, int position) {
             final Airport airport = _filteredList.get(position);
-            final String codes = airport.getIcaoCode()+"/"+airport.getLocalCode();
+            final String codes = airport.getIcaoCode() + "/" + airport.getLocalCode();
             viewHolder.code.setText(codes);
             viewHolder.name.setText(airport.getName());
-            final String fir = airport.getFir().name();
+            final String fir = "FIR " + airport.getFir().toString();
             viewHolder.fir.setText(fir);
             viewHolder.location.setText(airport.getLocation().toString());
             if (airport.isFavourite())
@@ -106,88 +138,91 @@ public class MetafFragment extends Fragment{
 
         @Override
         public int getItemCount() {
-            if( _filteredList != null )
+            if (_filteredList != null)
                 return _filteredList.size();
             else
                 return 0;
         }
 
         @Override
-        public AdapterFilter getFilter() {
+        public AdapterFilter getFilter(){
             return _filter;
         }
-
     }
 
-
     /**
-     * Clase utilizada para realizar búsquedas y filtrados
+     * El filtro para realizar las búsquedas
      */
     public class AdapterFilter extends Filter {
-        private FILTER_TYPE _currentFilter = FILTER_TYPE.ALL;
-        private SEARCH_TYPE _searchType;
-        private boolean _searching = true;
 
+        /**
+         * Para filtrar con un FILTRO.
+         */
+        private TIPO_FILTRO _filtroActual = TIPO_FILTRO.TODOS;
+
+        /**
+         * Booleano para saber si se está realizando una búsqueda o un filtrado(con filtro)
+         */
+        private boolean _busqueda = true;
+
+        /**
+         * En este método se realiza la búsqueda
+         * @param consulta La consulta del usuario
+         * @return Los resultados de la búsqueda
+         */
         @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            _filteredList.clear();
-            if (_searching) {
-                switch (_searchType) {
-                    case ANAC:
-                        for (Airport airport : _subList)
-                            if (airportMatches(airport.getLocalCode(), constraint))
-                                _filteredList.add(airport);
-                        break;
-                    case NAME:
-                        for (Airport airport : _subList)
-                            if (airportMatches(airport.getName(), constraint))
-                                _filteredList.add(airport);
-                        break;
-                    case LOCALITY:
-                        for (Airport airport : _subList)
-                            if (airportMatches(airport.getLocation().getLocality(), constraint))
-                                _filteredList.add(airport);
-                        break;
-                    case PROVINCE:
-                        for (Airport airport : _subList)
-                            if (airportMatches(airport.getLocation().getProvince(), constraint))
-                                _filteredList.add(airport);
-                        break;
-                    case ICAO:
-                    default:
-                        for (Airport airport : _subList)
-                            if (airportMatches(airport.getIcaoCode(), constraint))
-                                _filteredList.add(airport);
-                }
-            } else {
+        protected FilterResults performFiltering(CharSequence consulta) {
+             _filteredList.clear();
+            if (_busqueda) {
+                for(Airport aeropuerto : _subList )
+                    if( airportMatches(aeropuerto, consulta))
+                        _filteredList.add(aeropuerto);
+            }
+            else {
                 _subList.clear();
-                switch (_currentFilter) {
-                    case ALL:
-                        _filteredList.addAll(_allAirports);
+                switch (_filtroActual) {
+                    case TODOS:
                         _subList.addAll(_allAirports);
-                        break;
-                    case FAVS:
-                        filterFavourites();
+                        _filteredList.addAll(_allAirports);
                         break;
                     case EZE:
-                        filterByFir(FIR.EZE);
+                        filtrarPorFir(FIR.EZE);
                         break;
                     case CBA:
-                        filterByFir(FIR.CBA);
+                        filtrarPorFir(FIR.CBA);
                         break;
                     case DOZ:
-                        filterByFir(FIR.DOZ);
+                        filtrarPorFir(FIR.DOZ);
                         break;
                     case SIS:
-                        filterByFir(FIR.SIS);
+                        filtrarPorFir(FIR.SIS);
                         break;
                     case CRV:
-                        filterByFir(FIR.CRV);
+                        filtrarPorFir(FIR.CRV);
                 }
             }
+
             FilterResults filterResults = new FilterResults();
             filterResults.values = _filteredList;
             return filterResults;
+        }
+
+        /**
+         * Comprueba si alguno de los valores del aeropuerto coincide con la consulta
+         * @param aeropuerto el aeropuerto dado
+         * @param consulta la consulta del usuario
+         * @return verdadero si sí coincide, false sino.
+         */
+        private boolean airportMatches(Airport aeropuerto, CharSequence consulta) {
+            consulta = consulta.toString().toLowerCase();
+
+            return (
+                    aeropuerto.getIcaoCode().toLowerCase().contains(consulta) ||
+                    aeropuerto.getLocalCode().toLowerCase().contains(consulta) ||
+                    aeropuerto.getName().toLowerCase().contains(consulta) ||
+                    aeropuerto.getLocation().getLocality().toLowerCase().contains(consulta) ||
+                    aeropuerto.getLocation().getProvince().toLowerCase().contains(consulta)
+            );
         }
 
         @Override
@@ -195,29 +230,22 @@ public class MetafFragment extends Fragment{
             _adapter.notifyDataSetChanged();
         }
 
-        void setSearchType(@NonNull SEARCH_TYPE searchType) {
-            _searchType = searchType;
-        }
-
-        void setFilterType(FILTER_TYPE type) {
-            _currentFilter = type;
-        }
-
-        FILTER_TYPE getFilterType() {
-            return _currentFilter;
-        }
-
-        public void search(@NonNull String query) {
-            _searching = true;
-            filter(query);
-        }
-
-        void filter() {
-            _searching = false;
+        void filtrar(TIPO_FILTRO tipo ){
+            _filtroActual = tipo;
+            _busqueda = false;
             filter("");
         }
 
-        private void filterByFir(FIR fir) {
+        TIPO_FILTRO getFilterType() {
+            return _filtroActual;
+        }
+
+        void buscar(String consulta) {
+            _busqueda = true;
+            filter(consulta);
+        }
+
+        private void filtrarPorFir(FIR fir) {
             for (Airport airport : _allAirports)
                 if (airport.getFir() == fir) {
                     _subList.add(airport);
@@ -225,6 +253,7 @@ public class MetafFragment extends Fragment{
                 }
         }
 
+        /*
         private void filterFavourites() {
             for (Airport airport : _allAirports)
                 if (airport.isFavourite()) {
@@ -232,10 +261,7 @@ public class MetafFragment extends Fragment{
                     _filteredList.add(airport);
                 }
         }
-
-        private boolean airportMatches(@NonNull String target, @NonNull CharSequence query) {
-            return target.toLowerCase().contains(query.toString().toLowerCase());
-        }
+        */
     }
 
     /**
@@ -245,6 +271,7 @@ public class MetafFragment extends Fragment{
         ConstraintLayout layout;
         TextView code, name, fir, location;
         ToggleButton _favouriteBtn;
+        Button metar, taf;
 
         AirportViewHolder(View view) {
             super(view);
@@ -253,6 +280,8 @@ public class MetafFragment extends Fragment{
             name = view.findViewById(R.id.name);
             fir = view.findViewById(R.id.fir);
             location = view.findViewById(R.id.location);
+            metar = view.findViewById(R.id.metar);
+            taf = view.findViewById(R.id.taf);
             _favouriteBtn = view.findViewById(R.id.favourite);
 
             _favouriteBtn.setOnClickListener(new View.OnClickListener() {
@@ -269,7 +298,7 @@ public class MetafFragment extends Fragment{
 
 
             /*
-             * Este evento es quien inicia la AirportActivity, donde se muetran los mensajes del aeropuerto seleccionado
+             * Este evento se activa al presionar sobre el ViewHolder
              */
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -277,51 +306,10 @@ public class MetafFragment extends Fragment{
                     final Airport airport = _filteredList.get(AirportViewHolder.this.getAdapterPosition());
                     final Context context = view.getContext();
                     Intent intent = new Intent(context, AirportActivity.class);
-                    //Bundle options = ActivityOptionsCompat.makeScaleUpAnimation(AirportViewHolder.this, 0, AirportViewHolder.this.g)
                     intent.putExtra("AIRPORT", airport);
-                    //context.startActivity(intent);
-                    ActivityCompat.startActivity(getActivity(),
-                            intent,
-                            ActivityOptionsCompat.makeScaleUpAnimation(view,0,0, view.getWidth(), view.getHeight() ).toBundle()
-                    );
+                    context.startActivity(intent);
                 }
             });
         }
     }
-
-    class Divider extends RecyclerView.ItemDecoration {
-        private Drawable _drawable;
-        Divider(Context context, int resId){
-            _drawable = ContextCompat.getDrawable(context, resId);
-        }
-
-        @Override
-        public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,@NonNull RecyclerView parent,@NonNull RecyclerView.State state){
-            super.getItemOffsets(outRect,view,parent,state);
-            if(parent.getChildAdapterPosition(view)==0)
-                return;
-            outRect.top = _drawable.getIntrinsicHeight();
-        }
-
-        @Override
-        public void onDraw(Canvas c, RecyclerView parent, @NonNull RecyclerView.State state) {
-            final int left = 0;
-            final int right = parent.getWidth();
-
-            int childCount = parent.getChildCount();
-            for (int i = 0; i < childCount; i++) {
-                View child = parent.getChildAt(i);
-
-                RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-
-                int top = child.getBottom() + params.bottomMargin;
-                int bottom = top + _drawable.getIntrinsicHeight();
-
-                _drawable.setBounds(left, top, right, bottom);
-                _drawable.draw(c);
-            }
-        }
-    }
-    public enum FILTER_TYPE{EZE, CBA, DOZ, SIS, CRV, FAVS, ALL}
-    public enum SEARCH_TYPE{ICAO, ANAC, LOCALITY, PROVINCE, NAME}
 }

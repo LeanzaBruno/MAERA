@@ -21,7 +21,7 @@
     <string name="messages">Reportes meteorológicos</string>
     <string name="localCode">Código local</string>
     <string name="download">Descargar</string>
-    <string name="search_hint">Buscar aeropuerto</string>
+    <string name="search_hint">Buscar aeropuerto&#8230;</string>
     <string name="showingFavs">Mostrando favoritos</string>
     <string name="showingEZE">Mostrando FIR Ezeiza</string>
     <string name="showingCBA">Mostrando FIR Córdoba</string>
@@ -43,8 +43,8 @@
 
     <string name="searchBy">Buscar por</string>
     <string name="searchByName">Nombre</string>
-    <string name="searchByICAO">Identificador OACI</string>
-    <string name="searchByLocal">Identificador ANAC</string>
+    <string name="searchByICAO">OACI</string>
+    <string name="searchByLocal">ANAC</string>
     <string name="searchByLocation">Ubicación</string>
     <string name="searchByLocality">Localidad</string>
     <string name="searchByProvince">Provincia</string>
@@ -58,7 +58,7 @@
     <string name="CBA">CBA</string>
     <string name="SIS">SIS</string>
     <string name="CRV">CRV</string>
-    <string name="ANT">ANT</string>
+    <string name="ANT">Atártida</string>
     <string name="EZE_long">FIR Ezeiza</string>
     <string name="CBA_long">FIR Córdoba</string>
     <string name="DOZ_long">FIR Mendoza</string>

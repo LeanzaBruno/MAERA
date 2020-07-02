@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.maera.R;
-
+/*
 public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
     private MetafFragment.AdapterFilter _filter;
 
@@ -74,3 +74,4 @@ public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
 
     }
 }
+*/

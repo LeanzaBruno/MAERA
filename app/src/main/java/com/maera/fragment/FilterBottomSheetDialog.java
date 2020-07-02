@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.maera.R;
-
+/*
 public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
     private MetafFragment.AdapterFilter _filter;
     private TextView _infoText;
@@ -144,3 +144,4 @@ public final class FilterBottomSheetDialog extends BottomSheetDialogFragment {
         });
     }
 }
+*/

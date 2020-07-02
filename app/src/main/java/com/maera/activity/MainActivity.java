@@ -2,19 +2,23 @@ package com.maera.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.SearchView;
-import android.widget.TextView;
+import com.google.android.material.chip.ChipGroup;
 import com.maera.R;
-import com.maera.fragment.FilterBottomSheetDialog;
 import com.maera.fragment.MetafFragment;
-import com.maera.fragment.SearchByBottomSheetDialog;
 
+
+/**
+ * Actividad principal
+ */
 public class MainActivity extends AppCompatActivity {
+
+    /**
+     * El fragmento que muestra los aeropuertos.
+     */
     private MetafFragment _metaf;
 
     @Override
@@ -22,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUpViews();
+        _metaf.refrescar();
     }
 
     @Override
@@ -32,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
         refresh.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                _metaf.refresh();
+                _metaf.refrescar();
                 return false;
             }
         });
 
 
-
+        /*
         final MenuItem filter = menu.findItem(R.id.filter);
         filter.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -49,36 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        SearchView searchView = (SearchView)menu.findItem(R.id.search).getActionView();
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filter.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-                SearchByBottomSheetDialog dialog = new SearchByBottomSheetDialog(_metaf.getFilter());
-                dialog.show(getSupportFragmentManager(), "SEARCH");
-            }
-        });
+        */
 
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                filter.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-                return false;
-            }
-        });
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                MetafFragment.AdapterFilter adapterFilter = _metaf.getFilter();
-                adapterFilter.search(newText);
-                return false;
-            }
-        });
+        //Buscador
 
         return true;
     }
@@ -89,12 +67,50 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpViews() {
-        final Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         _metaf = (MetafFragment)getSupportFragmentManager().findFragmentById(R.id.metaf);
         _metaf.setDataBaseContext(this);
-        _metaf.refresh();
+
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+            @Override
+            public boolean onQueryTextChange(String consulta) {
+                _metaf.buscar(consulta);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String consulta){
+                _metaf.buscar(consulta);
+                return true;
+            }
+        });
+
+        ChipGroup chipGroup = findViewById(R.id.sortBy);
+        chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(ChipGroup chipGroup, int id) {
+                switch (id) {
+                    case R.id.all:
+                        _metaf.filtrar(MetafFragment.TIPO_FILTRO.TODOS);
+                        break;
+                    case R.id.eze:
+                        _metaf.filtrar(MetafFragment.TIPO_FILTRO.EZE);
+                        break;
+                    case R.id.cba:
+                        _metaf.filtrar(MetafFragment.TIPO_FILTRO.CBA);
+                        break;
+                    case R.id.doz:
+                        _metaf.filtrar(MetafFragment.TIPO_FILTRO.DOZ);
+                        break;
+                    case R.id.sis:
+                        _metaf.filtrar(MetafFragment.TIPO_FILTRO.SIS);
+                        break;
+                    case R.id.crv:
+                        _metaf.filtrar(MetafFragment.TIPO_FILTRO.CRV);
+                }
+            }
+        });
+
         //final DataBaseManager manager = DataBaseManager.getInstance(this);
         //final ViewPager viewPager = findViewById(R.id.viewPager);
         //_metaf = new MetafFragment(manager);
