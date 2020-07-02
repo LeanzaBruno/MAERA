@@ -18,7 +18,7 @@
             <meta-data android:name="android.app.searachable"
                 android:resource="@xml/searchable"/>
         </activity>
-        <activity android:name=".activity.AirportActivity" android:parentActivityName=".activity.MainActivity"/>
+        <activity android:name=".activity.AeropuertoActivity" android:parentActivityName=".activity.MainActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

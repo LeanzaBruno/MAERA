@@ -94,49 +94,49 @@
         <item name="android:textSize">10sp</item>
     </style>
 
-    <style name="activity_airport_title" parent="base">
+    <style name="activity_Aeropuerto_title" parent="base">
         <item name="fontFamily">@font/open_sans_bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/onPrimary</item>
     </style>
 
-    <style name="activity_airport_category" parent="base">
+    <style name="activity_Aeropuerto_category" parent="base">
         <item name="fontFamily">@font/open_sans</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/onSecundary</item>
     </style>
 
-    <style name="activity_airport_value" parent="base">
+    <style name="activity_Aeropuerto_value" parent="base">
         <item name="fontFamily">@font/open_sans</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/onPrimary</item>
     </style>
 
-    <style name="activity_airport_result" parent="base">
+    <style name="activity_Aeropuerto_result" parent="base">
         <item name="fontFamily">@font/open_sans</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/onPrimary</item>
     </style>
 
-    <style name="activity_airport_message" parent="activity_airport_category">
+    <style name="activity_Aeropuerto_message" parent="activity_Aeropuerto_category">
         <item name="android:textSize">14sp</item>
     </style>
 
 
 
-    <!--Layout airport-->
-    <style name="layout_airport_title">
+    <!--Layout Aeropuerto.java-->
+    <style name="layout_Aeropuerto_title">
         <item name="fontFamily">sans-serif-medium</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/onSurface</item>
     </style>
-    <style name="layout_airport_body2">
+    <style name="layout_Aeropuerto_body2">
         <item name="fontFamily">sans-serif</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/onSurfaceSecond</item>
     </style>
 
-    <style name="layout_airport_caption">
+    <style name="layout_Aeropuerto_caption">
         <item name="fontFamily">sans-serif</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/onSurfaceSecond</item>

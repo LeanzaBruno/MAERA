@@ -12,8 +12,8 @@ import java.util.List;
 public final class DataBaseManager extends SQLiteOpenHelper {
     private static DataBaseManager _INSTANCE;
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "airports._dataBase";
-    private static final String TABLE_NAME = "Airports";
+    private static final String DATABASE_NAME = "Aeropuertos._dataBase";
+    private static final String TABLE_NAME = "Aeropuertos";
 
     //Data base structure
     private static final String COL_ICAO = "ICAO";
@@ -63,138 +63,272 @@ public final class DataBaseManager extends SQLiteOpenHelper {
 
 
     private void loadData(SQLiteDatabase database){
-        List<Airport> airports = new ArrayList<>();
-        airports.add(new Airport("Aeropuerto internacional Jorge Newbery", "SABE", "AEP", FIR.EZE, "Ciudad Autonónoma de Buenos Aires", "", true));
-        airports.add(new Airport("Aeropuerto internacional Ministro Pistarini", "SAEZ", "EZE", FIR.EZE, "Ezeiza", "Buenos Aires", true));
-        airports.add(new Airport("Aeropuerto internacional de San Fernando", "SADF", "FDO", FIR.EZE, "San Fernando", "Buenos Aires", true));
-        airports.add(new Airport("Aeropuerto internacional Ing. Ambrosio Taravella", "SACO", "CBA", FIR.CBA, "Córdoba", "Córdoba", true));
+        List<Aeropuerto> Aeropuertos = new ArrayList<>();
+        Aeropuertos.add(new Aeropuerto("Aeroparque Jorge Newbery",
+                "SABE", "AEP", false, FIR.EZE,
+                "", "Ciudad Autonónoma de Buenos Aires", true));
 
-        airports.add(new Airport("Aeropuerto internacional Gobernador Gabrielli", "SAME", "DOZ", FIR.DOZ, "Mendoza", "Mendoza", true));
-        airports.add(new Airport("Aeropuerto internacional Miguel de Güemes", "SASA", "SLA", FIR.CBA, "Salta", "Salta", true));
-        airports.add(new Airport("Aeropuerto Comandante Espora", "SAZB", "BCA", FIR.EZE, "Bahía Blanca", "Buenos Aires", true));
-        airports.add(new Airport("Aeropuerto militar Campo de Mayo", "SADO", "CPO", FIR.EZE, "San Miguel", "Buenos Aires", false));
+        Aeropuertos.add(new Aeropuerto("Ministro Pistarini",
+                "SAEZ", "EZE", true, FIR.EZE,
+                "Ezeiza", "Buenos Aires", true));
 
-        airports.add(new Airport("Aeropuerto Comodoro Pierrestegui", "SAAC", "DIA", FIR.EZE, "Concordia", "Entre Ríos", false));
-        airports.add(new Airport("Aeropuerto Aviador Carlos Campos", "SAZY", "CHP", FIR.EZE, "San Martín de los Andes", "Neuquén", true));
-        airports.add(new Airport("Aeropuerto de Morón", "SADM", "MOR", FIR.EZE, "Morón", "Buenos Aires", false));
-        airports.add(new Airport("Aeropuerto de General Pico", "SAZG", "GPI", FIR.EZE, "General Pico", "La Pampa", false));
+        Aeropuertos.add(new Aeropuerto("",
+                "SADF", "FDO", true, FIR.EZE,
+                "San Fernando", "Buenos Aires", true));
 
-        airports.add(new Airport("Aeropuerto de Gualeguaychú", "SAAG", "GUA", FIR.EZE, "Gualeguaychú", "Entre Ríos",false));
-        airports.add(new Airport("Aeropuerto de Junín", "SAAJ", "NIN", FIR.EZE, "Junín", "Buenos Aires", false));
-        airports.add(new Airport("Aeropuerto Mariano Moreno", "SADJ", "ENO", FIR.EZE, "José C. Paz", "Buenos Aires", false));
+        Aeropuertos.add(new Aeropuerto("Ing. Ambrosio Taravella",
+                "SACO", "CBA", true, FIR.CBA,
+                "Córdoba", "Córdoba", true));
 
-        airports.add(new Airport("Aeropuerto General Urquiza", "SAAP", "PAR", FIR.EZE, "Paraná", "Entre Ríos", true));
-        airports.add(new Airport("Aeropuerto de Santa Rosa", "SAZR", "OSA", FIR.EZE, "Santa Rosa", "La Pampa", true));
-        airports.add(new Airport("Aeropuerto de Sauce Viejo", "SAAV", "SVO", FIR.EZE, "Sauce Viejo", "Santa Fe", true));
-        airports.add(new Airport("Aeropuerto Coronel Felipe Varela", "SANC", "CAT", FIR.CBA, "San Fernando del Valle de Catamarca", "Catamarca", true));
+        Aeropuertos.add(new Aeropuerto("Gobernador Gabrielli",
+                "SAME", "DOZ", true, FIR.DOZ,
+                "Mendoza", "Mendoza", true));
 
-        airports.add(new Airport("Aeropuerto internacional Teniente Luis Candelaria", "SAZS", "BAR", FIR.EZE, "San Carlos de Bariloche", "Río Negro", true));
-        airports.add(new Airport("Aeropuerto internacional de Puerto Iguazú", "SARI", "IGU", FIR.SIS, "Puerto Iguazú", "Misiones", true));
-        airports.add(new Airport("Aeropuerto internacional de El Palomar", "SADP", "PAL", FIR.EZE, "El Palomar", "Buenos Aires", true));
-        airports.add(new Airport("Aeropuerto internacional Presidente Perón", "SAZN", "NEU", FIR.EZE, "Neuquén", "Neuquén", true));
+        Aeropuertos.add(new Aeropuerto("Miguel de Güemes",
+                "SASA", "SLA", true, FIR.CBA,
+                "Salta", "Salta", true));
 
-        airports.add(new Airport("Aeropuerto internacional Teniente General Matienzo", "SANT", "TUC", FIR.CBA, "Tucumán", "Tucumán", true));
-        airports.add(new Airport("Aeropuerto internacional Malvinas Argentinas", "SAWH", "USU", FIR.CRV, "Ushuaia", "Tierra del Fuego, Islas del Atlántico Sur y Antártida", true));
-        airports.add(new Airport("Aeropuerto internacional Islas Malvinas", "SAAR", "ROS", FIR.EZE, "Rosario", "Santa Fe", true));
-        airports.add(new Airport("Aeropuerto internacional General Mosconi", "SAVC", "CRV", FIR.CRV, "Comodoro Rivadavia", "Chubut", true));
+        Aeropuertos.add(new Aeropuerto("Comandante Espora",
+                "SAZB", "BCA", false, FIR.EZE,
+                "Bahía Blanca", "Buenos Aires", true));
 
-        airports.add(new Airport("Aeropuerto internacional Comandante Tola", "SAWC", "ECA", FIR.CRV, "El Calafate", "Santa Cruz", true));
-        airports.add(new Airport("Aeropuerto internacional Astor Piazzolla", "SAZM", "MDP", FIR.EZE, "Mar del Plata", "Buenos Aires", true));
-        airports.add(new Airport("Aeropuerto de Azul", "SAZA", "ZUL", FIR.EZE, "Azul", "Buenos Aires", false));
-        airports.add(new Airport("Escuela Militar de Aviación", "SACE", "FMA", FIR.CBA, "Córdoba", "Córdoba", false));
+        Aeropuertos.add(new Aeropuerto("Campo de Mayo",
+                "SADO", "CPO", false, FIR.EZE,
+                "San Miguel", "Buenos Aires", false));
 
-        airports.add(new Airport("Aeropuerto internacional Gobernador Guzmán", "SASJ", "JUJ", FIR.CBA, "San Salvador de Jujuy", "Jujuy", true));
-        airports.add(new Airport("Aeropuerto Capitán Almonacid", "SANL", "LAR", FIR.CBA, "La Rioja","La Rioja", true));
-        airports.add(new Airport("Aeropuerto de Río Cuarto", "SAOC", "TRC", FIR.CBA, "Río Cuarto", "Córdoba", true));
-        airports.add(new Airport("Aeropuerto internacional Valle del Conlara", "SAOS", "SRC", FIR.CBA, "Santa Rosa de Conlara", "San Luis", false));
+        Aeropuertos.add(new Aeropuerto("Comodoro Pierrestegui",
+                "SAAC", "DIA", false, FIR.EZE,
+                "Concordia", "Entre Ríos", false));
 
-        airports.add(new Airport("Aeropuerto de Santiago del Estero", "SANE", "SDE", FIR.CBA, "Santiago del Estero", "Santiago del Estero", true));
-        airports.add(new Airport("Aeropuerto General Mosconi", "SAST", "TAR", FIR.CBA, "Tartagal", "Salta", false));
-        airports.add(new Airport("Aeropuerto internacional de Termas de Río Hondo", "SANR", "TRH", FIR.CBA, "Termas de Río Hondo", "Santiago del Estero", true));
-        airports.add(new Airport("Aeropuerto Comodoro Salomón", "SAMM", "LGS", FIR.DOZ, "Malargüe", "Mendoza", false));
+        Aeropuertos.add(new Aeropuerto("Aviador Carlos Campos",
+                "SAZY", "CHP", false, FIR.EZE,
+                "San Martín de los Andes", "Neuquén", true));
 
-        airports.add(new Airport("Aeropuerto internacional Sarmiento", "SANU", "JUA", FIR.DOZ, "San Juan", "San Juan", true));
-        airports.add(new Airport("Aeropuerto Brigadier Mayor Ojeda", "SAOU", "UIS", FIR.DOZ, "San Luis", "San Luis", true));
-        airports.add(new Airport("Aeropuerto Santiago Germano", "SAMR", "SRA", FIR.DOZ, "San Rafael", "Mendoza", true));
-        airports.add(new Airport("Aeropuerto de Villa Reynolds", "SAOR", "RYD", FIR.DOZ, "Mercedes", "San Luis", false));
+        Aeropuertos.add(new Aeropuerto("",
+                "SADM", "MOR", false,  FIR.EZE,
+                "Morón", "Buenos Aires", false));
 
-        airports.add(new Airport("Aeropuerto internacional Brigadier General Parodi", "SAVE", "ESQ", FIR.CRV, "Esquel", "Chubut", true));
-        airports.add(new Airport("Aeropuerto de Perito Moreno", "SAWP", "PTM", FIR.CRV, "Perito Moreno", "Santa Cruz", false));
-        airports.add(new Airport("Aeropuerto de Puerto Deseado", "SAWD", "ADO", FIR.CRV, "Puerto Deseado", "Santa Cruz", false));
-        airports.add(new Airport("Aeropuerto El Tehuelche", "SAVY", "DRY", FIR.CRV, "Puerto Madryn", "Chubut", false));
+        Aeropuertos.add(new Aeropuerto("",
+                "SAZG", "GPI", false, FIR.EZE,
+                "General Pico", "La Pampa", false));
 
-        airports.add(new Airport("Aeropuerto internacional Norberto Fernández", "SAWG", "GAL", FIR.CRV, "Río Gallegos", "Santa Cruz", true));
-        airports.add(new Airport("Aeropuerto internacional Gobernador Noel", "SAWE", "GRA", FIR.CRV, "Río Grande", "Tierra del Fuego", true));
-        airports.add(new Airport("Aeropuerto Capitán D. Daniel Vázquez", "SAWJ", "SJU", FIR.CRV, "San Julián", "Santa Cruz", false));
-        airports.add(new Airport("Aeropuerto de Puerto Santa Cruz", "SAWU", "SCZ", FIR.CRV, "Puerto Santa Cruz", "Santa Cruz", false));
+        Aeropuertos.add(new Aeropuerto("",
+                "SAAG", "GUA", false,  FIR.EZE,
+                "Gualeguaychú", "Entre Ríos",false));
 
-        airports.add(new Airport("Aeropuerto internacional Almirante Zar", "SAVT", "TRE", FIR.CRV, "Trelew", "Chubut", true));
-        airports.add(new Airport("Aeropuerto Gobernador Castello", "SAVV", "VIE", FIR.CRV, "Viedma", "Río Negro", true));
-        airports.add(new Airport("Aeropuerto internacional Dr. Piragine Niveyro", "SARC", "CRR", FIR.SIS, "Corrientes", "Corrientes", true));
-        airports.add(new Airport("Aeropuerto internacional de Formosa", "SARF", "FSA", FIR.SIS, "Formosa", "Formosa", true));
+        Aeropuertos.add(new Aeropuerto( "",
+                "SAAJ", "NIN", false, FIR.EZE,
+                "Junín", "Buenos Aires", false));
 
-        airports.add(new Airport("Aeropuerto internacional de Paso de los Libres", "SARL", "LIB", FIR.SIS, "Paso de los Libres", "Corrientes", false));
-        airports.add(new Airport("Aeropuerto internacional General San Martín", "SARP", "POS", FIR.SIS, "Posadas", "Misiones", true));
-        airports.add(new Airport("Aeropuerto Daniel Jukic", "SATR", "RTA", FIR.SIS, "Reconquista", "Santa Fe", true));
-        airports.add(new Airport("Aeropuerto internacional de Resistencia", "SARE", "SIS", FIR.SIS, "Resistencia", "Chaco", true));
+        Aeropuertos.add(new Aeropuerto("Mariano Moreno",
+                "SADJ", "ENO", false, FIR.EZE,
+                "José C. Paz", "Buenos Aires", false));
 
-        airports.add(new Airport("Aeródromo Vicecomodoro Marambio", "SAWB", "MBI", FIR.CRV, "Isla Marambio, Mar de Weddell", "Tierra del Fuego", true));
+        Aeropuertos.add(new Aeropuerto("General Urquiza",
+                "SAAP", "PAR", false, FIR.EZE,
+                "Paraná", "Entre Ríos", true));
 
-        for( int index = 0 ; index < airports.size() ; ++index )
-            database.insert(TABLE_NAME, null, fillRow(airports.get(index)));
+        Aeropuertos.add(new Aeropuerto("",
+                "SAZR", "OSA", false, FIR.EZE,
+                "Santa Rosa", "La Pampa", true));
+
+        Aeropuertos.add(new Aeropuerto("",
+                "SAAV", "SVO", false, FIR.EZE,
+                "Sauce Viejo", "Santa Fe", true));
+
+        Aeropuertos.add(new Aeropuerto("Coronel Felipe Varela",
+                "SANC", "CAT", false, FIR.CBA,
+                "San Fernando del Valle de Catamarca", "Catamarca", true));
+
+        Aeropuertos.add(new Aeropuerto("Teniente Luis Candelaria",
+                "SAZS", "BAR", true, FIR.EZE,
+                "San Carlos de Bariloche", "Río Negro", true));
+
+        Aeropuertos.add(new Aeropuerto("",
+                "SARI", "IGU", true, FIR.SIS,
+                "Puerto Iguazú", "Misiones", true));
+
+        Aeropuertos.add(new Aeropuerto("",
+                "SADP", "PAL", true, FIR.EZE,
+                "El Palomar", "Buenos Aires", true));
+
+        Aeropuertos.add(new Aeropuerto("Presidente Perón",
+                "SAZN", "NEU", true, FIR.EZE,
+                "Neuquén", "Neuquén", true));
+
+        Aeropuertos.add(new Aeropuerto("Teniente General Matienzo",
+                "SANT", "TUC", true, FIR.CBA,
+                "Tucumán", "Tucumán", true));
+
+        Aeropuertos.add(new Aeropuerto("Malvinas Argentinas",
+                "SAWH", "USU", true, FIR.CRV,
+                "Ushuaia", "Tierra del Fuego, Islas del Atlántico Sur y Antártida", true))$;
+
+        Aeropuertos.add(new Aeropuerto("Islas Malvinas",
+                "SAAR", "ROS", true, FIR.EZE,
+                "Rosario", "Santa Fe", true));
+
+        Aeropuertos.add(new Aeropuerto("General Mosconi",
+                "SAVC", "CRV", true, FIR.CRV,
+                "Comodoro Rivadavia", "Chubut", true));
+
+        Aeropuertos.add(new Aeropuerto("Comandante Tola",
+                "SAWC", "ECA", true, FIR.CRV,
+                "El Calafate", "Santa Cruz", true));
+
+        Aeropuertos.add(new Aeropuerto("Astor Piazzolla",
+                "SAZM", "MDP", true, FIR.EZE,
+                "Mar del Plata", "Buenos Aires", true));
+
+        Aeropuertos.add(new Aeropuerto("",
+                "SAZA", "ZUL", false, FIR.EZE,
+                "Azul", "Buenos Aires", false));
+
+        Aeropuertos.add(new Aeropuerto("Escuela Militar de Aviación",
+                "SACE", "FMA", FIR.CBA,
+                "Córdoba", "Córdoba", false));
+
+        Aeropuertos.add(new Aeropuerto("Gobernador Guzmán",
+                "SASJ", "JUJ", true, FIR.CBA,
+                "San Salvador de Jujuy", "Jujuy", true));
+
+        Aeropuertos.add(new Aeropuerto("Capitán Almonacid",
+                "SANL", "LAR", false, FIR.CBA,
+                "La Rioja","La Rioja", true));
+
+        Aeropuertos.add(new Aeropuerto("",
+                "SAOC", "TRC", true, FIR.CBA,
+                "Río Cuarto", "Córdoba", true));
+
+        Aeropuertos.add(new Aeropuerto("Valle del Conlara",
+                "SAOS", "SRC", true, FIR.CBA,
+                "Santa Rosa de Conlara", "San Luis", false));
+
+        Aeropuertos.add(new Aeropuerto("",
+                "SANE", "SDE", false, FIR.CBA,
+                "Santiago del Estero", "Santiago del Estero", true));
+
+        Aeropuertos.add(new Aeropuerto("General Mosconi",
+                "SAST", "TAR", true, FIR.CBA,
+                "Tartagal", "Salta", false));
+
+        Aeropuertos.add(new Aeropuerto("",
+                "SANR", "TRH", true, FIR.CBA,
+                "Termas de Río Hondo", "Santiago del Estero", true));
+
+        Aeropuertos.add(new Aeropuerto("Comodoro Salomón",
+                "SAMM", "LGS", true, FIR.DOZ,
+                "Malargüe", "Mendoza", false));
+
+        Aeropuertos.add(new Aeropuerto("Domingo Sarmiento",
+                "SANU", "JUA", true, FIR.DOZ,
+                "San Juan", "San Juan", true));
+
+        Aeropuertos.add(new Aeropuerto("Brigadier Mayor Ojeda",
+                "SAOU", "UIS", false, FIR.DOZ,
+                "San Luis", "San Luis", true));
+
+        Aeropuertos.add(new Aeropuerto("Santiago Germano",
+                "SAMR", "SRA", false, FIR.DOZ,
+                "San Rafael", "Mendoza", true));
+
+        Aeropuertos.add(new Aeropuerto("Villa Reynolds",
+                "SAOR", "RYD", false, FIR.DOZ,
+                "Mercedes", "San Luis", false));
+
+        Aeropuertos.add(new Aeropuerto("Brigadier General Parodi",
+                "SAVE", "ESQ", true, FIR.CRV,
+                "Esquel", "Chubut", true));
+
+        Aeropuertos.add(new Aeropuerto("",
+                "SAWP", "PTM", false, FIR.CRV,
+                "Perito Moreno", "Santa Cruz", false));
+
+        Aeropuertos.add(new Aeropuerto("", "SAWD", "ADO", false, FIR.CRV, "Puerto Deseado", "Santa Cruz", false));
+
+        Aeropuertos.add(new Aeropuerto("El Tehuelche", "SAVY", "DRY", false, FIR.CRV, "Puerto Madryn", "Chubut", false));
+
+        Aeropuertos.add(new Aeropuerto("Norberto Fernández", "SAWG", "GAL", true, FIR.CRV, "Río Gallegos", "Santa Cruz", true));
+
+        Aeropuertos.add(new Aeropuerto("Gobernador Noel", "SAWE", "GRA", true, FIR.CRV, "Río Grande", "Tierra del Fuego", true));
+
+        Aeropuertos.add(new Aeropuerto("Capitán D. Daniel Vázquez", "SAWJ", "SJU", false, FIR.CRV, "San Julián", "Santa Cruz", false));
+
+        Aeropuertos.add(new Aeropuerto("", "SAWU", "SCZ", false, FIR.CRV, "Puerto Santa Cruz", "Santa Cruz", false));
+
+        Aeropuertos.add(new Aeropuerto("Almirante Zar", "SAVT", "TRE", true, FIR.CRV, "Trelew", "Chubut", true));
+
+        Aeropuertos.add(new Aeropuerto("Gobernador Castello", "SAVV", "VIE", false, FIR.CRV, "Viedma", "Río Negro", true));
+
+        Aeropuertos.add(new Aeropuerto("Dr. Piragine Niveyro", "SARC", "CRR", true, FIR.SIS, "Corrientes", "Corrientes", true));
+
+        Aeropuertos.add(new Aeropuerto("", "SARF", "FSA", true, FIR.SIS, "Formosa", "Formosa", true));
+
+        Aeropuertos.add(new Aeropuerto("", "SARL", "LIB", true, FIR.SIS, "Paso de los Libres", "Corrientes", false));
+
+        Aeropuertos.add(new Aeropuerto("General San Martín", "SARP", "POS", true, FIR.SIS, "Posadas", "Misiones", true));
+
+        Aeropuertos.add(new Aeropuerto("Daniel Jukic", "SATR", "RTA", false, FIR.SIS, "Reconquista", "Santa Fe", true));
+
+        Aeropuertos.add(new Aeropuerto("", "SARE", "SIS", true, FIR.SIS, "Resistencia", "Chaco", true));
+
+        Aeropuertos.add(new Aeropuerto("Aeródromo Vicecomodoro Marambio", "SAWB", "MBI", false, FIR.CRV, "Isla Marambio, Mar de Weddell", "Tierra del Fuego", true));
+
+        for( int index = 0 ; index < Aeropuertos.size() ; ++index )
+            database.insert(TABLE_NAME, null, fillRow(Aeropuertos.get(index)));
     }
 
-    private ContentValues fillRow(Airport airport){
+    private ContentValues fillRow(Aeropuerto Aeropuerto){
         ContentValues values = new ContentValues();
-        values.put(COL_ICAO, airport.getIcaoCode());
-        values.put(COL_NATIONAL_CODE, airport.getLocalCode());
-        values.put(COL_NAME, airport.getName());
-        values.put(COL_CITY, airport.getLocation().getLocality());
-        values.put(COL_PROVINCE, airport.getLocation().getProvince());
-        values.put(COL_FIR, airport.getFir().name());
-        values.put(COL_TAF_AVAILABILITY, airport.issuesTaf());
-        values.put(COL_FAVOURITE, airport.isFavourite());
+        values.put(COL_ICAO, Aeropuerto.obtenerOACI());
+        values.put(COL_NATIONAL_CODE, Aeropuerto.obtenerCodNacional());
+        values.put(COL_NAME, Aeropuerto.obtenerNombre());
+        values.put(COL_CITY, Aeropuerto.obtenerLocalizacion().obtenerLocalidad());
+        values.put(COL_PROVINCE, Aeropuerto.obtenerLocalizacion().obtenerProvincia());
+        values.put(COL_FIR, Aeropuerto.obtenerFIR().name());
+        values.put(COL_TAF_AVAILABILITY, Aeropuerto.emiteTAF());
+        values.put(COL_FAVOURITE, Aeropuerto.esFavorito());
         return values;
     }
 
-    public @NonNull List<Airport> getAllAirports(){
-        List<Airport> airports = new ArrayList<>();
+    public @NonNull List<Aeropuerto> getAllAeropuertos(){
+        List<Aeropuerto> Aeropuertos = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, COL_FAVOURITE +" DESC," + COL_ICAO);
         while(cursor.moveToNext())
-            airports.add(generateAirport(cursor));
+            Aeropuertos.add(generateAeropuerto(cursor));
         cursor.close();
-        return airports;
+        return Aeropuertos;
     }
 
-    private Airport generateAirport(Cursor cursor){
-        Airport airport = new Airport();
-        airport.setIcaoCode( cursor.getString(cursor.getColumnIndex(COL_ICAO)));
-        airport.setNationalCode( cursor.getString(cursor.getColumnIndex(COL_NATIONAL_CODE)));
-        airport.setName(cursor.getString(cursor.getColumnIndex(COL_NAME)));
+    private Aeropuerto generateAeropuerto(Cursor cursor){
+        Aeropuerto Aeropuerto = new Aeropuerto();
+        Aeropuerto.setOACI( cursor.getString(cursor.getColumnIndex(COL_ICAO)));
+        Aeropuerto.setNationalCode( cursor.getString(cursor.getColumnIndex(COL_NATIONAL_CODE)));
+        Aeropuerto.setName(cursor.getString(cursor.getColumnIndex(COL_NAME)));
 
         final FIR fir = FIR.valueOf(cursor.getString(cursor.getColumnIndex(COL_FIR)));
-        airport.setFIR(fir);
+        Aeropuerto.setFIR(fir);
 
         final String city = cursor.getString(cursor.getColumnIndex(COL_CITY));
-        final String province = cursor.getString(cursor.getColumnIndex(COL_PROVINCE));
-        airport.setLocation(city, province);
+        final String provincia = cursor.getString(cursor.getColumnIndex(COL_PROVINCE));
+        Aeropuerto.setLocalizacion(city, provincia);
 
-        airport.setTafAvailability(cursor.getInt(cursor.getColumnIndex(COL_TAF_AVAILABILITY)) == 1);
-        airport.setFavourite(cursor.getInt(cursor.getColumnIndex(COL_FAVOURITE)) == 1);
+        Aeropuerto.setTafAvailability(cursor.getInt(cursor.getColumnIndex(COL_TAF_AVAILABILITY)) == 1);
+        Aeropuerto.setFavourite(cursor.getInt(cursor.getColumnIndex(COL_FAVOURITE)) == 1);
 
-        return airport;
+        return Aeropuerto;
     }
 
     public
-    void setFavourite(Airport airport , Boolean favourite){
+    void setFavourite(Aeropuerto Aeropuerto , Boolean favourite){
         SQLiteDatabase database = getWritableDatabase();
         database.beginTransaction();
         try {
             ContentValues values = new ContentValues();
             values.put(COL_FAVOURITE, favourite ? 1 : 0);
             final String whereClause = COL_ICAO + " = ?";
-            final String[] args = new String[]{airport.getIcaoCode()};
+            final String[] args = new String[]{Aeropuerto.obtenerOACI()};
             database.update(TABLE_NAME, values, whereClause, args);
             database.setTransactionSuccessful();
         }

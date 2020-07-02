@@ -34,8 +34,8 @@ public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
             }
         });
 
-        ConstraintLayout anac = view.findViewById(R.id.anac);
-        anac.setOnClickListener(new View.OnClickListener() {
+        ConstraintLayout codNacional = view.findViewById(R.id.codNacional);
+        codNacional.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 _filter.setSearchType(MetafFragment.SEARCH_TYPE.ANAC);
@@ -54,8 +54,8 @@ public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
         });
 
 
-        ConstraintLayout locality = view.findViewById(R.id.locality);
-        locality.setOnClickListener(new View.OnClickListener() {
+        ConstraintLayout localidad = view.findViewById(R.id.localidad);
+        localidad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 _filter.setSearchType(MetafFragment.SEARCH_TYPE.LOCALITY);
@@ -63,8 +63,8 @@ public class SearchByBottomSheetDialog extends BottomSheetDialogFragment {
             }
         });
 
-        ConstraintLayout province = view.findViewById(R.id.province);
-        province.setOnClickListener(new View.OnClickListener() {
+        ConstraintLayout provincia = view.findViewById(R.id.provincia);
+        provincia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 _filter.setSearchType(MetafFragment.SEARCH_TYPE.PROVINCE);

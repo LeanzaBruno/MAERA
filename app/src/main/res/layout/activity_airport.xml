@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/textView4"
-            style="@style/activity_airport_category"
+            style="@style/activity_Aeropuerto_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/codes"
-            style="@style/activity_airport_value"
+            style="@style/activity_Aeropuerto_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -43,7 +43,7 @@
 
         <TextView
             android:id="@+id/textView"
-            style="@style/activity_airport_category"
+            style="@style/activity_Aeropuerto_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ANAC"
@@ -51,8 +51,8 @@
             app:layout_constraintTop_toTopOf="@+id/textView4" />
 
         <TextView
-            android:id="@+id/anac"
-            style="@style/activity_airport_value"
+            android:id="@+id/codNacional"
+            style="@style/activity_Aeropuerto_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/textView"
@@ -60,7 +60,7 @@
 
         <TextView
             android:id="@+id/textView8"
-            style="@style/activity_airport_category"
+            style="@style/activity_Aeropuerto_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -70,7 +70,7 @@
 
         <TextView
             android:id="@+id/name"
-            style="@style/activity_airport_value"
+            style="@style/activity_Aeropuerto_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -81,7 +81,7 @@
 
         <TextView
             android:id="@+id/textView10"
-            style="@style/activity_airport_category"
+            style="@style/activity_Aeropuerto_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -91,7 +91,7 @@
 
         <TextView
             android:id="@+id/location"
-            style="@style/activity_airport_value"
+            style="@style/activity_Aeropuerto_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/textView10"
@@ -99,17 +99,17 @@
 
         <TextView
             android:id="@+id/textView12"
-            style="@style/activity_airport_category"
+            style="@style/activity_Aeropuerto_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/FIR"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/anac" />
+            app:layout_constraintTop_toBottomOf="@+id/codNacional" />
 
         <TextView
             android:id="@+id/fir"
-            style="@style/activity_airport_value"
+            style="@style/activity_Aeropuerto_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@+id/textView12"
@@ -130,7 +130,7 @@
 
         <TextView
             android:id="@+id/textView18"
-            style="@style/activity_airport_title"
+            style="@style/activity_Aeropuerto_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -141,7 +141,7 @@
 
         <TextView
             android:id="@+id/textView5"
-            style="@style/activity_airport_message"
+            style="@style/activity_Aeropuerto_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -175,7 +175,7 @@
 
         <TextView
             android:id="@+id/METAR"
-            style="@style/activity_airport_result"
+            style="@style/activity_Aeropuerto_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -207,7 +207,7 @@
 
         <TextView
             android:id="@+id/textView6"
-            style="@style/activity_airport_message"
+            style="@style/activity_Aeropuerto_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -238,7 +238,7 @@
 
         <TextView
             android:id="@+id/TAF"
-            style="@style/activity_airport_result"
+            style="@style/activity_Aeropuerto_result"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -253,7 +253,7 @@
 
         <TextView
             android:id="@+id/textView17"
-            style="@style/activity_airport_title"
+            style="@style/activity_Aeropuerto_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

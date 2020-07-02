@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.maera.R;
-import com.maera.core.Airport;
+import com.maera.core.Aeropuerto;
 import com.maera.core.DataBaseManager;
 import com.maera.core.WeatherReport;
 import org.jsoup.Jsoup;
@@ -29,8 +29,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class AirportActivity extends AppCompatActivity {
-    private Airport _airport;
+public class AeropuertoActivity extends AppCompatActivity {
+    private Aeropuerto _Aeropuerto;
     private TextView _resultMETAR, _resultTAF;
     private ImageButton _refreshMETAR, _refreshTAF, _copyTAF;
     private Button _copyMETAR;
@@ -40,7 +40,7 @@ public class AirportActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_airport, menu);
 
         MenuItem favourite = menu.findItem(R.id.favourite);
-        if(_airport.isFavourite())
+        if(_Aeropuerto.esFavorito())
             favourite.setIcon(R.drawable.favorite_on);
         else
             favourite.setIcon(R.drawable.favorite_off);
@@ -54,14 +54,14 @@ public class AirportActivity extends AppCompatActivity {
             showHelpDialog();
         if( item.getItemId() == R.id.favourite){
             final DataBaseManager dataBase = DataBaseManager.getInstance(this);
-            if(_airport.isFavourite()) {
-                _airport.setFavourite(false);
-                dataBase.setFavourite(_airport, false);
+            if(_Aeropuerto.esFavorito()) {
+                _Aeropuerto.setFavourite(false);
+                dataBase.setFavourite(_Aeropuerto, false);
                 item.setIcon(R.drawable.favorite_off);
             }
             else {
-                _airport.setFavourite(true);
-                dataBase.setFavourite(_airport, true);
+                _Aeropuerto.setFavourite(true);
+                dataBase.setFavourite(_Aeropuerto, true);
                 item.setIcon(R.drawable.favorite_on);
             }
         }
@@ -92,24 +92,24 @@ public class AirportActivity extends AppCompatActivity {
         if(getSupportActionBar()!=null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        setTitle(_airport.getIcaoCode() + " / " + _airport.getLocalCode());
+        setTitle(_Aeropuerto.obtenerOACI() + " / " + _Aeropuerto.obtenerCodLocal());
 
         TextView icao = findViewById(R.id.codes);
-        icao.setText(_airport.getIcaoCode());
+        icao.setText(_Aeropuerto.obtenerOACI());
 
-        TextView anac = findViewById(R.id.anac);
-        anac.setText(_airport.getLocalCode());
+        TextView codNacional = findViewById(R.id.codNacional);
+        codNacional.setText(_Aeropuerto.obtenerCodLocal());
 
         TextView fir = findViewById(R.id.fir);
-        fir.setText(_airport.getFir().name());
+        fir.setText(_Aeropuerto.obtenerFIR().name());
 
         TextView name = findViewById(R.id.name);
-        name.setText(_airport.getName());
+        name.setText(_Aeropuerto.obtenerNombre());
 
         TextView location = findViewById(R.id.location);
-        location.setText(_airport.getLocation().toString());
+        location.setText(_Aeropuerto.obtenerLocalizacion().toString());
 
-        if(!_airport.issuesTaf())
+        if(!_Aeropuerto.emiteTAF())
             _resultTAF.setText(getString(R.string.noTAF));
 
     }
@@ -134,7 +134,7 @@ public class AirportActivity extends AppCompatActivity {
                 ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 if( clipboardManager != null )
                     clipboardManager.setPrimaryClip(ClipData.newPlainText("source text", _resultMETAR.getText()));
-                Toast.makeText(AirportActivity.this, "METAR copiado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AeropuertoActivity.this, "METAR copiado", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -144,7 +144,7 @@ public class AirportActivity extends AppCompatActivity {
                 ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 if( clipboardManager != null)
                     clipboardManager.setPrimaryClip( ClipData.newPlainText("source text", _resultTAF.getText()));
-                Toast.makeText(AirportActivity.this, "TAF copiado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AeropuertoActivity.this, "TAF copiado", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -174,15 +174,15 @@ public class AirportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_airport);
 
 
-        _airport = getIntent().getParcelableExtra("AIRPORT");
-        if( _airport != null ) {
+        _Aeropuerto = getIntent().getParcelableExtra("Aeropuerto.java");
+        if( _Aeropuerto != null ) {
             setUpViewReferences();
             setUpViews();
             setUpEvents();
             setUpWeatherReportMessages();
         }
         else
-            Toast.makeText(this, "Error! Couldn't find any airport", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error! Couldn't find any Aeropuerto.java", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -200,7 +200,7 @@ public class AirportActivity extends AppCompatActivity {
             _dialog.setCancelable(false);
 
             createMETARRequest();
-            if(_airport.issuesTaf()) createTAFRequest();
+            if(_Aeropuerto.emiteTAF()) createTAFRequest();
             createPRONAREARequest();
         }
 
@@ -215,17 +215,17 @@ public class AirportActivity extends AppCompatActivity {
 
         private void createMETARRequest(){
             _metarURL = new StringBuilder();
-            _metarURL.append(WeatherReport.METAR.generateURL(_airport));
+            _metarURL.append(WeatherReport.METAR.generateURL(_Aeropuerto));
         }
 
         private void createTAFRequest(){
             _tafURL = new StringBuilder();
-            _tafURL.append(WeatherReport.TAF.generateURL(_airport));
+            _tafURL.append(WeatherReport.TAF.generateURL(_Aeropuerto));
         }
 
         private void createPRONAREARequest(){
             _pronareaURL = new StringBuilder();
-            _pronareaURL.append(WeatherReport.PRONAREA.generateURL(_airport));
+            _pronareaURL.append(WeatherReport.PRONAREA.generateURL(_Aeropuerto));
         }
 
         private String getMessage(@NonNull Document page){
@@ -281,14 +281,14 @@ public class AirportActivity extends AppCompatActivity {
                 switch (_type) {
                     case METAR:
                         _resultMETAR.setText(_metarResult);
-                        Toast.makeText(AirportActivity.this, "METAR actualizado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AeropuertoActivity.this, "METAR actualizado", Toast.LENGTH_SHORT).show();
                         break;
                     case TAF:
                         if (_tafResult.isEmpty())
                             _resultTAF.setText(getResources().getString(R.string.noTAF));
                         else
                             _resultTAF.setText(_tafResult);
-                        Toast.makeText(AirportActivity.this, "TAF actualizado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AeropuertoActivity.this, "TAF actualizado", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }

@@ -29,7 +29,7 @@
 
         <TextView
             android:id="@+id/location"
-            style="@style/layout_airport_body2"
+            style="@style/layout_Aeropuerto_body2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/name"
-            style="@style/layout_airport_title"
+            style="@style/layout_Aeropuerto_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -55,7 +55,7 @@
 
         <TextView
             android:id="@+id/codes"
-            style="@style/layout_airport_caption"
+            style="@style/layout_Aeropuerto_caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -90,7 +90,7 @@
 
         <TextView
             android:id="@+id/fir"
-            style="@style/layout_airport_body2"
+            style="@style/layout_Aeropuerto_body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"

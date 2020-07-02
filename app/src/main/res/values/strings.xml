@@ -33,10 +33,10 @@
 
     <string name="tabLayout_ICAO">CÓDIGO\nOACI</string>
     <string name="tabLayout_Local">CÓDIGO\nNACIONAL</string>
-    <string name="tabLayout_Location">UBICACIÓN</string>
+    <string name="tabLayout_Localizacion">UBICACIÓN</string>
     <string name="tabLayout_Name">NOMBRE</string>
     <string name="favourites">FAVORITOS</string>
-    <string name="allAirports">Todos</string>
+    <string name="allAeropuertos">Todos</string>
     <string name="refresh">Actualizar</string>
     <string name="sortBy">Ordenar por</string>
     <string name="separator">/</string>
@@ -45,7 +45,7 @@
     <string name="searchByName">Nombre</string>
     <string name="searchByICAO">OACI</string>
     <string name="searchByLocal">ANAC</string>
-    <string name="searchByLocation">Ubicación</string>
+    <string name="searchByLocalizacion">Ubicación</string>
     <string name="searchByLocality">Localidad</string>
     <string name="searchByProvince">Provincia</string>
     <string name="searchByFir">FIR</string>

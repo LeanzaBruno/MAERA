@@ -63,7 +63,7 @@
 											"top": 839,
 											"width": 147.1552734375,
 											"height": 13,
-											"text": "Airport"
+											"text": "Aeropuerto"
 										},
 										{
 											"_type": "LabelView",
@@ -135,7 +135,7 @@
 											"top": 862,
 											"width": 147.1552734375,
 											"height": 13,
-											"text": "-icaoCode: String",
+											"text": "-OACI: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -220,7 +220,7 @@
 											"top": 930,
 											"width": 147.1552734375,
 											"height": 13,
-											"text": "+getIcaoCode(): String",
+											"text": "+obtenerOACI(): String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -237,7 +237,7 @@
 											"top": 945,
 											"width": 147.1552734375,
 											"height": 13,
-											"text": "+getName(): String",
+											"text": "+obtenerNombre(): String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -362,7 +362,7 @@
 											"top": 791,
 											"width": 105.85986328125,
 											"height": 13,
-											"text": "Location"
+											"text": "Localizacion"
 										},
 										{
 											"_type": "LabelView",
@@ -750,7 +750,7 @@
 											"top": 1059,
 											"width": 110.1826171875,
 											"height": 13,
-											"text": "+getName(): String",
+											"text": "+obtenerNombre(): String",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1864,7 +1864,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Airport",
+					"name": "Aeropuerto",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -1993,7 +1993,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFuQRpEP2J9bFM="
 							},
-							"name": "icaoCode",
+							"name": "OACI",
 							"visibility": "private",
 							"type": "String"
 						},
@@ -2035,7 +2035,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFuQRpEP2J9bFM="
 							},
-							"name": "getIcaoCode",
+							"name": "obtenerOACI",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -2054,7 +2054,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFuQRpEP2J9bFM="
 							},
-							"name": "getName",
+							"name": "obtenerNombre",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -2094,7 +2094,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Location",
+					"name": "Localizacion",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -2367,7 +2367,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFuQSmhz2Qq6jk="
 							},
-							"name": "getName",
+							"name": "obtenerNombre",
 							"parameters": [
 								{
 									"_type": "UMLParameter",

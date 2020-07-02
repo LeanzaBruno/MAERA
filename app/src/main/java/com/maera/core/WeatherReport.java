@@ -10,11 +10,11 @@ public enum WeatherReport{
     private String _url;
     WeatherReport(String url){ _url = url;}
 
-    public String generateURL(@NonNull Airport airport){
+    public String generateURL(@NonNull Aeropuerto Aeropuerto){
         if( this == METAR || this == TAF )
-            return _url + airport.getIcaoCode();
+            return _url + Aeropuerto.obtenerOACI();
         else
-            return generateURL(airport.getFir());
+            return generateURL(Aeropuerto.obtenerFIR());
     }
 
     public String generateURL(@NonNull FIR fir){

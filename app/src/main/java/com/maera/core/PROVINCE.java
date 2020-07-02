@@ -37,8 +37,8 @@ public enum PROVINCE {
     String toString(){ return _name; }
 
     public
-    PROVINCE getProvince(String province) {
-        switch (province) {
+    PROVINCE obtenerProvincia(String provincia) {
+        switch (provincia) {
             case "BUENOS_AIRES":
                 return BUENOS_AIRES;
             case "CATAMARCA":
